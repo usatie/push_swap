@@ -2,3 +2,5 @@
 *.out
 *.a
 push_swap
+checker_linux
+checker
