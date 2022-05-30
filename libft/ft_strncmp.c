@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:30:26 by susami            #+#    #+#             */
-/*   Updated: 2022/04/06 14:33:40 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/28 19:25:04 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	cnt;
 
+	if (s1 == s2 || n == 0)
+		return (0);
 	cnt = 0;
 	while ((*s1 || *s2) && cnt < n)
 	{

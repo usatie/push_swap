@@ -1,2 +1,9 @@
-*.o
-*.a
+*
+!*.c
+!*.h
+!Makefile
+!include
+!ft_printf
+!ft_argparse
+!ft_error_functions
+!test.sh

@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_error_functions.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 18:50:56 by susami           ###   ########.fr       */
+/*   Created: 2022/05/30 10:45:33 by susami            #+#    #+#             */
+/*   Updated: 2022/05/30 10:46:02 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "ft_argparse.h"
-#include "ft_printf.h"
-#include "push_swap.h"
+#ifndef FT_ERROR_FUNCTIONS_H
+# define FT_ERROR_FUNCTIONS_H
 
-int	main(int argc, char **argv)
-{
-	t_machine	m;
-	int			i;
-	int			val;
+void	err_exit(const char *format, ...);
 
-	(void)argc;
-	i = 1;
-	while (**argv)
-	{
-		val = ft_argparse_int(argv[i], 0, "val");
-		push(m.a, val);
-		i++;
-	}
-	ft_printf("let's write push_swap!\n");
-	return (EXIT_SUCCESS);
-}
+#endif

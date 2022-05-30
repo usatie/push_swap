@@ -6,13 +6,16 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/05/27 18:07:03 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/27 22:06:39 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 typedef struct s_stack {
+	int		*arr;
+	size_t	len;
+	size_t	cap;
 }	t_stack;
 
 typedef struct s_machine {
@@ -20,7 +23,7 @@ typedef struct s_machine {
 	t_stack	*b;
 }	t_machine;
 
-typedef	t_elm	int;
+typedef int	t_elm;
 
 // op_basic.c
 void	swap(t_stack *s);

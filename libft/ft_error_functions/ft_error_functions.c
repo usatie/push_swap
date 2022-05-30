@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_error_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 18:50:56 by susami           ###   ########.fr       */
+/*   Created: 2022/05/30 10:44:20 by susami            #+#    #+#             */
+/*   Updated: 2022/05/30 12:20:01 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdarg.h>
+#include <unistd.h>
 #include <stdlib.h>
-#include "ft_argparse.h"
+#include "libft.h"
 #include "ft_printf.h"
-#include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	err_exit(const char *format, ...)
 {
-	t_machine	m;
-	int			i;
-	int			val;
+	va_list	ap;
 
-	(void)argc;
-	i = 1;
-	while (**argv)
-	{
-		val = ft_argparse_int(argv[i], 0, "val");
-		push(m.a, val);
-		i++;
-	}
-	ft_printf("let's write push_swap!\n");
-	return (EXIT_SUCCESS);
+	va_start(ap, format);
+	ft_vdprintf(STDERR_FILENO, format, ap);
+	va_end(ap);
+	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:53:11 by susami            #+#    #+#             */
-/*   Updated: 2022/05/26 23:13:12 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/30 11:05:06 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 // enough for binary unsigned long long + "0x" or "0X" prefix
 #define MAXBUF 66
 #define BASE 16
+
+void	print(t_fmt *fmt, char *str, size_t len);
 
 static void	set_buf_hex(char *buf, unsigned long long n, int capitals,
 	t_fmt *fmt)
