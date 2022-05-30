@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/05/27 21:44:33 by susami           ###   ########.fr        #
+#    Updated: 2022/05/30 20:40:52 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,11 @@ CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -I include
 
 OUTDIR		=	output
-SRCS		=	src/push_swap.c	
+SRCS		=	src/push_swap.c		\
+				src/stack.c			\
+				src/machine.c		\
+				src/op_basic.c		\
+
 OBJS		=	$(SRCS:%.c=$(OUTDIR)/%.o)
 
 LIBFTDIR	=	libft
