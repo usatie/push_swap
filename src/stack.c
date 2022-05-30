@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:26:30 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 20:52:53 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/30 21:38:49 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	deinit_stack(t_stack *s)
 		free(s->arr);
 }
 
-static BOOL	contains(t_elm e, t_stack *s)
+BOOL	contains(t_elm e, t_stack *s)
 {
 	size_t	i;
 
@@ -43,19 +43,7 @@ static BOOL	contains(t_elm e, t_stack *s)
 	{
 		if (s->arr[i] == e)
 			return (TRUE);
-	}
-	return (FALSE);
-}
-
-BOOL	has_duplicate_elems(t_stack *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < s->len)
-	{
-		if (contains(s->arr[i], s))
-			return (TRUE);
+		i++;
 	}
 	return (FALSE);
 }

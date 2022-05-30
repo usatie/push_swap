@@ -6,11 +6,12 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 20:52:41 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/30 21:52:25 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "ft_printf.h"
 #include "push_swap.h"
 
 t_machine	*init_machine(size_t cap)
@@ -43,4 +44,23 @@ void	deinit_machine(t_machine *m)
 		deinit_stack(m->b);
 		free(m);
 	}
+}
+
+void	print_machine(t_machine *m)
+{
+	size_t	i;
+
+	ft_printf("-----------------------------------------------------------------------\n");
+	i = 0;
+	while (i < m->a->len || i < m->b->len)
+	{
+		if (i < m->a->len)
+			ft_printf("%d", m->a->arr[i]);
+		ft_printf(" ");
+		if (i < m->b->len)
+			ft_printf("%d", m->b->arr[i]);
+		ft_printf("\n");
+		i++;
+	}
+	ft_printf("- -\na b\n");
 }

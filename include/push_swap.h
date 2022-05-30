@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 20:52:16 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/30 21:38:11 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ typedef long	t_elm;
 // stack.c
 t_stack		*init_stack(size_t cap);
 void		deinit_stack(t_stack *s);
-BOOL		has_duplicate_elems(t_stack *s);
+BOOL		contains(t_elm e, t_stack *s);
 
 // machine.c
 t_machine	*init_machine(size_t cap);
 void		deinit_machine(t_machine *m);
+void		print_machine(t_machine *m);
 
 // op_basic.c
 void		swap(t_stack *s);
 // Returns 0 on success, -1 on error
-int			pop(t_stack *s, t_elm *e);
+t_elm		pop(t_stack *s);
 void		push(t_stack *s, t_elm e);
 void		rotate(t_stack *s);
 void		reverse_rotate(t_stack *s);
