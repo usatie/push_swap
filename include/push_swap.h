@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 21:38:11 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/30 23:33:19 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,21 @@ void		rotate(t_stack *s);
 void		reverse_rotate(t_stack *s);
 
 // op_s.c
-void		sa(t_machine *m);
-void		sb(t_machine *m);
-void		ss(t_machine *m);
+void		sa(t_stack *a, t_stack *b);
+void		sb(t_stack *a, t_stack *b);
+void		ss(t_stack *a, t_stack *b);
 
 // op_p.c
-void		pa(t_machine *m);
-void		pb(t_machine *m);
+void		pa(t_stack *a, t_stack *b);
+void		pb(t_stack *a, t_stack *b);
 
 // op_r.c
-void		ra(t_machine *m);
-void		rb(t_machine *m);
-void		rr(t_machine *m);
+void		ra(t_stack *a, t_stack *b);
+void		rb(t_stack *a, t_stack *b);
+void		rr(t_stack *a, t_stack *b);
 
 // op_rr.c
-void		rra(t_machine *m);
-void		rrb(t_machine *m);
-void		rrr(t_machine *m);
+void		rra(t_stack *a, t_stack *b);
+void		rrb(t_stack *a, t_stack *b);
+void		rrr(t_stack *a, t_stack *b);
 #endif

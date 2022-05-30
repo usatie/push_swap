@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:52:07 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 21:27:18 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/31 00:28:37 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,12 @@ void	rotate(t_stack *s)
 	if (s->len == 0)
 		return ;
 	last = s->arr[s->len - 1];
-	i = 0;
-	while (i + 1 < s->len)
-		s->arr[i + 1] = s->arr[i];
+	i = s->len - 1;
+	while (i > 0)
+	{
+		s->arr[i] = s->arr[i - 1];
+		i--;
+	}
 	s->arr[0] = last;
 }
 
@@ -75,6 +78,9 @@ void	reverse_rotate(t_stack *s)
 	first = s->arr[0];
 	i = 0;
 	while (i + 1 < s->len)
+	{
 		s->arr[i] = s->arr[i + 1];
+		i++;
+	}
 	s->arr[s->len - 1] = first;
 }

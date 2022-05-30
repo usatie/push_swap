@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/05/30 20:40:52 by susami           ###   ########.fr        #
+#    Updated: 2022/05/31 00:15:13 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,15 +20,29 @@ SRCS		=	src/push_swap.c		\
 				src/stack.c			\
 				src/machine.c		\
 				src/op_basic.c		\
+				src/op_s.c		\
+				src/op_p.c		\
+				src/op_r.c		\
+				src/op_rr.c		\
+
+TEST_SRCS	=	tests/test_basic_op.c		\
+				src/stack.c					\
+				src/machine.c				\
+				src/op_basic.c				\
+				src/op_s.c					\
+				src/op_p.c					\
+				src/op_r.c					\
+				src/op_rr.c					\
 
 OBJS		=	$(SRCS:%.c=$(OUTDIR)/%.o)
+TEST_OBJS	=	$(TEST_SRCS:%.c=$(OUTDIR)/%.o)
 
 LIBFTDIR	=	libft
 LIBFT		=	$(LIBFTDIR)/libft.a
 LIB			=	$(LIBFT)
 
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test
 
 all: $(NAME)
 
@@ -36,7 +50,7 @@ clean:
 	$(RM) src/*.o bonus/*.o *.out output/**/*.o
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) runtest
 
 re: fclean all
 
@@ -49,3 +63,8 @@ $(OUTDIR)/%.o: %.c
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
+
+test: $(TEST_OBJS) $(LIB)
+	$(CC) $(CFLAGS) $(TEST_OBJS) $(LIB) -o runtest
+	./runtest
+

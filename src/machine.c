@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 21:52:25 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/31 00:13:24 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,21 @@ void	deinit_machine(t_machine *m)
 	}
 }
 
+static size_t	max(size_t a, size_t b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
 void	print_machine(t_machine *m)
 {
 	size_t	i;
 
 	ft_printf("-----------------------------------------------------------------------\n");
-	i = 0;
-	while (i < m->a->len || i < m->b->len)
+	i = max(m->a->len, m->b->len);
+	while (i-- > 0)
 	{
 		if (i < m->a->len)
 			ft_printf("%d", m->a->arr[i]);
@@ -60,7 +68,6 @@ void	print_machine(t_machine *m)
 		if (i < m->b->len)
 			ft_printf("%d", m->b->arr[i]);
 		ft_printf("\n");
-		i++;
 	}
 	ft_printf("- -\na b\n");
 }
