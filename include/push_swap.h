@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 23:33:19 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/31 00:59:44 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,6 @@ void		rr(t_stack *a, t_stack *b);
 void		rra(t_stack *a, t_stack *b);
 void		rrb(t_stack *a, t_stack *b);
 void		rrr(t_stack *a, t_stack *b);
+
+void		insert_sort(t_stack *a, t_stack *b);
 #endif

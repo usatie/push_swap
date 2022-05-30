@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 21:52:42 by susami           ###   ########.fr       */
+/*   Updated: 2022/05/31 01:24:07 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,16 @@ static void	argparse_push(const char *arg, t_machine *m)
 int	main(int argc, char **argv)
 {
 	t_machine	*m;
-	int			i;
+	size_t		i;
 
 	m = init_machine(argc - 1);
-	i = 1;
-	while (i < argc)
+	i = argc;
+	while (--i > 0)
 	{
 		argparse_push(argv[i], m);
-		i++;
 	}
-	print_machine(m);
+	insert_sort(m->a, m->b);
+	//print_machine(m);
 	deinit_machine(m);
 	return (EXIT_SUCCESS);
 }
