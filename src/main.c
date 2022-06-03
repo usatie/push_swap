@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/05/31 01:24:07 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 13:59:41 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,49 +17,46 @@
 #include "ft_error_functions.h"
 #include "push_swap.h"
 
-static void	argparse_push(const char *arg, t_machine *m)
+static void	argparse_push(const char *arg, t_stack_pair *p)
 {
 	char	*endptr;
 	t_elm	new;
 
 	if (*arg == '\0')
 	{
-		deinit_machine(m);
+		deinit_stack_pair(p);
 		err_exit("null or empty string");
 	}
 	errno = 0;
 	new = ft_strtol(arg, &endptr, 10);
 	if (errno != 0)
 	{
-		deinit_machine(m);
+		deinit_stack_pair(p);
 		err_exit("ft_strtol() failed\n	text: %s", arg);
 	}
 	if (*endptr != '\0')
 	{
-		deinit_machine(m);
+		deinit_stack_pair(p);
 		err_exit("nonnumeric characters\n	text: %s", arg);
 	}
-	if (contains(new, m->a))
+	if (contains(new, p->a))
 	{
-		deinit_machine(m);
+		deinit_stack_pair(p);
 		err_exit("duplicate values\n", arg);
 	}
-	push(m->a, new);
+	push(p->a, new);
 }
 
 int	main(int argc, char **argv)
 {
-	t_machine	*m;
-	size_t		i;
+	t_stack_pair	*p;
 
-	m = init_machine(argc - 1);
-	i = argc;
-	while (--i > 0)
-	{
-		argparse_push(argv[i], m);
-	}
-	insert_sort(m->a, m->b);
-	//print_machine(m);
-	deinit_machine(m);
+	p = init_stack_pair(argc - 1);
+	while (--argc > 0)
+		argparse_push(argv[argc], p);
+	insert_sort(p);
+	if (VERBOSE)
+		print_stack_pair(p);
+	deinit_stack_pair(p);
 	return (EXIT_SUCCESS);
 }

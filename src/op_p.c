@@ -6,20 +6,20 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:36:00 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 23:37:55 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 14:06:58 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack *a, t_stack *b)
+void	pa(t_stack_pair *p)
 {
-	if (b->len > 0)
-		push(a, pop(b));
+	if (p->b->len > 0)
+		push(p->a, pop(p->b));
 }
 
-void	pb(t_stack *a, t_stack *b)
+void	pb(t_stack_pair *p)
 {
-	if (a->len > 0)
-		push(b, pop(a));
+	if (p->a->len > 0)
+		push(p->b, pop(p->a));
 }

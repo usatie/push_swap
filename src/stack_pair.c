@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   machine.c                                          :+:      :+:    :+:   */
+/*   stack_pair.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/05/31 01:01:35 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 14:05:57 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,61 +14,53 @@
 #include "ft_printf.h"
 #include "push_swap.h"
 
-t_machine	*init_machine(size_t cap)
+t_stack_pair	*init_stack_pair(size_t cap)
 {
-	t_machine	*m;
+	t_stack_pair	*p;
 
-	m = malloc(sizeof(t_machine));
-	if (m == NULL)
+	p = malloc(sizeof(t_stack_pair));
+	if (p == NULL)
 		return (NULL);
-	m->a = init_stack(cap);
-	if (m->a == NULL)
+	p->a = init_stack(cap);
+	if (p->a == NULL)
 	{
-		deinit_machine(m);
-		return (NULL);
-	}
-	m->b = init_stack(cap);
-	if (m->b == NULL)
-	{
-		deinit_machine(m);
+		deinit_stack_pair(p);
 		return (NULL);
 	}
-	return (m);
+	p->b = init_stack(cap);
+	if (p->b == NULL)
+	{
+		deinit_stack_pair(p);
+		return (NULL);
+	}
+	return (p);
 }
 
-void	deinit_machine(t_machine *m)
+void	deinit_stack_pair(t_stack_pair *p)
 {
-	if (m)
+	if (p)
 	{
-		deinit_stack(m->a);
-		deinit_stack(m->b);
-		free(m);
+		deinit_stack(p->a);
+		deinit_stack(p->b);
+		free(p);
 	}
 }
 
-static size_t	max(size_t a, size_t b)
-{
-	if (a > b)
-		return (a);
-	else
-		return (b);
-}
-
-void	print_machine(t_machine *m)
+void	print_stack_pair(t_stack_pair *p)
 {
 	size_t	i;
 
 	ft_printf("-----------------------------------------------------------------------\n");
-	i = max(m->a->len, m->b->len);
+	i = max(p->a->len, p->b->len);
 	while (i-- > 0)
 	{
-		if (i < m->a->len)
-			ft_printf("%d", m->a->arr[i]);
+		if (i < p->a->len)
+			ft_printf("%d", p->a->arr[i]);
 		else
 			ft_printf(" ");
 		ft_printf(" ");
-		if (i < m->b->len)
-			ft_printf("%d", m->b->arr[i]);
+		if (i < p->b->len)
+			ft_printf("%d", p->b->arr[i]);
 		else
 			ft_printf(" ");
 		ft_printf("\n");

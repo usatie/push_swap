@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_s.c                                             :+:      :+:    :+:   */
+/*   utility.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 23:34:05 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 14:08:46 by susami           ###   ########.fr       */
+/*   Created: 2022/06/03 14:04:21 by susami            #+#    #+#             */
+/*   Updated: 2022/06/03 14:04:35 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack_pair *p)
+size_t	max(size_t a, size_t b)
 {
-	swap(p->a);
+	if (a > b)
+		return (a);
+	else
+		return (b);
 }
 
-void	sb(t_stack_pair *p)
+size_t	min(size_t a, size_t b)
 {
-	swap(p->b);
-}
-
-void	ss(t_stack_pair *p)
-{
-	swap(p->a);
-	swap(p->b);
+	if (a < b)
+		return (a);
+	else
+		return (b);
 }

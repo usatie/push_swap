@@ -6,26 +6,24 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:39:27 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 23:40:39 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 14:08:19 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stack *a, t_stack *b)
+void	rra(t_stack_pair *p)
 {
-	(void)b;
-	reverse_rotate(a);
+	reverse_rotate(p->a);
 }
 
-void	rrb(t_stack *a, t_stack *b)
+void	rrb(t_stack_pair *p)
 {
-	(void)a;
-	reverse_rotate(b);
+	reverse_rotate(p->b);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_stack_pair *p)
 {
-	rra(a, b);
-	rrb(a, b);
+	reverse_rotate(p->a);
+	reverse_rotate(p->b);
 }

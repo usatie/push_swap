@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:41:26 by susami            #+#    #+#             */
-/*   Updated: 2022/05/31 00:31:12 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 14:16:06 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,45 @@
 
 int	main(void)
 {
-	t_machine	*m;
+	t_stack_pair	*p;
 
-	m = init_machine(6);
+	p = init_stack_pair(6);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Init a and b\n");
-	push(m->a, 8);
-	push(m->a, 5);
-	push(m->a, 6);
-	push(m->a, 3);
-	push(m->a, 1);
-	push(m->a, 2);
-	print_machine(m);
+	push(p->a, 8);
+	push(p->a, 5);
+	push(p->a, 6);
+	push(p->a, 3);
+	push(p->a, 1);
+	push(p->a, 2);
+	print_stack_pair(p);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec sa\n");
-	sa(m->a, m->b);
-	print_machine(m);
+	sa(p);
+	print_stack_pair(p);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec pb pb pb\n");
-	pb(m->a, m->b);
-	pb(m->a, m->b);
-	pb(m->a, m->b);
-	print_machine(m);
+	pb(p);
+	pb(p);
+	pb(p);
+	print_stack_pair(p);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec ra rb\n");
-	ra(m->a, m->b);
-	rb(m->a, m->b);
-	print_machine(m);
+	ra(p);
+	rb(p);
+	print_stack_pair(p);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec rra rrb\n");
-	rra(m->a, m->b);
-	rrb(m->a, m->b);
-	print_machine(m);
+	rra(p);
+	rrb(p);
+	print_stack_pair(p);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec sa\n");
-	sa(m->a, m->b);
+	sa(p);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec pa pa pa\n");
-	pa(m->a, m->b);
-	pa(m->a, m->b);
-	pa(m->a, m->b);
-	print_machine(m);
+	pa(p);
+	pa(p);
+	pa(p);
+	print_stack_pair(p);
 }
