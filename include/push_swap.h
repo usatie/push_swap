@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 14:04:14 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 16:07:36 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ typedef struct s_stack {
 typedef struct s_stack_pair {
 	t_stack	*a;
 	t_stack	*b;
+	size_t	sa;
+	size_t	sb;
+	size_t	pa;
+	size_t	pb;
+	size_t	ra;
+	size_t	rb;
+	size_t	rra;
+	size_t	rrb;
+	int		fd;
 }	t_stack_pair;
 
 typedef long	t_elm;
@@ -51,7 +60,10 @@ void			push(t_stack *s, t_elm e);
 void			rotate(t_stack *s);
 void			reverse_rotate(t_stack *s);
 
-void			op_flush(t_stack_pair *p);
+void			opflush_r(t_stack_pair *p);
+void			opflush_rr(t_stack_pair *p);
+void			opflush_p(t_stack_pair *p);
+void			opflush_s(t_stack_pair *p);
 
 // op_s.c
 void			sa(t_stack_pair *p);

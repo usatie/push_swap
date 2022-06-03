@@ -6,41 +6,49 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 00:47:16 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 14:00:54 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 16:49:42 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "push_swap.h"
 
+static size_t	len_a(t_stack_pair *p)
+{
+	return (p->a->len - p->pb + p->pa);
+}
+static size_t	len_b(t_stack_pair *p)
+{
+	return (p->b->len - p->pa + p->pb);
+}
+
 void	insert_sort(t_stack_pair *p)
 {
 	size_t	i;
 	size_t	min_i;
 
-	while (p->a->len > 0)
+	while (len_a(p) > 0)
 	{
 		i = 0;
 		min_i = 0;
-		while (i < p->a->len)
+		while (i < len_a(p))
 		{
 			if (p->a->arr[min_i] > p->a->arr[i])
 				min_i = i;
 			i++;
 		}
-		i = p->a->len - 1;
+		i = len_a(p) - 1;
 		while (i > min_i)
 		{
-			ft_printf("ra\n");
 			ra(p);
 			i--;
 		}
-		ft_printf("pb\n");
 		pb(p);
 	}
-	while (p->b->len > 0)
-	{
-		ft_printf("pa\n");
+	while (len_b(p) > 0)
 		pa(p);
-	}
+	opflush_r(p);
+	opflush_rr(p);
+	opflush_p(p);
+	opflush_s(p);
 }

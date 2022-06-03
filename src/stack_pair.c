@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 14:05:57 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 16:16:29 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_stack_pair	*init_stack_pair(size_t cap)
 {
 	t_stack_pair	*p;
 
-	p = malloc(sizeof(t_stack_pair));
+	p = ft_calloc(1, sizeof(t_stack_pair));
 	if (p == NULL)
 		return (NULL);
 	p->a = init_stack(cap);

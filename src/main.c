@@ -6,13 +6,14 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 13:59:41 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 16:09:32 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <errno.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "ft_printf.h"
 #include "ft_error_functions.h"
 #include "push_swap.h"
@@ -52,6 +53,7 @@ int	main(int argc, char **argv)
 	t_stack_pair	*p;
 
 	p = init_stack_pair(argc - 1);
+	p->fd = STDOUT_FILENO;
 	while (--argc > 0)
 		argparse_push(argv[argc], p);
 	insert_sort(p);
