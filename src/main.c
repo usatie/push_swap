@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 18:51:32 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 18:56:17 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ int	main(int argc, char **argv)
 	p->fd = STDOUT_FILENO;
 	while (--argc > 0)
 		argparse_push(argv[argc], p);
+	if (VERBOSE)
+		ft_dprintf(p->fd, "\n=====INITIAL STACKS=====\n");
+	print_stack_pair(p);
+	if (VERBOSE)
+		ft_dprintf(p->fd, "========================\n\n");
 	insert_sort(p);
 	if (VERBOSE)
 		ft_dprintf(p->fd, "\n=====SORT RESULT=====\n\n");
