@@ -6,18 +6,19 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 00:47:16 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 17:00:55 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 18:28:39 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "push_swap.h"
 
-static size_t	len_a(t_stack_pair *p)
+size_t	len_a(t_stack_pair *p)
 {
 	return (p->a->len - p->pb + p->pa);
 }
-static size_t	len_b(t_stack_pair *p)
+
+size_t	len_b(t_stack_pair *p)
 {
 	return (p->b->len - p->pa + p->pb);
 }

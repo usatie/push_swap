@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 16:16:29 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 18:44:42 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,22 @@ void	print_stack_pair(t_stack_pair *p)
 {
 	size_t	i;
 
-	ft_printf("-----------------------------------------------------------------------\n");
-	i = max(p->a->len, p->b->len);
-	while (i-- > 0)
+	if (VERBOSE)
 	{
-		if (i < p->a->len)
-			ft_printf("%d", p->a->arr[i]);
-		else
-			ft_printf(" ");
-		ft_printf(" ");
-		if (i < p->b->len)
-			ft_printf("%d", p->b->arr[i]);
-		else
-			ft_printf(" ");
-		ft_printf("\n");
+		i = max(p->a->len, p->b->len);
+		while (i-- > 0)
+		{
+			if (i < p->a->len)
+				ft_dprintf(p->fd, "%10d", p->a->arr[i]);
+			else
+				ft_dprintf(p->fd, "          ");
+			ft_dprintf(p->fd, " ");
+			if (i < p->b->len)
+				ft_dprintf(p->fd, "%-10d", p->b->arr[i]);
+			else
+				ft_dprintf(p->fd, " ");
+			ft_dprintf(p->fd, "\n");
+		}
+		ft_dprintf(p->fd, "---------- -----------\n         a b\n");
 	}
-	ft_printf("- -\na b\n");
 }

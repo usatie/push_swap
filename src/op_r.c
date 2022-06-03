@@ -6,37 +6,11 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:38:07 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 16:28:49 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 18:33:54 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
-
-// ra and rra
-void	opflush_r(t_stack_pair *p)
-{
-	while (p->ra > 0 && p->rb > 0)
-	{
-		ft_dprintf(p->fd, "rr\n");
-		rotate(p->a);
-		rotate(p->b);
-		p->ra--;
-		p->rb--;
-	}
-	while (p->ra > 0)
-	{
-		ft_dprintf(p->fd, "ra\n");
-		rotate(p->a);
-		p->ra--;
-	}
-	while (p->rb > 0)
-	{
-		ft_dprintf(p->fd, "rb\n");
-		rotate(p->b);
-		p->rb--;
-	}
-}
 
 void	ra(t_stack_pair *p)
 {
