@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 00:47:16 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 16:49:42 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 17:00:55 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,5 @@ void	insert_sort(t_stack_pair *p)
 	}
 	while (len_b(p) > 0)
 		pa(p);
-	opflush_r(p);
-	opflush_rr(p);
-	opflush_p(p);
-	opflush_s(p);
+	opflush(p);
 }

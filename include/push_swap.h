@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 16:07:36 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 17:00:34 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void			push(t_stack *s, t_elm e);
 void			rotate(t_stack *s);
 void			reverse_rotate(t_stack *s);
 
+void			opflush(t_stack_pair *p);
 void			opflush_r(t_stack_pair *p);
 void			opflush_rr(t_stack_pair *p);
 void			opflush_p(t_stack_pair *p);
