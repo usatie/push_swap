@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/03 14:19:03 by susami           ###   ########.fr        #
+#    Updated: 2022/06/03 14:29:14 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,3 +58,4 @@ $(LIBFT):
 test: $(TEST_OBJS) $(LIB)
 	$(CC) $(CFLAGS) $(filter-out $(OUTDIR)/src/main.o, $(OBJS)) $(LIB) tests/test_basic_op.c -o runtest
 	./runtest
+	./tests/test.sh
