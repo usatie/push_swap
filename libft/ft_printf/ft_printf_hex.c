@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:53:11 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 11:05:06 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 17:52:43 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@
 
 void	print(t_fmt *fmt, char *str, size_t len);
 
-static void	set_buf_hex(char *buf, unsigned long long n, int capitals,
-	t_fmt *fmt)
+void	puthex(unsigned long long n, unsigned long long capitals,
+			char *prefix, t_fmt *fmt);
+
+static void	set_buf_hex(char *buf, unsigned long long n,
+	unsigned long long capitals, t_fmt *fmt)
 {
 	unsigned long long	x;
 	char				*p;
@@ -45,17 +48,19 @@ static void	*init_buf(char *prefix, t_fmt *fmt)
 
 	fmt->buf_len = MAXBUF;
 	if ((size_t)fmt->precision > fmt->buf_len)
-		fmt->buf_len = fmt->precision;
+		fmt->buf_len = (size_t)fmt->precision;
 	fmt->buf_len += ft_strlen(prefix);
 	buf = ft_calloc(fmt->buf_len, sizeof(char));
 	if (buf == NULL)
 		fmt->out_size = -1;
 	if ((fmt->flags & PRECISION_FLG) && fmt->precision > 0)
-		ft_memset(buf + fmt->buf_len - fmt->precision, '0', fmt->precision);
+		ft_memset(buf + fmt->buf_len - (size_t)fmt->precision, '0',
+			(size_t)fmt->precision);
 	return (buf);
 }
 
-void	puthex(unsigned long long n, int capitals, char *prefix, t_fmt *fmt)
+void	puthex(unsigned long long n, unsigned long long capitals,
+	char *prefix, t_fmt *fmt)
 {
 	char	*buf;
 	char	*p;
@@ -76,7 +81,7 @@ void	puthex(unsigned long long n, int capitals, char *prefix, t_fmt *fmt)
 	ft_memmove(p, prefix, ft_strlen(prefix));
 	len += ft_strlen(prefix);
 	if (n == 0 && (fmt->flags & PRECISION_FLG))
-		len = fmt->precision;
+		len = (size_t)fmt->precision;
 	print(fmt, p, len);
 	free(buf);
 }

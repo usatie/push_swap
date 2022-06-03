@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 17:47:17 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 11:02:20 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 17:30:05 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ void	parse_width(t_fmt *fmt);
 void	parse_precision(t_fmt *fmt);
 void	parse_conversion_spec(t_fmt *fmt, va_list ap);
 
+void	print(t_fmt *fmt, char *str, size_t len);
+void	print_non_conversion_bytes(t_fmt *fmt);
+
 // If overflow happens, set -1 to out_size and set EOVERFLOW to errno.
 // MEMO: libc's printf does not set errno when len > INT_MAX.
-static void	print_bytes(t_fmt *fmt, char *str, size_t len)
+static void	print_bytes(t_fmt *fmt, const char *str, size_t len)
 {
 	if (fmt->out_size < 0)
 		return ;
-	else if (len > (size_t)INT_MAX - fmt->out_size)
+	else if (len > (size_t)INT_MAX - (size_t)fmt->out_size)
 	{
 		errno = EOVERFLOW;
 		fmt->out_size = -1;
@@ -41,7 +44,7 @@ static void	print_bytes(t_fmt *fmt, char *str, size_t len)
 // print len size str with padding
 void	print(t_fmt *fmt, char *str, size_t len)
 {
-	int		pad_len;
+	size_t	pad_len;
 	char	pad_c;
 
 	if (fmt->sign_c && fmt->width > 0)
@@ -55,7 +58,7 @@ void	print(t_fmt *fmt, char *str, size_t len)
 		print_bytes(fmt, &fmt->sign_c, 1);
 	pad_len = 0;
 	if ((size_t)fmt->width > len)
-		pad_len = fmt->width - len;
+		pad_len = (size_t)fmt->width - len;
 	if (!(fmt->flags & PAD_RIGHT_FLG))
 		while (pad_len--)
 			print_bytes(fmt, &pad_c, 1);
@@ -69,10 +72,10 @@ void	print(t_fmt *fmt, char *str, size_t len)
 
 void	print_non_conversion_bytes(t_fmt *fmt)
 {
-	size_t	len;
-	char	*s;
+	size_t		len;
+	const char	*s;
 
-	s = (char *)fmt->format;
+	s = (const char *)fmt->format;
 	len = 0;
 	while (*(fmt->format) != '\0' && *(fmt->format) != '%')
 	{

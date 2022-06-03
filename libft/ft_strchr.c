@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:11:28 by susami            #+#    #+#             */
-/*   Updated: 2022/04/07 16:49:37 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 16:23:32 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strchr(const char *s, int c)
 {
 	char	ch;
 
-	ch = c;
+	ch = (char)c;
 	while (1)
 	{
 		if (*s == ch)

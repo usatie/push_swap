@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 21:58:27 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 11:10:26 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 17:29:14 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "ft_printf.h"
 
 void	print(t_fmt *fmt, char *str, size_t len);
+void	printf_di(t_fmt *fmt, va_list ap);
+void	printf_u(t_fmt *fmt, va_list ap);
 
 // enough for binary unsigned long long
 #define MAXBUF 64
@@ -44,7 +46,7 @@ static void	*init_buf(t_fmt *fmt)
 
 	fmt->buf_len = MAXBUF;
 	if ((size_t)fmt->precision > fmt->buf_len)
-		fmt->buf_len = fmt->precision;
+		fmt->buf_len = (size_t)fmt->precision;
 	buf = ft_calloc(fmt->buf_len, sizeof(char));
 	if (buf == NULL)
 	{
@@ -52,7 +54,8 @@ static void	*init_buf(t_fmt *fmt)
 		return (NULL);
 	}
 	if ((fmt->flags & PRECISION_FLG) && fmt->precision > 0)
-		ft_memset(buf + fmt->buf_len - fmt->precision, '0', fmt->precision);
+		ft_memset(buf + fmt->buf_len - fmt->precision, '0',
+			(size_t)fmt->precision);
 	return (buf);
 }
 
@@ -74,7 +77,7 @@ static void	putull(unsigned long long x, t_fmt *fmt)
 		len--;
 	}
 	if (x == 0 && (fmt->flags & PRECISION_FLG))
-		len = fmt->precision;
+		len = (size_t)fmt->precision;
 	print(fmt, p, len);
 	free(buf);
 }
@@ -95,11 +98,11 @@ void	printf_di(t_fmt *fmt, va_list ap)
 		if (x == INT_MIN && INT_MIN + INT_MAX < 0)
 			putull((unsigned long long)INT_MAX + 1, fmt);
 		else
-			putull(-x, fmt);
+			putull((unsigned long long) -x, fmt);
 	}
 	else
 	{
-		putull(x, fmt);
+		putull((unsigned long long)x, fmt);
 	}
 }
 

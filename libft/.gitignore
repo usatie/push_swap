@@ -7,3 +7,5 @@
 !ft_argparse
 !ft_error_functions
 !test.sh
+!test-all.sh
+!rsync.sh

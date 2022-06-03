@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 10:44:20 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 12:20:01 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 18:04:22 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include "libft.h"
 #include "ft_printf.h"
+
+void	err_exit(const char *format, ...) __attribute__((noreturn));
 
 void	err_exit(const char *format, ...)
 {

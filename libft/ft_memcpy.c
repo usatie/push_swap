@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 11:27:35 by susami            #+#    #+#             */
-/*   Updated: 2022/04/24 06:23:26 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 16:16:29 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	const unsigned char	*s;
 
 	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
+	s = (const unsigned char *)src;
 	if (n == 0 || d == s)
 		return (dst);
 	if (d > s)

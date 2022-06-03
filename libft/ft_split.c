@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 23:02:10 by susami            #+#    #+#             */
-/*   Updated: 2022/05/26 23:01:07 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 16:42:44 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // Returns the NULL or c terminated length of the str.
 static size_t	strclen(char *str, char sep)
 {
-	int	cnt;
+	size_t	cnt;
 
 	cnt = 0;
 	while (*str && *str != sep)
@@ -29,9 +29,9 @@ static size_t	strclen(char *str, char sep)
 
 // The strndup() function copies at most n characters from the string s1
 // always NUL terminating the copied string.
-static char	*ft_strndup(char *src, int size)
+static char	*ft_strndup(char *src, size_t size)
 {
-	int		len;
+	size_t	len;
 	char	*new;
 
 	len = ft_strlen(src);
@@ -48,7 +48,7 @@ static char	*ft_strndup(char *src, int size)
 // 		Size of the array needed to split str with c.
 static size_t	get_array_size(char *str, char c)
 {
-	int		array_size;
+	size_t	array_size;
 
 	array_size = 1;
 	while (*str)

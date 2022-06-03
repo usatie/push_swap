@@ -6,14 +6,13 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:52:40 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 11:14:51 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 12:27:27 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
-# include <stdarg.h>
 # define BOOL	int
 # define TRUE	1
 # define FALSE	0
@@ -73,5 +72,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 // Extra functions
 int		ft_isspace(char c);
 long	ft_strtol(const char *str, char **endptr, int base);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:25:22 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 12:19:33 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 18:00:48 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 #include "libft.h"
 #include "ft_argparse.h"
 #include "ft_printf.h"
+
+static void	ap_fail(const char *fname, const char *msg, const char *arg,
+				const char *var_name)	__attribute__((noreturn));
 
 static void	ap_fail(const char *fname, const char *msg, const char *arg,
 	const char *var_name)
@@ -77,5 +80,5 @@ int	ft_argparse_int(const char *arg, int flags, const char *var_name)
 	res = ap_num("get_int", arg, flags, var_name);
 	if (res > INT_MAX || res < INT_MIN)
 		ap_fail("get_int", "integer out of range", arg, var_name);
-	return (res);
+	return ((int)res);
 }

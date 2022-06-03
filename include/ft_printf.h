@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 20:43:35 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 11:12:36 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 18:14:34 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 // specifications
 // #/0/-/ /+/.
-# define ALT_FLG		0b00000001
-# define PAD_ZERO_FLG	0b00000010
-# define PAD_RIGHT_FLG	0b00000100
-# define SIGN_SPACE_FLG	0b00001000
-# define SIGN_PLUS_FLG	0b00010000
-# define PRECISION_FLG	0b00100000
+# define ALT_FLG		01
+# define PAD_ZERO_FLG	02
+# define PAD_RIGHT_FLG	04
+# define SIGN_SPACE_FLG	010
+# define SIGN_PLUS_FLG	020
+# define PRECISION_FLG	040
 
 // GENERAL properties:
 // 	- format
@@ -40,17 +40,16 @@
 typedef struct s_fmt
 {
 	const char	*format;
-	int			out_size;
+	size_t		buf_len;
 
-	char		conversion;
+	int			out_size;
 	int			width;
 	int			precision;
 	int			flags;
-
-	char		sign_c;
-	size_t		buf_len;
-
 	int			fd;
+	char		conversion;
+	char		sign_c;
+	char		_PADDING[2];
 }	t_fmt;
 
 int		ft_vdprintf(int fd, const char *format, va_list ap);

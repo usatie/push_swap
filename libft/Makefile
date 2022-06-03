@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 07:33:20 by susami            #+#    #+#              #
-#    Updated: 2022/05/30 10:49:15 by susami           ###   ########.fr        #
+#    Updated: 2022/06/03 12:28:25 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ B_SRCS	=	ft_lstnew.c			\
 
 EXTRA_SRCS	=	ft_isspace.c			\
 				ft_strtol.c				\
+				ft_strcmp.c				\
 
 PRINTF_SRCS	=	ft_printf/ft_printf.c			\
 				ft_printf/ft_vdprintf.c			\
@@ -100,5 +101,7 @@ $(OBJDIR)/%.o: %.c
 	$(CC) -c $< -o $@ $(CFLAGS) $(INCLUDE)
 
 bonus: all
+debug: fclean
+	$(MAKE) CFLAGS="$(CFLAGS) -Weverything"
 
 .PHONY: all clean fclean re

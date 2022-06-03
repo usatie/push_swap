@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 07:34:48 by susami            #+#    #+#             */
-/*   Updated: 2022/04/15 15:48:28 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 16:33:17 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ C and portable code should only depend on the sign of the returned value.
 */
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t			cnt;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	size_t				cnt;
+	const unsigned char	*str1;
+	const unsigned char	*str2;
 
 	if (s1 == s2)
 		return (0);
 	cnt = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
+	str1 = (const unsigned char *)s1;
+	str2 = (const unsigned char *)s2;
 	while (cnt++ < n)
 	{
 		if (*str1 != *str2)

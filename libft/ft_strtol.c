@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 23:18:22 by susami            #+#    #+#             */
-/*   Updated: 2022/05/29 00:37:21 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 17:10:07 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ static BOOL	internal_strtol(const char **str, int base,
 	*ul_val = 0;
 	while (ft_isdigit(**str))
 	{
-		if (is_cut(*ul_val, **str - '0', (unsigned long)base))
+		if (is_cut(*ul_val, (unsigned long)**str - '0', (unsigned long)base))
 			return (TRUE);
-		*ul_val = (*ul_val) * base + (**str - '0');
+		*ul_val = (*ul_val) * (unsigned long)base
+			+ (unsigned long)(**str - '0');
 		(*str)++;
 	}
 	return (FALSE);
@@ -80,9 +81,9 @@ long	ft_strtol(const char *str, char **endptr, int base)
 	if (err)
 	{
 		if (isneg == TRUE)
-			ul_val = LONG_MIN;
+			ul_val = (unsigned long)LONG_MIN;
 		else
-			ul_val = LONG_MAX;
+			ul_val = (unsigned long)LONG_MAX;
 		errno = ERANGE;
 	}
 	else if (isneg == TRUE)

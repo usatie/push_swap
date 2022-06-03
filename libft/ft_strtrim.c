@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 20:48:18 by susami            #+#    #+#             */
-/*   Updated: 2022/05/26 23:00:53 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 16:40:01 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 static size_t	ft_strtrim_len(char const *s1, char const *set)
 {
-	size_t	len;
-	char	*p;
+	size_t		len;
+	const char	*p;
 
 	len = ft_strlen(s1);
-	p = (char *)s1;
+	p = (const char *)s1;
 	s1 = s1 + len - 1;
 	while (len > 0 && ft_strchr(set, *s1) != NULL)
 	{

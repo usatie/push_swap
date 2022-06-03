@@ -6,12 +6,15 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 13:02:19 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 11:04:46 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/01 17:39:07 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
+
+void	fmt_clear_spec(t_fmt *fmt);
+void	fmt_init(t_fmt *fmt, const char *format);
 
 void	fmt_clear_spec(t_fmt *fmt)
 {
