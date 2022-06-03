@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/03 14:29:14 by susami           ###   ########.fr        #
+#    Updated: 2022/06/03 14:34:34 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ clean:
 	$(RM) src/*.o bonus/*.o *.out $(OUTDIR)/**/*.o
 
 fclean: clean
-	$(RM) $(NAME) runtest
+	$(RM) $(NAME) tests/test_basic_op
 
 re: fclean all
 
@@ -56,6 +56,6 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
 
 test: $(TEST_OBJS) $(LIB)
-	$(CC) $(CFLAGS) $(filter-out $(OUTDIR)/src/main.o, $(OBJS)) $(LIB) tests/test_basic_op.c -o runtest
-	./runtest
+	$(CC) $(CFLAGS) $(filter-out $(OUTDIR)/src/main.o, $(OBJS)) $(LIB) tests/test_basic_op.c -o tests/test_basic_op
+	./tests/test_basic_op
 	./tests/test.sh
