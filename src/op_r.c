@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:38:07 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 20:11:38 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 22:24:09 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ra(t_ctx *c)
 			*rp = 0;
 		}
 	}
+	if (NOOPTIMIZE)
+		opflush(c);
 }
 
 void	rb(t_ctx *c)
@@ -62,10 +64,14 @@ void	rb(t_ctx *c)
 			*rp = 0;
 		}
 	}
+	if (NOOPTIMIZE)
+		opflush(c);
 }
 
 void	rr(t_ctx *c)
 {
 	ra(c);
 	rb(c);
+	if (NOOPTIMIZE)
+		opflush(c);
 }

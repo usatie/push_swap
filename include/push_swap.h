@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 20:10:44 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 22:39:15 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 
 # ifndef VERBOSE
 #  define VERBOSE FALSE
+# endif
+# ifndef NOOPTIMIZE
+#  define NOOPTIMIZE FALSE
 # endif
 typedef long	t_elm;
 
@@ -104,4 +107,5 @@ void			rrb(t_ctx *c);
 void			rrr(t_ctx *c);
 
 void			insert_sort(t_ctx *c);
+void			quick_sort(t_ctx *c, size_t low, size_t high);
 #endif
