@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/05 20:44:56 by susami           ###   ########.fr        #
+#    Updated: 2022/06/05 23:33:49 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS		=	src/main.c				\
 				src/op_r.c				\
 				src/op_rr.c				\
 				src/utility.c			\
+				src/utility2.c			\
 				src/opflush.c			\
 				src/insert_sort.c		\
 				src/quick_sort.c		\
@@ -35,7 +36,7 @@ LIBFTDIR	=	libft
 LIBFT		=	$(LIBFTDIR)/libft.a
 LIB			=	$(LIBFT)
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re test norm
 
 all: $(NAME)
 
@@ -67,3 +68,7 @@ test: $(TEST_OBJS) $(LIB)
 	$(CC) $(CFLAGS) $(filter-out $(OUTDIR)/src/main.o, $(OBJS)) $(LIB) tests/test_basic_op.c -o tests/test_basic_op
 	./tests/test_basic_op
 	./tests/test.sh
+
+norm:
+	norminette src/*.c | grep Error
+	norminette include/*.c | grep Error

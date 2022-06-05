@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 22:55:00 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 23:31:37 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	main(int argc, char **argv)
 		quick_sort(c, 0, c->a->len - 1);
 	else
 		insert_sort(c);
-
 	if (VERBOSE)
 		ft_printf("\n=====SORT RESULT(n_op=%d)=====\n\n", c->n_op);
 	print_ctx(c);

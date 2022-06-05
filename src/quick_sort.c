@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 22:41:07 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 23:31:19 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 	i = (low + high) / 2;
 	partition = get_elm(i, c);
 	if (VERBOSE)
-		ft_printf("[partition(%d, %d): i=%d, partitoin=%d]\n", low, high, i, partition);
+		ft_printf("[partition(%d, %d): i=%d, partitoin=%d]\n",
+			low, high, i, partition);
 	if (VERBOSE)
 		ft_printf("[partition b to a]\n");
 	while (len_b(c) - num_rb > low)
@@ -43,7 +44,6 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 		else if (top_b(c) > partition)
 		{
 			pa(c);
-			// [10,9,8][7,6,5,4][3,2,1]
 			if (len_a(c) > num_ra + (len_p(c) - 1 - high))
 			{
 				ra(c);
@@ -128,4 +128,3 @@ void	quick_sort(t_ctx *c, size_t low, size_t high)
 		opflush(c);
 	}
 }
-
