@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 16:01:30 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:17:27 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,54 @@
 #include "ft_printf.h"
 #include "push_swap.h"
 
-t_stack_pair	*init_stack_pair(size_t cap)
+t_ps_ctx	*init_ctx(size_t cap)
 {
-	t_stack_pair	*p;
+	t_ps_ctx	*c;
 
-	p = ft_calloc(1, sizeof(t_stack_pair));
-	if (p == NULL)
+	c = ft_calloc(1, sizeof(t_ps_ctx));
+	if (c == NULL)
 		return (NULL);
-	p->a = init_stack(cap);
-	if (p->a == NULL)
+	c->a = init_stack(cap);
+	if (c->a == NULL)
 	{
-		deinit_stack_pair(p);
+		deinit_ctx(c);
 		return (NULL);
 	}
-	p->b = init_stack(cap);
-	if (p->b == NULL)
+	c->b = init_stack(cap);
+	if (c->b == NULL)
 	{
-		deinit_stack_pair(p);
+		deinit_ctx(c);
 		return (NULL);
 	}
-	return (p);
+	return (c);
 }
 
-void	deinit_stack_pair(t_stack_pair *p)
+void	deinit_ctx(t_ps_ctx *c)
 {
-	if (p)
+	if (c)
 	{
-		deinit_stack(p->a);
-		deinit_stack(p->b);
-		free(p);
+		deinit_stack(c->a);
+		deinit_stack(c->b);
+		free(c);
 	}
 }
 
-void	print_stack_pair(t_stack_pair *p)
+void	print_ctx(t_ps_ctx *c)
 {
 	size_t	i;
 
 	if (VERBOSE)
 	{
-		i = max(p->a->len, p->b->len);
+		i = max(c->a->len, c->b->len);
 		while (i-- > 0)
 		{
-			if (i < p->a->len)
-				ft_printf("%10d", p->a->arr[i]);
+			if (i < c->a->len)
+				ft_printf("%10d", c->a->arr[i]);
 			else
 				ft_printf("          ");
 			ft_printf(" ");
-			if (i < p->b->len)
-				ft_printf("%-10d", p->b->arr[i]);
+			if (i < c->b->len)
+				ft_printf("%-10d", c->b->arr[i]);
 			else
 				ft_printf(" ");
 			ft_printf("\n");
@@ -70,10 +70,10 @@ void	print_stack_pair(t_stack_pair *p)
 	}
 }
 
-void	dryprint(char *op, t_stack_pair *p)
+void	dryprint(char *op, t_ps_ctx *c)
 {
-	p->n_op++;
-	if (p->dry == TRUE)
+	c->n_op++;
+	if (c->dry == TRUE)
 		return ;
 	else
 		ft_printf("%s\n", op);

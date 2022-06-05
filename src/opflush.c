@@ -6,116 +6,116 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:00:43 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 16:02:16 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:34:41 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	opflush(t_stack_pair *p)
+void	opflush(t_ps_ctx *c)
 {
-	opflush_r(p);
-	opflush_rr(p);
-	opflush_p(p);
-	opflush_s(p);
+	opflush_r(c);
+	opflush_rr(c);
+	opflush_p(c);
+	opflush_s(c);
 }
 
-void	opflush_p(t_stack_pair *p)
+void	opflush_p(t_ps_ctx *c)
 {
-	while (p->pa > 0)
+	while (c->pa > 0)
 	{
-		dryprint("pa", p);
-		push(p->a, pop(p->b));
-		p->pa--;
-		print_stack_pair(p);
+		dryprint("pa", c);
+		push(c->a, pop(c->b));
+		c->pa--;
+		print_ctx(c);
 	}
-	while (p->pb > 0)
+	while (c->pb > 0)
 	{
-		dryprint("pb", p);
-		push(p->b, pop(p->a));
-		p->pb--;
-		print_stack_pair(p);
+		dryprint("pb", c);
+		push(c->b, pop(c->a));
+		c->pb--;
+		print_ctx(c);
 	}
 }
 
 // ra and rra
-void	opflush_r(t_stack_pair *p)
+void	opflush_r(t_ps_ctx *c)
 {
-	while (p->ra > 0 && p->rb > 0)
+	while (c->ra > 0 && c->rb > 0)
 	{
-		dryprint("rr", p);
-		rotate(p->a);
-		rotate(p->b);
-		p->ra--;
-		p->rb--;
-		print_stack_pair(p);
+		dryprint("rr", c);
+		rotate(c->a);
+		rotate(c->b);
+		c->ra--;
+		c->rb--;
+		print_ctx(c);
 	}
-	while (p->ra > 0)
+	while (c->ra > 0)
 	{
-		dryprint("ra", p);
-		rotate(p->a);
-		p->ra--;
-		print_stack_pair(p);
+		dryprint("ra", c);
+		rotate(c->a);
+		c->ra--;
+		print_ctx(c);
 	}
-	while (p->rb > 0)
+	while (c->rb > 0)
 	{
-		dryprint("rb", p);
-		rotate(p->b);
-		p->rb--;
-		print_stack_pair(p);
+		dryprint("rb", c);
+		rotate(c->b);
+		c->rb--;
+		print_ctx(c);
 	}
 }
 
-void	opflush_rr(t_stack_pair *p)
+void	opflush_rr(t_ps_ctx *c)
 {
-	while (p->rra > 0 && p->rrb > 0)
+	while (c->rra > 0 && c->rrb > 0)
 	{
-		dryprint("rrr", p);
-		reverse_rotate(p->a);
-		reverse_rotate(p->b);
-		p->rra--;
-		p->rrb--;
-		print_stack_pair(p);
+		dryprint("rrr", c);
+		reverse_rotate(c->a);
+		reverse_rotate(c->b);
+		c->rra--;
+		c->rrb--;
+		print_ctx(c);
 	}
-	while (p->rra > 0)
+	while (c->rra > 0)
 	{
-		dryprint("rra", p);
-		reverse_rotate(p->a);
-		p->rra--;
-		print_stack_pair(p);
+		dryprint("rra", c);
+		reverse_rotate(c->a);
+		c->rra--;
+		print_ctx(c);
 	}
-	while (p->rrb > 0)
+	while (c->rrb > 0)
 	{
-		dryprint("rrb", p);
-		reverse_rotate(p->b);
-		p->rrb--;
-		print_stack_pair(p);
+		dryprint("rrb", c);
+		reverse_rotate(c->b);
+		c->rrb--;
+		print_ctx(c);
 	}
 }
 
-void	opflush_s(t_stack_pair *p)
+void	opflush_s(t_ps_ctx *c)
 {
-	while (p->sa > 0 && p->sb > 0)
+	while (c->sa > 0 && c->sb > 0)
 	{
-		dryprint("ss", p);
-		swap(p->a);
-		swap(p->b);
-		p->sa--;
-		p->sb--;
-		print_stack_pair(p);
+		dryprint("ss", c);
+		swap(c->a);
+		swap(c->b);
+		c->sa--;
+		c->sb--;
+		print_ctx(c);
 	}
-	while (p->sa > 0)
+	while (c->sa > 0)
 	{
-		dryprint("sa", p);
-		swap(p->a);
-		p->sa--;
-		print_stack_pair(p);
+		dryprint("sa", c);
+		swap(c->a);
+		c->sa--;
+		print_ctx(c);
 	}
-	while (p->sb > 0)
+	while (c->sb > 0)
 	{
-		dryprint("sb", p);
-		swap(p->b);
-		p->sb--;
-		print_stack_pair(p);
+		dryprint("sb", c);
+		swap(c->b);
+		c->sb--;
+		print_ctx(c);
 	}
 }

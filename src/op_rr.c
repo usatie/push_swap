@@ -6,23 +6,23 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:39:27 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 18:34:06 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:21:33 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stack_pair *p)
+void	rra(t_ps_ctx *c)
 {
 	size_t	len;
 	size_t	*rp;
 	size_t	*rrp;
 
-	opflush_p(p);
-	opflush_s(p);
-	len = p->a->len;
-	rp = &(p->ra);
-	rrp = &(p->rra);
+	opflush_p(c);
+	opflush_s(c);
+	len = c->a->len;
+	rp = &(c->ra);
+	rrp = &(c->rra);
 	if (len > 0)
 	{
 		if (*rp > 0)
@@ -38,17 +38,17 @@ void	rra(t_stack_pair *p)
 	}
 }
 
-void	rrb(t_stack_pair *p)
+void	rrb(t_ps_ctx *c)
 {
 	size_t	len;
 	size_t	*rp;
 	size_t	*rrp;
 
-	opflush_p(p);
-	opflush_s(p);
-	len = p->b->len;
-	rp = &(p->rb);
-	rrp = &(p->rrb);
+	opflush_p(c);
+	opflush_s(c);
+	len = c->b->len;
+	rp = &(c->rb);
+	rrp = &(c->rrb);
 	if (len > 0)
 	{
 		if (*rp > 0)
@@ -64,8 +64,8 @@ void	rrb(t_stack_pair *p)
 	}
 }
 
-void	rrr(t_stack_pair *p)
+void	rrr(t_ps_ctx *c)
 {
-	rra(p);
-	rrb(p);
+	rra(c);
+	rrb(c);
 }

@@ -6,42 +6,42 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:34:05 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 18:34:21 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:22:08 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack_pair *p)
+void	sa(t_ps_ctx *c)
 {
-	if (p->a->len < 3)
-		ra(p);
+	if (c->a->len < 3)
+		ra(c);
 	else
 	{
-		opflush_r(p);
-		opflush_rr(p);
-		opflush_p(p);
-		p->sa++;
-		p->sa %= 2;
+		opflush_r(c);
+		opflush_rr(c);
+		opflush_p(c);
+		c->sa++;
+		c->sa %= 2;
 	}
 }
 
-void	sb(t_stack_pair *p)
+void	sb(t_ps_ctx *c)
 {
-	if (p->b->len < 3)
-		rb(p);
+	if (c->b->len < 3)
+		rb(c);
 	else
 	{
-		opflush_r(p);
-		opflush_rr(p);
-		opflush_p(p);
-		p->sb++;
-		p->sb %= 2;
+		opflush_r(c);
+		opflush_rr(c);
+		opflush_p(c);
+		c->sb++;
+		c->sb %= 2;
 	}
 }
 
-void	ss(t_stack_pair *p)
+void	ss(t_ps_ctx *c)
 {
-	sa(p);
-	sb(p);
+	sa(c);
+	sb(c);
 }

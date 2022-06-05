@@ -6,36 +6,36 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 00:47:16 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 19:05:57 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:35:28 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insert_sort(t_stack_pair *p)
+void	insert_sort(t_ps_ctx *c)
 {
 	size_t	i;
 	size_t	min_i;
 
-	while (len_a(p) > 0)
+	while (len_a(c) > 0)
 	{
 		i = 0;
 		min_i = 0;
-		while (i < len_a(p))
+		while (i < len_a(c))
 		{
-			if (p->a->arr[min_i] > p->a->arr[i])
+			if (c->a->arr[min_i] > c->a->arr[i])
 				min_i = i;
 			i++;
 		}
-		i = len_a(p) - 1;
+		i = len_a(c) - 1;
 		while (i > min_i)
 		{
-			ra(p);
+			ra(c);
 			i--;
 		}
-		pb(p);
+		pb(c);
 	}
-	while (len_b(p) > 0)
-		pa(p);
-	opflush(p);
+	while (len_b(c) > 0)
+		pa(c);
+	opflush(c);
 }

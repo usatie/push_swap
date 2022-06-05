@@ -6,30 +6,30 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:36:00 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 18:34:34 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:20:18 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack_pair *p)
+void	pa(t_ps_ctx *c)
 {
-	opflush_r(p);
-	opflush_rr(p);
-	opflush_s(p);
-	if (p->pb > 0)
-		p->pb--;
-	else if (p->b->len > p->pa)
-		p->pa++;
+	opflush_r(c);
+	opflush_rr(c);
+	opflush_s(c);
+	if (c->pb > 0)
+		c->pb--;
+	else if (c->b->len > c->pa)
+		c->pa++;
 }
 
-void	pb(t_stack_pair *p)
+void	pb(t_ps_ctx *c)
 {
-	opflush_r(p);
-	opflush_rr(p);
-	opflush_s(p);
-	if (p->pa > 0)
-		p->pa--;
-	else if (p->a->len > p->pb)
-		p->pb++;
+	opflush_r(c);
+	opflush_rr(c);
+	opflush_s(c);
+	if (c->pa > 0)
+		c->pa--;
+	else if (c->a->len > c->pb)
+		c->pb++;
 }
