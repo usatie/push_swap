@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_pair.c                                       :+:      :+:    :+:   */
+/*   ctx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 16:17:27 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 20:11:09 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include "ft_printf.h"
 #include "push_swap.h"
 
-t_ps_ctx	*init_ctx(size_t cap)
+t_ctx	*init_ctx(size_t cap)
 {
-	t_ps_ctx	*c;
+	t_ctx	*c;
 
-	c = ft_calloc(1, sizeof(t_ps_ctx));
+	c = ft_calloc(1, sizeof(t_ctx));
 	if (c == NULL)
 		return (NULL);
 	c->a = init_stack(cap);
@@ -36,7 +36,7 @@ t_ps_ctx	*init_ctx(size_t cap)
 	return (c);
 }
 
-void	deinit_ctx(t_ps_ctx *c)
+void	deinit_ctx(t_ctx *c)
 {
 	if (c)
 	{
@@ -46,7 +46,7 @@ void	deinit_ctx(t_ps_ctx *c)
 	}
 }
 
-void	print_ctx(t_ps_ctx *c)
+void	print_ctx(t_ctx *c)
 {
 	size_t	i;
 
@@ -70,7 +70,7 @@ void	print_ctx(t_ps_ctx *c)
 	}
 }
 
-void	dryprint(char *op, t_ps_ctx *c)
+void	dryprint(char *op, t_ctx *c)
 {
 	c->n_op++;
 	if (c->dry == TRUE)

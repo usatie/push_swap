@@ -6,13 +6,13 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 00:47:16 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 16:35:28 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 20:12:56 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insert_sort(t_ps_ctx *c)
+void	insert_sort(t_ctx *c)
 {
 	size_t	i;
 	size_t	min_i;

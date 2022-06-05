@@ -6,13 +6,13 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:34:05 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 16:22:08 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 20:11:21 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_ps_ctx *c)
+void	sa(t_ctx *c)
 {
 	if (c->a->len < 3)
 		ra(c);
@@ -26,7 +26,7 @@ void	sa(t_ps_ctx *c)
 	}
 }
 
-void	sb(t_ps_ctx *c)
+void	sb(t_ctx *c)
 {
 	if (c->b->len < 3)
 		rb(c);
@@ -40,7 +40,7 @@ void	sb(t_ps_ctx *c)
 	}
 }
 
-void	ss(t_ps_ctx *c)
+void	ss(t_ctx *c)
 {
 	sa(c);
 	sb(c);

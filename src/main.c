@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 16:15:05 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 20:11:00 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "ft_error_functions.h"
 #include "push_swap.h"
 
-static void	argparse_push(const char *arg, t_ps_ctx *c)
+static void	argparse_push(const char *arg, t_ctx *c)
 {
 	char	*endptr;
 	t_elm	new;
@@ -50,7 +50,7 @@ static void	argparse_push(const char *arg, t_ps_ctx *c)
 
 int	main(int argc, char **argv)
 {
-	t_ps_ctx	*c;
+	t_ctx	*c;
 
 	c = init_ctx(argc - 1);
 	while (--argc > 0)

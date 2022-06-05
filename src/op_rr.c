@@ -6,13 +6,13 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:39:27 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 16:21:33 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 20:11:42 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_ps_ctx *c)
+void	rra(t_ctx *c)
 {
 	size_t	len;
 	size_t	*rp;
@@ -38,7 +38,7 @@ void	rra(t_ps_ctx *c)
 	}
 }
 
-void	rrb(t_ps_ctx *c)
+void	rrb(t_ctx *c)
 {
 	size_t	len;
 	size_t	*rp;
@@ -64,7 +64,7 @@ void	rrb(t_ps_ctx *c)
 	}
 }
 
-void	rrr(t_ps_ctx *c)
+void	rrr(t_ctx *c)
 {
 	rra(c);
 	rrb(c);

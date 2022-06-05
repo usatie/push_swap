@@ -6,13 +6,13 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:00:43 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 16:34:41 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 20:12:46 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	opflush(t_ps_ctx *c)
+void	opflush(t_ctx *c)
 {
 	opflush_r(c);
 	opflush_rr(c);
@@ -20,7 +20,7 @@ void	opflush(t_ps_ctx *c)
 	opflush_s(c);
 }
 
-void	opflush_p(t_ps_ctx *c)
+void	opflush_p(t_ctx *c)
 {
 	while (c->pa > 0)
 	{
@@ -39,7 +39,7 @@ void	opflush_p(t_ps_ctx *c)
 }
 
 // ra and rra
-void	opflush_r(t_ps_ctx *c)
+void	opflush_r(t_ctx *c)
 {
 	while (c->ra > 0 && c->rb > 0)
 	{
@@ -66,7 +66,7 @@ void	opflush_r(t_ps_ctx *c)
 	}
 }
 
-void	opflush_rr(t_ps_ctx *c)
+void	opflush_rr(t_ctx *c)
 {
 	while (c->rra > 0 && c->rrb > 0)
 	{
@@ -93,7 +93,7 @@ void	opflush_rr(t_ps_ctx *c)
 	}
 }
 
-void	opflush_s(t_ps_ctx *c)
+void	opflush_s(t_ctx *c)
 {
 	while (c->sa > 0 && c->sb > 0)
 	{
