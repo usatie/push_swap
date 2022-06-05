@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 17:00:34 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/03 19:35:02 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,20 @@ typedef long	t_elm;
 
 size_t			max(size_t a, size_t b);
 size_t			min(size_t a, size_t b);
+
+size_t			len_p(t_stack_pair *p);
+size_t			len_a(t_stack_pair *p);
+size_t			len_b(t_stack_pair *p);
+
+t_elm			get_elm(size_t i, t_stack_pair *p);
+
+t_elm			min_p(t_stack_pair *p);
+t_elm			min_a(t_stack_pair *p);
+t_elm			min_b(t_stack_pair *p);
+
+t_elm			max_p(t_stack_pair *p);
+t_elm			max_a(t_stack_pair *p);
+t_elm			max_b(t_stack_pair *p);
 
 // stack.c
 t_stack			*init_stack(size_t cap);
