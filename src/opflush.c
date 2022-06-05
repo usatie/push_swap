@@ -6,12 +6,11 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:00:43 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 18:44:15 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:02:16 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
 void	opflush(t_stack_pair *p)
 {
@@ -25,14 +24,14 @@ void	opflush_p(t_stack_pair *p)
 {
 	while (p->pa > 0)
 	{
-		ft_dprintf(p->fd, "pa\n");
+		dryprint("pa", p);
 		push(p->a, pop(p->b));
 		p->pa--;
 		print_stack_pair(p);
 	}
 	while (p->pb > 0)
 	{
-		ft_dprintf(p->fd, "pb\n");
+		dryprint("pb", p);
 		push(p->b, pop(p->a));
 		p->pb--;
 		print_stack_pair(p);
@@ -44,7 +43,7 @@ void	opflush_r(t_stack_pair *p)
 {
 	while (p->ra > 0 && p->rb > 0)
 	{
-		ft_dprintf(p->fd, "rr\n");
+		dryprint("rr", p);
 		rotate(p->a);
 		rotate(p->b);
 		p->ra--;
@@ -53,14 +52,14 @@ void	opflush_r(t_stack_pair *p)
 	}
 	while (p->ra > 0)
 	{
-		ft_dprintf(p->fd, "ra\n");
+		dryprint("ra", p);
 		rotate(p->a);
 		p->ra--;
 		print_stack_pair(p);
 	}
 	while (p->rb > 0)
 	{
-		ft_dprintf(p->fd, "rb\n");
+		dryprint("rb", p);
 		rotate(p->b);
 		p->rb--;
 		print_stack_pair(p);
@@ -71,7 +70,7 @@ void	opflush_rr(t_stack_pair *p)
 {
 	while (p->rra > 0 && p->rrb > 0)
 	{
-		ft_dprintf(p->fd, "rrr\n");
+		dryprint("rrr", p);
 		reverse_rotate(p->a);
 		reverse_rotate(p->b);
 		p->rra--;
@@ -80,14 +79,14 @@ void	opflush_rr(t_stack_pair *p)
 	}
 	while (p->rra > 0)
 	{
-		ft_dprintf(p->fd, "rra\n");
+		dryprint("rra", p);
 		reverse_rotate(p->a);
 		p->rra--;
 		print_stack_pair(p);
 	}
 	while (p->rrb > 0)
 	{
-		ft_dprintf(p->fd, "rrb\n");
+		dryprint("rrb", p);
 		reverse_rotate(p->b);
 		p->rrb--;
 		print_stack_pair(p);
@@ -98,7 +97,7 @@ void	opflush_s(t_stack_pair *p)
 {
 	while (p->sa > 0 && p->sb > 0)
 	{
-		ft_dprintf(p->fd, "ss\n");
+		dryprint("ss", p);
 		swap(p->a);
 		swap(p->b);
 		p->sa--;
@@ -107,14 +106,14 @@ void	opflush_s(t_stack_pair *p)
 	}
 	while (p->sa > 0)
 	{
-		ft_dprintf(p->fd, "sa\n");
+		dryprint("sa", p);
 		swap(p->a);
 		p->sa--;
 		print_stack_pair(p);
 	}
 	while (p->sb > 0)
 	{
-		ft_dprintf(p->fd, "sb\n");
+		dryprint("sb", p);
 		swap(p->b);
 		p->sb--;
 		print_stack_pair(p);

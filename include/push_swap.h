@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 19:35:02 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:00:22 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ typedef struct s_stack_pair {
 	size_t	rb;
 	size_t	rra;
 	size_t	rrb;
-	int		fd;
+	size_t	n_op;
+	BOOL	dry;
 }	t_stack_pair;
 
 typedef long	t_elm;
@@ -65,6 +66,7 @@ BOOL			contains(t_elm e, t_stack *s);
 t_stack_pair	*init_stack_pair(size_t cap);
 void			deinit_stack_pair(t_stack_pair *m);
 void			print_stack_pair(t_stack_pair *m);
+void			dryprint(char *op, t_stack_pair *p);
 
 // op_basic.c
 // Returns 0 on success, -1 on error

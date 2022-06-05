@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 18:56:17 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:06:17 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,16 @@ int	main(int argc, char **argv)
 	t_stack_pair	*p;
 
 	p = init_stack_pair(argc - 1);
-	p->fd = STDOUT_FILENO;
 	while (--argc > 0)
 		argparse_push(argv[argc], p);
 	if (VERBOSE)
-		ft_dprintf(p->fd, "\n=====INITIAL STACKS=====\n");
+		ft_printf("\n=====INITIAL STACKS=====\n");
 	print_stack_pair(p);
 	if (VERBOSE)
-		ft_dprintf(p->fd, "========================\n\n");
+		ft_printf("========================\n\n");
 	insert_sort(p);
 	if (VERBOSE)
-		ft_dprintf(p->fd, "\n=====SORT RESULT=====\n\n");
+		ft_printf("\n=====SORT RESULT(n_op=%d)=====\n\n", p->n_op);
 	print_stack_pair(p);
 	deinit_stack_pair(p);
 	return (EXIT_SUCCESS);

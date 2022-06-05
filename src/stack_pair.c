@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 18:44:42 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:01:30 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,25 @@ void	print_stack_pair(t_stack_pair *p)
 		while (i-- > 0)
 		{
 			if (i < p->a->len)
-				ft_dprintf(p->fd, "%10d", p->a->arr[i]);
+				ft_printf("%10d", p->a->arr[i]);
 			else
-				ft_dprintf(p->fd, "          ");
-			ft_dprintf(p->fd, " ");
+				ft_printf("          ");
+			ft_printf(" ");
 			if (i < p->b->len)
-				ft_dprintf(p->fd, "%-10d", p->b->arr[i]);
+				ft_printf("%-10d", p->b->arr[i]);
 			else
-				ft_dprintf(p->fd, " ");
-			ft_dprintf(p->fd, "\n");
+				ft_printf(" ");
+			ft_printf("\n");
 		}
-		ft_dprintf(p->fd, "---------- -----------\n         a b\n");
+		ft_printf("---------- -----------\n         a b\n");
 	}
+}
+
+void	dryprint(char *op, t_stack_pair *p)
+{
+	p->n_op++;
+	if (p->dry == TRUE)
+		return ;
+	else
+		ft_printf("%s\n", op);
 }

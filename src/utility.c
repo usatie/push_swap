@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:04:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 15:30:22 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 15:47:08 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ size_t	len_b(t_stack_pair *p)
 
 t_elm	get_elm(size_t i, t_stack_pair *p)
 {
+	(void)i;
+	(void)p;
 	return (0);
 }
