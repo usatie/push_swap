@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:41:26 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 14:16:06 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/05 16:47:10 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,45 @@
 
 int	main(void)
 {
-	t_stack_pair	*p;
+	t_ps_ctx *c;
 
-	p = init_stack_pair(6);
+	c = init_ctx(6);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Init a and b\n");
-	push(p->a, 8);
-	push(p->a, 5);
-	push(p->a, 6);
-	push(p->a, 3);
-	push(p->a, 1);
-	push(p->a, 2);
-	print_stack_pair(p);
+	push(c->a, 8);
+	push(c->a, 5);
+	push(c->a, 6);
+	push(c->a, 3);
+	push(c->a, 1);
+	push(c->a, 2);
+	print_ctx(c);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec sa\n");
-	sa(p);
-	print_stack_pair(p);
+	sa(c);
+	print_ctx(c);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec pb pb pb\n");
-	pb(p);
-	pb(p);
-	pb(p);
-	print_stack_pair(p);
+	pb(c);
+	pb(c);
+	pb(c);
+	print_ctx(c);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec ra rb\n");
-	ra(p);
-	rb(p);
-	print_stack_pair(p);
+	ra(c);
+	rb(c);
+	print_ctx(c);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec rra rrb\n");
-	rra(p);
-	rrb(p);
-	print_stack_pair(p);
+	rra(c);
+	rrb(c);
+	print_ctx(c);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec sa\n");
-	sa(p);
+	sa(c);
 	printf("-----------------------------------------------------------------------\n");
 	printf("Exec pa pa pa\n");
-	pa(p);
-	pa(p);
-	pa(p);
-	print_stack_pair(p);
+	pa(c);
+	pa(c);
+	pa(c);
+	print_ctx(c);
 }

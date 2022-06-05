@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/03 18:30:07 by susami           ###   ########.fr        #
+#    Updated: 2022/06/05 16:44:49 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,12 @@ LIB			=	$(LIBFT)
 all: $(NAME)
 
 clean:
-	$(RM) src/*.o bonus/*.o *.out $(OUTDIR)/**/*.o
+	$(MAKE) -C $(LIBFTDIR) clean
+	$(RM) src/*.o bonus/*.o *.out
+	$(RM) -r $(OUTDIR)
 
 fclean: clean
+	$(MAKE) -C $(LIBFTDIR) fclean
 	$(RM) $(NAME) tests/test_basic_op
 
 re: fclean all
