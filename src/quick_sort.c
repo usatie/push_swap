@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/06 18:27:11 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 18:35:32 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 static size_t	partition(t_ctx *c, size_t low, size_t high)
 {
-	size_t	i;
 	size_t	pi;
 	size_t	num_rb;
 	size_t	num_ra;
@@ -26,11 +25,10 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 
 	num_ra = 0;
 	num_rb = 0;
-	pi = 0;
-	i = (low + high) / 2;
-	partition = get_elm(i, c);
-	ft_debug_printf("[partition(%d, %d): i=%d, partitoin=%d]\n",
-		low, high, i, partition);
+	pi = (low + high) / 2;
+	partition = get_elm(pi, c);
+	ft_debug_printf("[partition(%d, %d): pi=%d, partitoin=%d]\n",
+		low, high, pi, partition);
 	ft_debug_printf("[partition b to a]\n");
 	while (len_a(c) > 0)
 		pb(c);
@@ -42,38 +40,21 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 			num_rb++;
 		}
 		else if (top_b(c) > partition)
+			pa(c);
+		else if (top_b(c) == partition)
 		{
 			pa(c);
-			if (len_a(c) > num_ra + (len_p(c) - 1 - high))
-			{
-				ra(c);
-				num_ra++;
-			}
+			ra(c);
 		}
-		else if (top_b(c) == partition)
-			pa(c);
 	}
 	ft_debug_printf("[partition reverse a(num_ra = %d)]\n", num_ra);
-	while (num_ra > 0)
-	{
-		if (top_a(c) == partition)
-			pb(c);
-		rra(c);
-		num_ra--;
-	}
+	rra(c);
 	ft_debug_printf("[partition reverse b(num_rb = %d)]\n", num_rb);
 	while (num_rb > 0)
 	{
-		if (top_b(c) == partition)
-			pa(c);
-		else
-		{
-			rrb(c);
-			num_rb--;
-		}
+		rrb(c);
+		num_rb--;
 	}
-	if (top_b(c) == partition)
-		pa(c);
 	pi = len_b(c);
 	print_ctx(c);
 	ft_debug_printf("[partition pi = %d]\n", pi);
