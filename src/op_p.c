@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:36:00 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 22:24:00 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 19:36:07 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ void	pa(t_ctx *c)
 		c->pb--;
 	else if (c->b->len > c->pa)
 		c->pa++;
-	if (NOOPTIMIZE)
-		opflush(c);
+	if (OPTIMIZE)
+		return ;
+	opflush(c);
 }
 
 void	pb(t_ctx *c)
@@ -34,6 +35,7 @@ void	pb(t_ctx *c)
 		c->pa--;
 	else if (c->a->len > c->pb)
 		c->pb++;
-	if (NOOPTIMIZE)
-		opflush(c);
+	if (OPTIMIZE)
+		return ;
+	opflush(c);
 }

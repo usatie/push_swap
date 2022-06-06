@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/06 16:16:23 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 19:46:07 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
-# ifdef DEBUG
-#  define DEBUG 1
-# else
+# ifndef DEBUG
 #  define DEBUG 0
 # endif
 
-# ifndef NOOPTIMIZE
-#  define NOOPTIMIZE FALSE
+# ifndef OPTIMIZE
+#  define OPTIMIZE 1
 # endif
 typedef int	t_elm;
 

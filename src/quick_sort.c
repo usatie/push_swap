@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/06 18:35:32 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 18:44:04 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 	partition = get_elm(pi, c);
 	ft_debug_printf("[partition(%d, %d): pi=%d, partitoin=%d]\n",
 		low, high, pi, partition);
-	ft_debug_printf("[partition b to a]\n");
+	ft_debug_printf("[partition a to b]\n");
 	while (len_a(c) > 0)
 		pb(c);
+	ft_debug_printf("[partition b to a]\n");
 	while (len_b(c) - num_rb > low)
 	{
 		if (top_b(c) < partition)
