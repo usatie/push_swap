@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/06 18:44:04 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 21:34:39 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,22 @@
 
 static size_t	partition(t_ctx *c, size_t low, size_t high)
 {
-	size_t	pi;
-	size_t	num_rb;
-	size_t	num_ra;
+	size_t	num_lt_partition;
 	t_elm	partition;
 
-	num_ra = 0;
-	num_rb = 0;
-	pi = (low + high) / 2;
-	partition = get_elm(pi, c);
-	ft_debug_printf("[partition(%d, %d): pi=%d, partitoin=%d]\n",
-		low, high, pi, partition);
+	num_lt_partition = 0;
+	partition = get_elm((low + high) / 2, c);
+	ft_debug_printf("[partition(%d, %d): partitoin=%d]\n", low, high, partition);
 	ft_debug_printf("[partition a to b]\n");
 	while (len_a(c) > 0)
 		pb(c);
 	ft_debug_printf("[partition b to a]\n");
-	while (len_b(c) - num_rb > low)
+	while (len_b(c) - num_lt_partition > low)
 	{
 		if (top_b(c) < partition)
 		{
 			rb(c);
-			num_rb++;
+			num_lt_partition++;
 		}
 		else if (top_b(c) > partition)
 			pa(c);
@@ -48,18 +43,15 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 			ra(c);
 		}
 	}
-	ft_debug_printf("[partition reverse a(num_ra = %d)]\n", num_ra);
 	rra(c);
-	ft_debug_printf("[partition reverse b(num_rb = %d)]\n", num_rb);
-	while (num_rb > 0)
+	ft_debug_printf("[partition reverse b(%d)]\n", num_lt_partition);
+	while (num_lt_partition > 0)
 	{
 		rrb(c);
-		num_rb--;
+		num_lt_partition--;
 	}
-	pi = len_b(c);
 	print_ctx(c);
-	ft_debug_printf("[partition pi = %d]\n", pi);
-	return (pi);
+	return (len_b(c));
 }
 
 void	quick_sort(t_ctx *c, size_t low, size_t high)
