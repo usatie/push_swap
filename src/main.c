@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 23:31:37 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 13:53:38 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,64 +21,101 @@
 static void	argparse_push(const char *arg, t_ctx *c)
 {
 	char	*endptr;
-	t_elm	new;
+	long	res;
 
 	if (*arg == '\0')
 	{
 		deinit_ctx(c);
-		err_exit("null or empty string");
+		err_exit("Error\n");
 	}
 	errno = 0;
-	new = ft_strtol(arg, &endptr, 10);
-	if (errno != 0)
+	res = ft_strtol(arg, &endptr, 10);
+	if (errno != 0 || *endptr != '\0' || res > INT_MAX || res < INT_MIN)
 	{
 		deinit_ctx(c);
-		err_exit("ft_strtol() failed\n	text: %s", arg);
+		err_exit("Error\n");
 	}
-	if (*endptr != '\0')
+	if (contains(res, c->a))
 	{
 		deinit_ctx(c);
-		err_exit("nonnumeric characters\n	text: %s", arg);
+		err_exit("Error\n");
 	}
-	if (contains(new, c->a))
+	push(c->a, res);
+}
+
+static t_ctx	*argparse_ctx(int argc, char **argv)
+{
+	t_ctx	*c;
+
+	c = init_ctx(argc - 1);
+	if (c == NULL)
+		return (NULL);
+	while (--argc > 0)
+		argparse_push(argv[argc], c);
+	return (c);
+}
+
+// returns op count for quick sort
+static size_t	quicksort(int argc, char **argv, BOOL dry)
+{
+	t_ctx	*c;
+	size_t	n_op;
+
+	c = argparse_ctx(argc, argv);
+	if (c == NULL)
+		err_exit("Error\n");
+	if (VERBOSE)
 	{
-		deinit_ctx(c);
-		err_exit("duplicate values\n", arg);
+		ft_printf("\n=====INITIAL STACKS=====\n");
+		print_ctx(c);
+		ft_printf("========================\n\n");
 	}
-	push(c->a, new);
+	c->dry = dry;
+	if (argc >= 2)
+		quick_sort(c, 0, argc - 2);
+	n_op = c->n_op;
+	if (VERBOSE)
+	{
+		ft_printf("\n=====[QUICK SORT RESULT](n_op=%d)=====\n\n", c->n_op);
+		print_ctx(c);
+	}
+	deinit_ctx(c);
+	return (n_op);
+}
+
+// returns op count for insert sort
+static size_t	insertsort(int argc, char **argv, BOOL dry)
+{
+	t_ctx	*c;
+	size_t	n_op;
+
+	c = argparse_ctx(argc, argv);
+	if (c == NULL)
+		err_exit("Error\n");
+	if (VERBOSE)
+	{
+		ft_printf("\n=====INITIAL STACKS=====\n");
+		print_ctx(c);
+		ft_printf("========================\n\n");
+	}
+	c->dry = dry;
+	if (argc >= 2)
+		insert_sort(c);
+	n_op = c->n_op;
+	if (VERBOSE)
+	{
+		ft_printf("\n=====[INSERT SORT RESULT] (n_op=%d)=====\n\n", c->n_op);
+		print_ctx(c);
+	}
+	deinit_ctx(c);
+	return (n_op);
 }
 
 int	main(int argc, char **argv)
 {
-	t_ctx	*c;
-	t_ctx	*c1;
-	t_ctx	*c2;
-
-	c = init_ctx(argc - 1);
-	c1 = init_ctx(argc - 1);
-	c2 = init_ctx(argc - 1);
-	c1->dry = TRUE;
-	c2->dry = TRUE;
-	while (--argc > 0)
-	{
-		argparse_push(argv[argc], c);
-		argparse_push(argv[argc], c1);
-		argparse_push(argv[argc], c2);
-	}
-	if (VERBOSE)
-		ft_printf("\n=====INITIAL STACKS=====\n");
-	print_ctx(c);
-	if (VERBOSE)
-		ft_printf("========================\n\n");
-	insert_sort(c1);
-	quick_sort(c2, 0, c2->a->len - 1);
-	if (c1->n_op > c2->n_op)
-		quick_sort(c, 0, c->a->len - 1);
+	if (quicksort(argc, argv, TRUE) < insertsort(argc, argv, TRUE))
+		quicksort(argc, argv, FALSE);
 	else
-		insert_sort(c);
-	if (VERBOSE)
-		ft_printf("\n=====SORT RESULT(n_op=%d)=====\n\n", c->n_op);
-	print_ctx(c);
-	deinit_ctx(c);
+		insertsort(argc, argv, FALSE);
 	return (EXIT_SUCCESS);
 }
