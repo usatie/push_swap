@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 07:33:20 by susami            #+#    #+#              #
-#    Updated: 2022/06/03 12:28:25 by susami           ###   ########.fr        #
+#    Updated: 2022/06/06 16:03:16 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ PRINTF_SRCS	=	ft_printf/ft_printf.c			\
 				ft_printf/ft_printf_parser.c	\
 				ft_printf/ft_printf_percent.c	\
 				ft_printf/ft_printf_px.c		\
+				ft_printf/ft_debug_printf.c		\
 
 ARGPARSE_SRCS	=	ft_argparse/ft_argparse_num.c	\
 
@@ -102,6 +103,6 @@ $(OBJDIR)/%.o: %.c
 
 bonus: all
 debug: fclean
-	$(MAKE) CFLAGS="$(CFLAGS) -Weverything"
+	$(MAKE) CFLAGS="$(CFLAGS) -D DEBUG"
 
 .PHONY: all clean fclean re

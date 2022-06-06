@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/06 13:53:38 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 16:07:37 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,15 @@ static size_t	quicksort(int argc, char **argv, BOOL dry)
 	c = argparse_ctx(argc, argv);
 	if (c == NULL)
 		err_exit("Error\n");
-	if (VERBOSE)
-	{
-		ft_printf("\n=====INITIAL STACKS=====\n");
-		print_ctx(c);
-		ft_printf("========================\n\n");
-	}
+	ft_debug_printf("\n=====INITIAL STACKS=====\n");
+	print_ctx(c);
+	ft_debug_printf("========================\n\n");
 	c->dry = dry;
 	if (argc >= 2)
 		quick_sort(c, 0, argc - 2);
 	n_op = c->n_op;
-	if (VERBOSE)
-	{
-		ft_printf("\n=====[QUICK SORT RESULT](n_op=%d)=====\n\n", c->n_op);
-		print_ctx(c);
-	}
+	ft_debug_printf("\n=====[QUICK SORT RESULT](n_op=%d)=====\n\n", c->n_op);
+	print_ctx(c);
 	deinit_ctx(c);
 	return (n_op);
 }
@@ -92,21 +86,15 @@ static size_t	insertsort(int argc, char **argv, BOOL dry)
 	c = argparse_ctx(argc, argv);
 	if (c == NULL)
 		err_exit("Error\n");
-	if (VERBOSE)
-	{
-		ft_printf("\n=====INITIAL STACKS=====\n");
-		print_ctx(c);
-		ft_printf("========================\n\n");
-	}
+	ft_debug_printf("\n=====INITIAL STACKS=====\n");
+	print_ctx(c);
+	ft_debug_printf("========================\n\n");
 	c->dry = dry;
 	if (argc >= 2)
 		insert_sort(c);
 	n_op = c->n_op;
-	if (VERBOSE)
-	{
-		ft_printf("\n=====[INSERT SORT RESULT] (n_op=%d)=====\n\n", c->n_op);
-		print_ctx(c);
-	}
+	ft_debug_printf("\n=====[INSERT SORT RESULT] (n_op=%d)=====\n\n", c->n_op);
+	print_ctx(c);
 	deinit_ctx(c);
 	return (n_op);
 }

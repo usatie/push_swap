@@ -6,14 +6,13 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:52:07 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 20:11:28 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 16:09:29 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
 #include "push_swap.h"
-#include "ft_printf.h"
 
 void	push(t_stack *s, t_elm e)
 {

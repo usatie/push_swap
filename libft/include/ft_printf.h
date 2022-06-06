@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 20:43:35 by susami            #+#    #+#             */
-/*   Updated: 2022/06/01 18:14:34 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 14:55:31 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,9 @@ int		ft_vdprintf(int fd, const char *format, va_list ap);
 int		ft_vprintf(const char *format, va_list ap);
 int		ft_dprintf(int fd, const char *format, ...);
 int		ft_printf(const char *format, ...);
+
+int		ft_debug_vdprintf(int fd, const char *format, va_list ap);
+int		ft_debug_vprintf(const char *format, va_list ap);
+int		ft_debug_dprintf(int fd, const char *format, ...);
+int		ft_debug_printf(const char *format, ...);
 #endif

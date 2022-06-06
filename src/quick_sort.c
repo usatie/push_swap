@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 23:31:19 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 18:27:11 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 	pi = 0;
 	i = (low + high) / 2;
 	partition = get_elm(i, c);
-	if (VERBOSE)
-		ft_printf("[partition(%d, %d): i=%d, partitoin=%d]\n",
-			low, high, i, partition);
-	if (VERBOSE)
-		ft_printf("[partition b to a]\n");
+	ft_debug_printf("[partition(%d, %d): i=%d, partitoin=%d]\n",
+		low, high, i, partition);
+	ft_debug_printf("[partition b to a]\n");
+	while (len_a(c) > 0)
+		pb(c);
 	while (len_b(c) - num_rb > low)
 	{
 		if (top_b(c) < partition)
@@ -53,44 +53,17 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 		else if (top_b(c) == partition)
 			pa(c);
 	}
-	if (VERBOSE)
-		ft_printf("[partition a to b]\n");
-	while (len_a(c) - num_ra > len_p(c) - 1 - high)
-	{
-		if (top_a(c) < partition)
-		{
-			pb(c);
-			if (len_b(c) > num_rb + low)
-			{
-				rb(c);
-				num_rb++;
-			}
-		}
-		else if (top_a(c) > partition)
-		{
-			ra(c);
-			num_ra++;
-		}
-		else if (top_a(c) == partition)
-			pb(c);
-	}
-	if (VERBOSE)
-		ft_printf("[partition reverse a(num_ra = %d)]\n", num_ra);
+	ft_debug_printf("[partition reverse a(num_ra = %d)]\n", num_ra);
 	while (num_ra > 0)
 	{
-		if (VERBOSE)
-			ft_printf("[top a=%d]\n", top_a(c));
 		if (top_a(c) == partition)
 			pb(c);
 		rra(c);
 		num_ra--;
 	}
-	if (VERBOSE)
-		ft_printf("[partition reverse b(num_rb = %d)]\n", num_rb);
+	ft_debug_printf("[partition reverse b(num_rb = %d)]\n", num_rb);
 	while (num_rb > 0)
 	{
-		if (VERBOSE)
-			ft_printf("[top b=%d]\n", top_b(c));
 		if (top_b(c) == partition)
 			pa(c);
 		else
@@ -103,8 +76,7 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 		pa(c);
 	pi = len_b(c);
 	print_ctx(c);
-	if (VERBOSE)
-		ft_printf("[partition pi = %d]\n", pi);
+	ft_debug_printf("[partition pi = %d]\n", pi);
 	return (pi);
 }
 

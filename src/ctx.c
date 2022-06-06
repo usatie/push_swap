@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 20:11:09 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 17:34:37 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,29 @@ void	print_ctx(t_ctx *c)
 {
 	size_t	i;
 
-	if (VERBOSE)
+	if (DEBUG)
 	{
 		i = max(c->a->len, c->b->len);
 		while (i-- > 0)
 		{
 			if (i < c->a->len)
-				ft_printf("%10d", c->a->arr[i]);
+				ft_debug_printf("%10d", c->a->arr[i]);
 			else
-				ft_printf("          ");
-			ft_printf(" ");
+				ft_debug_printf("          ");
+			ft_debug_printf(" ");
 			if (i < c->b->len)
-				ft_printf("%-10d", c->b->arr[i]);
+				ft_debug_printf("%-10d", c->b->arr[i]);
 			else
-				ft_printf(" ");
-			ft_printf("\n");
+				ft_debug_printf(" ");
+			ft_debug_printf("\n");
 		}
-		ft_printf("---------- -----------\n         a b\n");
+		ft_debug_printf("---------- -----------\n         a b\n");
 	}
 }
 
 void	dryprint(char *op, t_ctx *c)
 {
 	c->n_op++;
-	if (c->dry == TRUE)
-		return ;
-	else
+	if (c->dry == FALSE || DEBUG)
 		ft_printf("%s\n", op);
 }

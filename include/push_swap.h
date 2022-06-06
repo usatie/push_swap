@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 22:39:15 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 16:16:23 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
-# ifndef VERBOSE
-#  define VERBOSE FALSE
+# ifdef DEBUG
+#  define DEBUG 1
+# else
+#  define DEBUG 0
 # endif
+
 # ifndef NOOPTIMIZE
 #  define NOOPTIMIZE FALSE
 # endif
-typedef long	t_elm;
+typedef int	t_elm;
 
 typedef struct s_stack {
 	t_elm	*arr;

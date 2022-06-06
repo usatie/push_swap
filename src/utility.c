@@ -6,12 +6,11 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:04:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 23:32:16 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/06 16:07:55 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
 size_t	max(size_t a, size_t b)
 {
