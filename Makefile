@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/07 15:24:10 by susami           ###   ########.fr        #
+#    Updated: 2022/06/07 18:15:13 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,9 +66,7 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
 
 test: $(TEST_OBJS) $(LIB)
-	$(CC) $(CFLAGS) $(filter-out $(OUTDIR)/src/main.o, $(OBJS)) $(LIB) tests/test_basic_op.c -o tests/test_basic_op
-	./tests/test_basic_op
-	./tests/test.sh
+	./test.sh
 
 norm:
 	norminette src/*.c | grep Error
