@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/07 15:53:03 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/07 16:50:28 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,53 +66,11 @@ void	rule_sort(t_ctx *c, size_t low, size_t high)
 		pa(c);
 	if (high - low == 1)
 	{
+		ft_debug_printf("[rule_sort: num sor = 2]\n", low, high);
 		while (len_b(c) < low)
 			pb(c);
 		if (get_elm(low, c) > get_elm(high, c))
 			sa(c);
-	}
-	else if (high - low == 2)
-	{
-		// goal: 3, 2, 1
-		while (len_b(c) < low)
-			pb(c);
-		// 1, 2, 3
-		if (get_elm(low, c) > get_elm(low + 1, c) && get_elm(low + 1, c) > get_elm(high, c))
-		{
-			ra(c);
-			ra(c);
-			pb(c);
-			rra(c);
-			pb(c);
-			rra(c);
-		}
-		// 1, 3, 2
-		else if (get_elm(low + 1, c) > get_elm(low, c) && get_elm(low, c) > get_elm(high, c))
-		{
-			ra(c);
-			sa(c);
-			rra(c);
-			sa(c);
-		}
-		// 2, 1, 3
-		else if (get_elm(low, c) > get_elm(high, c) && get_elm(high, c) > get_elm(low + 1, c))
-		{
-			ra(c);
-			pb(c);
-			pb(c);
-			rra(c);
-		}
-		// 2, 3, 1
-		else if (get_elm(low + 1, c) > get_elm(high, c) && get_elm(high, c) > get_elm(low, c))
-		{
-			pb(c);
-			sa(c);
-		}
-		// 3, 1, 2
-		else if (get_elm(high, c) > get_elm(low, c) && get_elm(low, c) > get_elm(low + 1, c))
-		{
-			sa(c);
-		}
 	}
 }
 
@@ -123,7 +81,7 @@ void	quick_sort(t_ctx *c, size_t low, size_t high)
 	ft_debug_printf("[quick_sort(%d, %d)]\n", low, high);
 	if (low < high)
 	{
-		if (high - low <= 2)
+		if (high - low == 1)
 			rule_sort(c, low, high);
 		else
 		{
