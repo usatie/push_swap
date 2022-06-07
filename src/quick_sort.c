@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/07 14:53:34 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/07 15:03:13 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,11 @@
 // a: [100,99,98,10] [5,9,4,7,8,6] [3,2,1] :b
 // b: [1,2,3] [6,8,7,4,9,4] [10,98,99,100] :a
 
-static size_t	partition(t_ctx *c, size_t low, size_t high)
+static void	filter_a2b(t_ctx *c, size_t high, t_elm partition)
 {
 	size_t	num_gt_partition;
-	t_elm	partition;
 
 	num_gt_partition = 0;
-	partition = get_elm((low + high) / 2, c);
-	ft_debug_printf("[partition(%d, %d): partitoin=%d]\n", low, high, partition);
-	ft_debug_printf("[partition b to a]\n");
-	while (len_b(c) > 0)
-		pa(c);
-	ft_debug_printf("[partition a to b]\n");
 	while (len_a(c) - num_gt_partition > len_p(c) - 1 - high)
 	{
 		if (top_a(c) > partition)
@@ -44,12 +37,24 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 		}
 	}
 	rrb(c);
-	ft_debug_printf("[partition reverse a(%d)]\n", num_gt_partition);
 	while (num_gt_partition > 0)
 	{
 		rra(c);
 		num_gt_partition--;
 	}
+}
+
+static size_t	partition(t_ctx *c, size_t low, size_t high)
+{
+	t_elm	partition;
+
+	partition = get_elm((low + high) / 2, c);
+	ft_debug_printf("[partition(%d, %d): partitoin=%d]\n", low, high, partition);
+	ft_debug_printf("[partition b to a]\n");
+	while (len_b(c) > 0)
+		pa(c);
+	ft_debug_printf("[filter_a2b a to b]\n");
+	filter_a2b(c, high, partition);
 	print_ctx(c);
 	return (len_b(c) - 1);
 }
