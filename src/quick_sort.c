@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/06 21:34:39 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/07 14:53:34 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,40 @@
 
 static size_t	partition(t_ctx *c, size_t low, size_t high)
 {
-	size_t	num_lt_partition;
+	size_t	num_gt_partition;
 	t_elm	partition;
 
-	num_lt_partition = 0;
+	num_gt_partition = 0;
 	partition = get_elm((low + high) / 2, c);
 	ft_debug_printf("[partition(%d, %d): partitoin=%d]\n", low, high, partition);
-	ft_debug_printf("[partition a to b]\n");
-	while (len_a(c) > 0)
-		pb(c);
 	ft_debug_printf("[partition b to a]\n");
-	while (len_b(c) - num_lt_partition > low)
+	while (len_b(c) > 0)
+		pa(c);
+	ft_debug_printf("[partition a to b]\n");
+	while (len_a(c) - num_gt_partition > len_p(c) - 1 - high)
 	{
-		if (top_b(c) < partition)
+		if (top_a(c) > partition)
 		{
-			rb(c);
-			num_lt_partition++;
-		}
-		else if (top_b(c) > partition)
-			pa(c);
-		else if (top_b(c) == partition)
-		{
-			pa(c);
 			ra(c);
+			num_gt_partition++;
+		}
+		else if (top_a(c) < partition)
+			pb(c);
+		else if (top_a(c) == partition)
+		{
+			pb(c);
+			rb(c);
 		}
 	}
-	rra(c);
-	ft_debug_printf("[partition reverse b(%d)]\n", num_lt_partition);
-	while (num_lt_partition > 0)
+	rrb(c);
+	ft_debug_printf("[partition reverse a(%d)]\n", num_gt_partition);
+	while (num_gt_partition > 0)
 	{
-		rrb(c);
-		num_lt_partition--;
+		rra(c);
+		num_gt_partition--;
 	}
 	print_ctx(c);
-	return (len_b(c));
+	return (len_b(c) - 1);
 }
 
 void	quick_sort(t_ctx *c, size_t low, size_t high)

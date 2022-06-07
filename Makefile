@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/06 19:46:18 by susami           ###   ########.fr        #
+#    Updated: 2022/06/07 14:52:33 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ $(NAME): $(OBJS) $(LIB)
 
 debug: fclean
 	$(MAKE) debug -C $(LIBFTDIR)
-	$(MAKE) CFLAGS="$(CFLAGS) -D DEBUG=1 OPTIMIZE=0"
+	$(MAKE) CFLAGS="$(CFLAGS) -D DEBUG=1 -D OPTIMIZE=0"
 
 $(OUTDIR)/%.o: %.c
 	@mkdir -p $$(dirname $@)
