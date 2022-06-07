@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 23:34:05 by susami            #+#    #+#             */
-/*   Updated: 2022/06/06 19:37:22 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/07 15:28:10 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sa(t_ctx *c)
 {
-	if (c->a->len < 3)
+	if (len_a(c) < 3)
 		ra(c);
 	else
 	{
@@ -31,7 +31,7 @@ void	sa(t_ctx *c)
 
 void	sb(t_ctx *c)
 {
-	if (c->b->len < 3)
+	if (len_b(c) < 3)
 		rb(c);
 	else
 	{
