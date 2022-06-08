@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/06 17:34:37 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 12:43:39 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ t_ctx	*init_ctx(size_t cap)
 	}
 	c->b = init_stack(cap);
 	if (c->b == NULL)
+	{
+		deinit_ctx(c);
+		return (NULL);
+	}
+	c->ops = init_stack(0);
+	if (c->ops == NULL)
 	{
 		deinit_ctx(c);
 		return (NULL);
@@ -72,7 +78,29 @@ void	print_ctx(t_ctx *c)
 
 void	dryprint(char *op, t_ctx *c)
 {
-	c->n_op++;
-	if (c->dry == FALSE || DEBUG)
-		ft_printf("%s\n", op);
+	if (ft_strcmp(op, "pa") == 0)
+		push(c->ops, OP_PA);
+	else if (ft_strcmp(op, "pb") == 0)
+		push(c->ops, OP_PB);
+	else if (ft_strcmp(op, "sa") == 0)
+		push(c->ops, OP_SA);
+	else if (ft_strcmp(op, "sb") == 0)
+		push(c->ops, OP_SB);
+	else if (ft_strcmp(op, "ss") == 0)
+		push(c->ops, OP_SS);
+	else if (ft_strcmp(op, "ra") == 0)
+		push(c->ops, OP_RA);
+	else if (ft_strcmp(op, "rb") == 0)
+		push(c->ops, OP_RB);
+	else if (ft_strcmp(op, "rr") == 0)
+		push(c->ops, OP_RR);
+	else if (ft_strcmp(op, "rra") == 0)
+		push(c->ops, OP_RRA);
+	else if (ft_strcmp(op, "rrb") == 0)
+		push(c->ops, OP_RRB);
+	else if (ft_strcmp(op, "rrr") == 0)
+		push(c->ops, OP_RRR);
+	else
+		ft_debug_printf("Unexpected Op: %s\n", op);
+	ft_debug_printf("%s\n", op);
 }

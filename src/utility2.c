@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 23:31:49 by susami            #+#    #+#             */
-/*   Updated: 2022/06/05 23:32:13 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 12:45:37 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,20 @@ t_elm	get_elm(size_t i, t_ctx *c)
 		arr = c->a->arr;
 	}
 	return (arr[i]);
+}
+
+size_t	n_op(t_ctx *c)
+{
+	size_t	i;
+	size_t	n;
+
+	i = 0;
+	n = 0;
+	while (i < c->ops->len)
+	{
+		if (c->ops->arr[i] > 0)
+			n++;
+		i++;
+	}
+	return (n);
 }

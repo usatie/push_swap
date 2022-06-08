@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/06 19:46:07 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 14:29:55 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@
 # ifndef OPTIMIZE
 #  define OPTIMIZE 1
 # endif
+
+# define OP_PA 1
+# define OP_PB 2
+# define OP_SA 3
+# define OP_SB 4
+# define OP_SS 5
+# define OP_RA 6
+# define OP_RB 7
+# define OP_RR 8
+# define OP_RRA 9
+# define OP_RRB 10
+# define OP_RRR 11
+
 typedef int	t_elm;
 
 typedef struct s_stack {
@@ -32,6 +45,7 @@ typedef struct s_stack {
 typedef struct s_ctx {
 	t_stack	*a;
 	t_stack	*b;
+	t_stack	*ops;
 	size_t	sa;
 	size_t	sb;
 	size_t	pa;
@@ -40,10 +54,9 @@ typedef struct s_ctx {
 	size_t	rb;
 	size_t	rra;
 	size_t	rrb;
-	size_t	n_op;
-	BOOL	dry;
 }	t_ctx;
 
+size_t			n_op(t_ctx *c);
 size_t			max(size_t a, size_t b);
 size_t			min(size_t a, size_t b);
 
