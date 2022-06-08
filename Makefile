@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/08 18:32:33 by susami           ###   ########.fr        #
+#    Updated: 2022/06/08 19:09:48 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS		=	src/main.c				\
 				src/opflush.c			\
 				src/selection_sort.c	\
 				src/quick_sort.c		\
+				src/insert_sort.c		\
 				src/optimize.c			\
 				src/utility.c			\
 				src/utility2.c			\

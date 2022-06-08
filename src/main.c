@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 18:33:20 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 23:05:57 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,52 @@ static t_ctx	*selectionsort(int argc, char **argv)
 	return (c);
 }
 
+// returns result context for insert sort
+static t_ctx	*insertsort(int argc, char **argv)
+{
+	t_ctx	*c;
+
+	c = argparse_ctx(argc, argv);
+	if (c == NULL)
+		return (NULL);
+	ft_debug_printf("\n=====INITIAL STACKS=====\n");
+	debug_print_ctx(c);
+	ft_debug_printf("========================\n\n");
+	if (argc >= 2)
+		insert_sort(c);
+	ft_debug_printf("\n=====[INSERT SORT RESULT] (result=%d)=====\n\n", n_op(c));
+	debug_print_ctx(c);
+	c = optimize(argc, argv, c);
+	return (c);
+}
+
 int	main(int argc, char **argv)
 {
 	t_ctx	*c1;
 	t_ctx	*c2;
+	t_ctx	*c3;
 
 	c1 = quicksort(argc, argv);
 	c2 = selectionsort(argc, argv);
-	if (c1 == NULL || c2 == NULL)
+	c3 = insertsort(argc, argv);
+	//(void)insertsort;
+	//c3 = selectionsort(argc, argv);
+	if (c1 == NULL || c2 == NULL || c3 == NULL)
 	{
 		ctx_deinit(c1);
 		ctx_deinit(c2);
+		ctx_deinit(c3);
 		err_exit("Error\n");
 	}
-	if (n_op(c1) < n_op(c2))
+	ft_debug_printf("[quick: %d, selection: %d, insert: %d]\n", n_op(c1), n_op(c2),  n_op(c3));
+	if (min(min(n_op(c1), n_op(c2)), n_op(c3)) == n_op(c1))
 		print_ops(c1);
-	else
+	else if (min(min(n_op(c1), n_op(c2)), n_op(c3)) == n_op(c2))
 		print_ops(c2);
+	else if (min(min(n_op(c1), n_op(c2)), n_op(c3)) == n_op(c3))
+		print_ops(c3);
 	ctx_deinit(c1);
 	ctx_deinit(c2);
+	ctx_deinit(c3);
 	return (EXIT_SUCCESS);
 }

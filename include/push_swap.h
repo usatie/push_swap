@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 18:32:01 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 19:07:51 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,4 +130,5 @@ void			rrr(t_ctx *c);
 
 void			selection_sort(t_ctx *c);
 void			quick_sort(t_ctx *c, size_t low, size_t high);
+void			insert_sort(t_ctx *c);
 #endif
