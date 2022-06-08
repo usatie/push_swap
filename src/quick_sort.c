@@ -6,13 +6,14 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 00:20:49 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 02:16:49 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 
+#define SEL_THRESH 30
 // a: [100,99,98,10] [5,9,4,7,8,6] [3,2,1] :b
 // b: [1,2,3] [6,8,7,4,9,4] [10,98,99,100] :a
 
@@ -44,11 +45,41 @@ static void	filter_a2b(t_ctx *c, size_t high, t_elm partition)
 	}
 }
 
+
+static t_elm	get_partition(t_ctx *c, size_t low, size_t high)
+{
+	size_t	i;
+	size_t	mi;
+	size_t	n;
+	t_elm	m;
+	t_elm	last_m;
+	n = 0;
+	i = low;
+	m = get_elm(i, c);
+	last_m = get_elm(i, c);
+	while (n < SEL_THRESH - 1 && i<= high)
+	{
+		while (i <= high)
+		{
+			if (m < get_elm(i, c) && m > last_m)
+			{
+				m = get_elm(i, c);
+				mi = i;
+			}
+			i++;
+		}
+		last_m = m;
+		n++;
+	}
+	return (last_m);
+}
+
 static size_t	partition(t_ctx *c, size_t low, size_t high)
 {
 	t_elm	partition;
 
-	partition = get_elm((low + high) / 2, c);
+	//partition = get_elm((low + high) / 2, c);
+	partition = get_partition(c, low, high);
 	ft_debug_printf("[partition(%d, %d): partitoin=%d]\n", low, high, partition);
 	ft_debug_printf("[partition b to a]\n");
 	while (len_b(c) > 0)
@@ -160,6 +191,49 @@ void	rule_sort(t_ctx *c, size_t low, size_t high)
 	}
 }
 
+static void	mini_selection_sort(t_ctx *c, size_t low, size_t high)
+{
+	size_t	i;
+	size_t	mi;
+	t_elm	m;
+
+	while (low <= high)
+	{
+		i = low;
+		mi = low;
+		m = get_elm(i, c);
+		while (i <= high)
+		{
+			ft_debug_printf("[mini(%d, %d), i: %d, min: %d, mi: %d]\n", low, high, i, m, mi);
+			if (get_elm(i, c) < m)
+			{
+				m = get_elm(i, c);
+				mi = i;
+			}
+			i++;
+		}
+		ft_debug_printf("[mini(%d, %d), min: %d, mi: %d]\n", low, high, m, mi);
+		while (len_b(c) > low)
+			pa(c);
+		while (len_b(c) < low)
+			pb(c);
+		i = low;
+		while (i < mi)
+		{
+			ra(c);
+			i++;
+		}
+		pb(c);
+		while (i > low)
+		{
+			rra(c);
+			i--;
+		}
+		low++;
+	}
+
+}
+
 void	quick_sort(t_ctx *c, size_t low, size_t high)
 {
 	size_t	pi;
@@ -171,6 +245,8 @@ void	quick_sort(t_ctx *c, size_t low, size_t high)
 			rule_sort(c, low, high);
 		else if (high < 3 || len_p(c) - 3 < low)
 			rule_sort(c, low, high);
+		else if (high - low < SEL_THRESH)
+			mini_selection_sort(c, low, high);
 		else
 		{
 			pi = partition(c, low, high);

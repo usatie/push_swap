@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 23:05:57 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 01:40:27 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,24 @@ static t_ctx	*insertsort(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_ctx	*c1;
+
+	(void)selectionsort;
+	(void)insertsort;
+	c1 = quicksort(argc, argv);
+	print_ops(c1);
+	ctx_deinit(c1);
+	return (EXIT_SUCCESS);
+}
+/*
+int	main(int argc, char **argv)
+{
+	t_ctx	*c1;
 	t_ctx	*c2;
 	t_ctx	*c3;
 
 	c1 = quicksort(argc, argv);
 	c2 = selectionsort(argc, argv);
 	c3 = insertsort(argc, argv);
-	//(void)insertsort;
-	//c3 = selectionsort(argc, argv);
 	if (c1 == NULL || c2 == NULL || c3 == NULL)
 	{
 		ctx_deinit(c1);
@@ -103,3 +113,4 @@ int	main(int argc, char **argv)
 	ctx_deinit(c3);
 	return (EXIT_SUCCESS);
 }
+*/
