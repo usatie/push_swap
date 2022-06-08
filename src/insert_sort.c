@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 18:34:34 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 23:23:52 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 02:22:34 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	insert_sort(t_ctx *c)
 {
 	t_elm	next;
 
-	ft_debug_printf("isnert_sort\n");
 	if (len_a(c) >= 2)
 	{
 		if (get_elm(0, c) > get_elm(1, c))
@@ -80,29 +79,16 @@ void	insert_sort(t_ctx *c)
 	while (len_a(c) > 0)
 	{
 		next = top_a(c);
-		ft_debug_printf("next: %d, top: %d, bottom: %d, max: %d, min: %d\n", next, top_b(c), get_elm(0, c), max_b(c), min_b(c));
 		if (max_b(c) > next && next > min_b(c))
-		{
 			while (!(top_b(c) < next && get_elm(0, c) > next))
-			{
-				ft_debug_printf("[rb] next: %d, top: %d, bottom: %d\n", next, top_b(c), get_elm(0, c));
-				debug_print_ctx(c);
 				rb(c);
-			}
-		}
-		ft_debug_printf("[pb] next: %d, top: %d, bottom: %d\n", next, top_b(c), get_elm(0, c));
 		pb(c);
 		while (top_b(c) < get_elm(0, c))
 			rb(c);
-		opflush(c);
 	}
-	ft_debug_printf("rotate b\n");
 	if (len_b(c) >= 2)
-	{
 		while (top_b(c) < get_elm(0, c))
 			rb(c);
-	}
-	ft_debug_printf("b to a\n");
 	while (len_b(c) > 0)
 		pa(c);
 	opflush(c);

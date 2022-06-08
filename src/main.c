@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 01:40:27 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 02:23:57 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_ctx	*selectionsort(int argc, char **argv)
 	ft_debug_printf("========================\n\n");
 	if (argc >= 2)
 		selection_sort(c);
-	ft_debug_printf("\n=====[SELECTION SORT RESULT] (result=%d)=====\n\n", n_op(c));
+	ft_debug_printf("\n=====[SELECTION RESULT] (result=%d)=====\n\n", n_op(c));
 	debug_print_ctx(c);
 	c = optimize(argc, argv, c);
 	return (c);
@@ -73,6 +73,7 @@ static t_ctx	*insertsort(int argc, char **argv)
 	return (c);
 }
 
+/*
 int	main(int argc, char **argv)
 {
 	t_ctx	*c1;
@@ -84,7 +85,7 @@ int	main(int argc, char **argv)
 	ctx_deinit(c1);
 	return (EXIT_SUCCESS);
 }
-/*
+*/
 int	main(int argc, char **argv)
 {
 	t_ctx	*c1;
@@ -101,7 +102,7 @@ int	main(int argc, char **argv)
 		ctx_deinit(c3);
 		err_exit("Error\n");
 	}
-	ft_debug_printf("[quick: %d, selection: %d, insert: %d]\n", n_op(c1), n_op(c2),  n_op(c3));
+	ft_debug_printf("[q: %d, s: %d, i: %d]\n", n_op(c1), n_op(c2), n_op(c3));
 	if (min(min(n_op(c1), n_op(c2)), n_op(c3)) == n_op(c1))
 		print_ops(c1);
 	else if (min(min(n_op(c1), n_op(c2)), n_op(c3)) == n_op(c2))
@@ -113,4 +114,3 @@ int	main(int argc, char **argv)
 	ctx_deinit(c3);
 	return (EXIT_SUCCESS);
 }
-*/
