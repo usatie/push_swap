@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 14:29:55 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 15:12:31 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define OP_RRB 10
 # define OP_RRR 11
 
-typedef int	t_elm;
+typedef int		t_elm;
 
 typedef struct s_stack {
 	t_elm	*arr;
@@ -55,6 +55,11 @@ typedef struct s_ctx {
 	size_t	rra;
 	size_t	rrb;
 }	t_ctx;
+
+typedef void	(*t_op_function)(t_ctx *);
+
+char			*op_name(t_elm op);
+t_op_function	op_func(t_elm op);
 
 size_t			n_op(t_ctx *c);
 size_t			max(size_t a, size_t b);

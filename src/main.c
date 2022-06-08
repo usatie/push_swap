@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 14:47:23 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 15:27:41 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,62 @@
 #include "ft_printf.h"
 #include "ft_error_functions.h"
 #include "push_swap.h"
+
+char	*op_name(t_elm op)
+{
+	if (op == OP_PA)
+		return ("pa");
+	else if (op == OP_PB)
+		return ("pb");
+	else if (op == OP_SA)
+		return ("sa");
+	else if (op == OP_SB)
+		return ("sb");
+	else if (op == OP_SS)
+		return ("ss");
+	else if (op == OP_RA)
+		return ("ra");
+	else if (op == OP_RB)
+		return ("rb");
+	else if (op == OP_RR)
+		return ("rr");
+	else if (op == OP_RRA)
+		return ("rra");
+	else if (op == OP_RRB)
+		return ("rrb");
+	else if (op == OP_RRR)
+		return ("rrr");
+	else
+		return ("unknown op");
+}
+
+t_op_function	op_func(t_elm op)
+{
+	if (op == OP_PA)
+		return (pa);
+	else if (op == OP_PB)
+		return (pb);
+	else if (op == OP_SA)
+		return (sa);
+	else if (op == OP_SB)
+		return (sb);
+	else if (op == OP_SS)
+		return (ss);
+	else if (op == OP_RA)
+		return (ra);
+	else if (op == OP_RB)
+		return (rb);
+	else if (op == OP_RR)
+		return (rr);
+	else if (op == OP_RRA)
+		return (rra);
+	else if (op == OP_RRB)
+		return (rrb);
+	else if (op == OP_RRR)
+		return (rrr);
+	else
+		return (NULL);
+}
 
 static int	argparse_push(const char *arg, t_ctx *c)
 {
@@ -57,58 +113,41 @@ static t_ctx	*argparse_ctx(int argc, char **argv)
 	return (c);
 }
 
+t_stack	*stack_dup(t_stack *src)
+{
+	t_stack	*dup;
+
+	dup = init_stack(src->cap);
+	if (dup == NULL)
+		return (NULL);
+	dup->len = src->len;
+	ft_memcpy(dup->arr, src->arr, sizeof(t_elm) * src->len);
+	return (dup);
+}
+
 static t_ctx	*optimize(int argc, char **argv, t_ctx *c)
 {
 	t_stack	*ops;
-	size_t	result;
 	size_t	i;
 
-	result = n_op(c);
-	ft_debug_printf("\n=====[OPTIMIZE START] (before = %d)=====\n\n", result);
+	ft_debug_printf("\n=====[OPTIMIZE START] (before = %d)=====\n\n", n_op(c));
 	while (1)
 	{
-		ops = init_stack(c->ops->len);
-		ops->len = c->ops->len;
-		ft_memcpy(ops->arr, c->ops->arr, sizeof(t_elm) * c->ops->len);
+		ops = stack_dup(c->ops);
+		if (ops == NULL)
+			return (NULL);
 		deinit_ctx(c);
 		c = argparse_ctx(argc, argv);
 		if (c == NULL)
-			err_exit("Error\n");
+			return (NULL);
 		i = 0;
 		while (i < ops->len)
-		{
-			if (ops->arr[i] == OP_PA)
-				pa(c);
-			else if (ops->arr[i] == OP_PB)
-				pb(c);
-			else if (ops->arr[i] == OP_SA)
-				sa(c);
-			else if (ops->arr[i] == OP_SB)
-				sb(c);
-			else if (ops->arr[i] == OP_SS)
-				ss(c);
-			else if (ops->arr[i] == OP_RA)
-				ra(c);
-			else if (ops->arr[i] == OP_RB)
-				rb(c);
-			else if (ops->arr[i] == OP_RR)
-				rr(c);
-			else if (ops->arr[i] == OP_RRA)
-				rra(c);
-			else if (ops->arr[i] == OP_RRB)
-				rrb(c);
-			else if (ops->arr[i] == OP_RRR)
-				rrr(c);
-			i++;
-		}
+			op_func(ops->arr[i++])(c);
 		opflush(c);
-		if (result > n_op(c))
-			result = n_op(c);
-		else
+		if (ops->len == n_op(c))
 			break ;
 	}
-	ft_debug_printf("\n=====[OPTIMIZE END] (after = %d)=====\n\n", result);
-	print_ctx(c);
+	ft_debug_printf("\n=====[OPTIMIZE END] (after = %d)=====\n\n", n_op(c));
 	return (c);
 }
 
@@ -121,28 +160,7 @@ static void	print_ops(t_ctx *c)
 	i = 0;
 	while (i < ops->len)
 	{
-		if (ops->arr[i] == OP_PA)
-			ft_printf("pa\n");
-		else if (ops->arr[i] == OP_PB)
-			ft_printf("pb\n");
-		else if (ops->arr[i] == OP_SA)
-			ft_printf("sa\n");
-		else if (ops->arr[i] == OP_SB)
-			ft_printf("sb\n");
-		else if (ops->arr[i] == OP_SS)
-			ft_printf("ss\n");
-		else if (ops->arr[i] == OP_RA)
-			ft_printf("ra\n");
-		else if (ops->arr[i] == OP_RB)
-			ft_printf("rb\n");
-		else if (ops->arr[i] == OP_RR)
-			ft_printf("rr\n");
-		else if (ops->arr[i] == OP_RRA)
-			ft_printf("rra\n");
-		else if (ops->arr[i] == OP_RRB)
-			ft_printf("rrb\n");
-		else if (ops->arr[i] == OP_RRR)
-			ft_printf("rrr\n");
+		ft_printf("%s\n", op_name(ops->arr[i]));
 		i++;
 	}
 }
