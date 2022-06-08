@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 16:34:56 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 18:33:20 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static t_ctx	*quicksort(int argc, char **argv)
 	return (c);
 }
 
-// returns result context for insert sort
-static t_ctx	*insertsort(int argc, char **argv)
+// returns result context for selection sort
+static t_ctx	*selectionsort(int argc, char **argv)
 {
 	t_ctx	*c;
 
@@ -47,8 +47,8 @@ static t_ctx	*insertsort(int argc, char **argv)
 	debug_print_ctx(c);
 	ft_debug_printf("========================\n\n");
 	if (argc >= 2)
-		insert_sort(c);
-	ft_debug_printf("\n=====[INSERT SORT RESULT] (result=%d)=====\n\n", n_op(c));
+		selection_sort(c);
+	ft_debug_printf("\n=====[SELECTION SORT RESULT] (result=%d)=====\n\n", n_op(c));
 	debug_print_ctx(c);
 	c = optimize(argc, argv, c);
 	return (c);
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 	t_ctx	*c2;
 
 	c1 = quicksort(argc, argv);
-	c2 = insertsort(argc, argv);
+	c2 = selectionsort(argc, argv);
 	if (c1 == NULL || c2 == NULL)
 	{
 		ctx_deinit(c1);
