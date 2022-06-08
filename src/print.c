@@ -6,14 +6,14 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:57:44 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 16:01:11 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 16:35:36 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 
-void	print_ctx(t_ctx *c)
+void	debug_print_ctx(t_ctx *c)
 {
 	size_t	i;
 
@@ -49,33 +49,4 @@ void	print_ops(t_ctx *c)
 		ft_printf("%s\n", op_name(ops->arr[i]));
 		i++;
 	}
-}
-
-void	dryprint(char *op, t_ctx *c)
-{
-	if (ft_strcmp(op, "pa") == 0)
-		push(c->ops, OP_PA);
-	else if (ft_strcmp(op, "pb") == 0)
-		push(c->ops, OP_PB);
-	else if (ft_strcmp(op, "sa") == 0)
-		push(c->ops, OP_SA);
-	else if (ft_strcmp(op, "sb") == 0)
-		push(c->ops, OP_SB);
-	else if (ft_strcmp(op, "ss") == 0)
-		push(c->ops, OP_SS);
-	else if (ft_strcmp(op, "ra") == 0)
-		push(c->ops, OP_RA);
-	else if (ft_strcmp(op, "rb") == 0)
-		push(c->ops, OP_RB);
-	else if (ft_strcmp(op, "rr") == 0)
-		push(c->ops, OP_RR);
-	else if (ft_strcmp(op, "rra") == 0)
-		push(c->ops, OP_RRA);
-	else if (ft_strcmp(op, "rrb") == 0)
-		push(c->ops, OP_RRB);
-	else if (ft_strcmp(op, "rrr") == 0)
-		push(c->ops, OP_RRR);
-	else
-		ft_debug_printf("Unexpected Op: %s\n", op);
-	ft_debug_printf("%s\n", op);
 }

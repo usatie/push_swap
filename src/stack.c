@@ -6,14 +6,14 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:26:30 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 16:02:49 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 17:04:13 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "push_swap.h"
 
-t_stack	*init_stack(size_t cap)
+t_stack	*stack_init(size_t cap)
 {
 	t_stack	*s;
 
@@ -28,13 +28,14 @@ t_stack	*init_stack(size_t cap)
 	return (s);
 }
 
-void	deinit_stack(t_stack *s)
+void	stack_deinit(t_stack *s)
 {
 	if (s)
 		free(s->arr);
+	free(s);
 }
 
-BOOL	contains(t_elm e, t_stack *s)
+BOOL	stack_contains(t_elm e, t_stack *s)
 {
 	size_t	i;
 
@@ -52,7 +53,7 @@ t_stack	*stack_dup(t_stack *src)
 {
 	t_stack	*dup;
 
-	dup = init_stack(src->cap);
+	dup = stack_init(src->cap);
 	if (dup == NULL)
 		return (NULL);
 	dup->len = src->len;

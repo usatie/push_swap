@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 16:10:58 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 17:04:12 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,16 @@ t_elm			get_elm(size_t i, t_ctx *c);
 t_elm			top_a(t_ctx *c);
 t_elm			top_b(t_ctx *c);
 
-t_elm			min_p(t_ctx *c);
-t_elm			min_a(t_ctx *c);
-t_elm			min_b(t_ctx *c);
-
-t_elm			max_p(t_ctx *c);
-t_elm			max_a(t_ctx *c);
-t_elm			max_b(t_ctx *c);
-
 // stack.c
-t_stack			*init_stack(size_t cap);
-void			deinit_stack(t_stack *s);
-BOOL			contains(t_elm e, t_stack *s);
+t_stack			*stack_init(size_t cap);
+void			stack_deinit(t_stack *s);
+BOOL			stack_contains(t_elm e, t_stack *s);
 t_stack			*stack_dup(t_stack *src);
 
-// stack_pair.c
-t_ctx			*init_ctx(size_t cap);
-void			deinit_ctx(t_ctx *m);
+// ctx.c
+t_ctx			*ctx_init(size_t cap);
+void			ctx_deinit(t_ctx *c);
+void			ctx_append(t_elm op, t_ctx *c);
 
 // argparse.c
 t_ctx			*argparse_ctx(int argc, char **argv);
@@ -98,9 +91,8 @@ t_ctx			*argparse_ctx(int argc, char **argv);
 t_ctx			*optimize(int argc, char **argv, t_ctx *c);
 
 // print.c
-void			print_ctx(t_ctx *m);
+void			debug_print_ctx(t_ctx *m);
 void			print_ops(t_ctx *c);
-void			dryprint(char *op, t_ctx *c);
 
 // op_basic.c
 // Returns 0 on success, -1 on error
@@ -110,6 +102,7 @@ void			push(t_stack *s, t_elm e);
 void			rotate(t_stack *s);
 void			reverse_rotate(t_stack *s);
 
+// opflush.c
 void			opflush(t_ctx *c);
 void			opflush_r(t_ctx *c);
 void			opflush_rr(t_ctx *c);

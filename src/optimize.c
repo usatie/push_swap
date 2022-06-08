@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:10:06 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 16:10:34 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 16:19:53 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_ctx	*optimize(int argc, char **argv, t_ctx *c)
 		ops = stack_dup(c->ops);
 		if (ops == NULL)
 			return (NULL);
-		deinit_ctx(c);
+		ctx_deinit(c);
 		c = argparse_ctx(argc, argv);
 		if (c == NULL)
 			return (NULL);

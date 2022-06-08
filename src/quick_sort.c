@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/07 16:50:28 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 16:34:53 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 		pa(c);
 	ft_debug_printf("[filter_a2b a to b]\n");
 	filter_a2b(c, high, partition);
-	print_ctx(c);
+	debug_print_ctx(c);
 	return (len_b(c) - 1);
 }
 
@@ -91,7 +91,7 @@ void	quick_sort(t_ctx *c, size_t low, size_t high)
 				quick_sort(c, low, pi - 1);
 			quick_sort(c, pi + 1, high);
 		}
-		print_ctx(c);
+		debug_print_ctx(c);
 	}
 	if (low == 0 && high == len_p(c) - 1)
 	{
