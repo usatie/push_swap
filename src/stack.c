@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:26:30 by susami            #+#    #+#             */
-/*   Updated: 2022/05/30 21:38:49 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 16:02:49 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,16 @@ BOOL	contains(t_elm e, t_stack *s)
 		i++;
 	}
 	return (FALSE);
+}
+
+t_stack	*stack_dup(t_stack *src)
+{
+	t_stack	*dup;
+
+	dup = init_stack(src->cap);
+	if (dup == NULL)
+		return (NULL);
+	dup->len = src->len;
+	ft_memcpy(dup->arr, src->arr, sizeof(t_elm) * src->len);
+	return (dup);
 }

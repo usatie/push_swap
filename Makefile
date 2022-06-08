@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/07 18:15:13 by susami           ###   ########.fr        #
+#    Updated: 2022/06/08 16:13:00 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,16 +19,20 @@ OUTDIR		=	objs
 SRCS		=	src/main.c				\
 				src/stack.c				\
 				src/ctx.c				\
+				src/op.c				\
 				src/op_basic.c			\
 				src/op_s.c				\
 				src/op_p.c				\
 				src/op_r.c				\
 				src/op_rr.c				\
-				src/utility.c			\
-				src/utility2.c			\
 				src/opflush.c			\
 				src/insert_sort.c		\
 				src/quick_sort.c		\
+				src/optimize.c			\
+				src/utility.c			\
+				src/utility2.c			\
+				src/argparse.c			\
+				src/print.c				\
 
 OBJS		=	$(SRCS:%.c=$(OUTDIR)/%.o)
 

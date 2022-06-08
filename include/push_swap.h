@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 15:12:31 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/08 16:10:58 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,21 @@ t_elm			max_b(t_ctx *c);
 t_stack			*init_stack(size_t cap);
 void			deinit_stack(t_stack *s);
 BOOL			contains(t_elm e, t_stack *s);
+t_stack			*stack_dup(t_stack *src);
 
 // stack_pair.c
 t_ctx			*init_ctx(size_t cap);
 void			deinit_ctx(t_ctx *m);
+
+// argparse.c
+t_ctx			*argparse_ctx(int argc, char **argv);
+
+// optimize.c
+t_ctx			*optimize(int argc, char **argv, t_ctx *c);
+
+// print.c
 void			print_ctx(t_ctx *m);
+void			print_ops(t_ctx *c);
 void			dryprint(char *op, t_ctx *c);
 
 // op_basic.c
