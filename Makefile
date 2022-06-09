@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/09 16:42:39 by susami           ###   ########.fr        #
+#    Updated: 2022/06/09 18:38:33 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,29 +17,29 @@ CFLAGS		=	-Wall -Wextra -Werror -I include
 
 OUTDIR		=	objs
 SRCS		=	src/main.c				\
-				src/stack.c				\
-				src/ctx.c				\
-				src/op.c				\
-				src/op_basic.c			\
-				src/op_s.c				\
-				src/op_p.c				\
-				src/op_r.c				\
-				src/op_rr.c				\
-				src/opflush.c			\
-				src/selection_sort.c	\
-				src/quick_sort.c		\
-				src/insert_sort.c		\
-				src/optimize.c			\
-				src/utility.c			\
-				src/utility2.c			\
-				src/argparse.c			\
-				src/print.c				\
-				src/optimize_s.c		\
-				src/optimize_p.c		\
-				src/optimize_r.c		\
-				src/optimize_rr.c		\
-				src/simplify.c			\
-				src/radix_sort.c		\
+				src/model/stack.c				\
+				src/model/ctx.c				\
+				src/operation/op.c				\
+				src/operation/op_basic.c			\
+				src/operation/op_s.c				\
+				src/operation/op_p.c				\
+				src/operation/op_r.c				\
+				src/operation/op_rr.c				\
+				src/operation/opflush.c			\
+				src/operation/optimize.c			\
+				src/operation/optimize_s.c		\
+				src/operation/optimize_p.c		\
+				src/operation/optimize_r.c		\
+				src/operation/optimize_rr.c		\
+				src/utility/utility.c			\
+				src/utility/utility2.c			\
+				src/utility/argparse.c			\
+				src/utility/print.c				\
+				src/utility/simplify.c			\
+				src/sort/selection_sort.c	\
+				src/sort/quick_sort.c		\
+				src/sort/insert_sort.c		\
+				src/sort/radix_sort.c		\
 
 OBJS		=	$(SRCS:%.c=$(OUTDIR)/%.o)
 

@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 18:27:12 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 18:49:54 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,25 @@ void	ctx_append(t_elm op, t_ctx *c)
 	debug_print_ctx(c);
 }
 
-void	ctx_deinit_n(t_ctx **c, size_t n)
+void	ctx_deinit_all(t_ctx **c, size_t n)
 {
-	while (--n > 0)
+	while (n-- > 0)
 		ctx_deinit(c[n]);
 }
 
 void	ctx_print_best(t_ctx **c, size_t n)
 {
 	size_t	best;
+	size_t	best_i;
 
-	best = min(min(n_op(c[0]), n_op(c[1])), min(n_op(c[2]), n_op(c[3])));
-	if (best == n_op(c[0]))
-		print_ops(c[0]);
-	else if (best == n_op(c[1]))
-		print_ops(c[1]);
-	else if (best == n_op(c[2]))
-		print_ops(c[2]);
-	else if (best == n_op(c[3]))
-		print_ops(c[3]);
+	best = -1;
+	while (n-- > 0)
+	{
+		if (best > n_op(c[n]))
+		{
+			best = n_op(c[n]);
+			best_i = n;
+		}
+	}
+	print_ops(c[best_i]);
 }
