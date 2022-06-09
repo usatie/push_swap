@@ -6,14 +6,14 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 16:10:46 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 19:17:24 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 
-#define SEL_THRESH 30
+#define SEL_THRESH 15
 // a: [100,99,98,10] [5,9,4,7,8,6] [3,2,1] :b
 // b: [1,2,3] [6,8,7,4,9,4] [10,98,99,100] :a
 
@@ -45,41 +45,11 @@ static void	filter_a2b(t_ctx *c, size_t high, t_elm partition)
 	}
 }
 
-static t_elm	get_partition(t_ctx *c, size_t low, size_t high)
-{
-	size_t	i;
-	size_t	mi;
-	size_t	n;
-	t_elm	m;
-	t_elm	last_m;
-
-	n = 0;
-	i = low;
-	m = get_elm(i, c);
-	last_m = get_elm(i, c);
-	while (n < SEL_THRESH - 1 && i <= high)
-	{
-		while (i <= high)
-		{
-			if (m < get_elm(i, c) && m > last_m)
-			{
-				m = get_elm(i, c);
-				mi = i;
-			}
-			i++;
-		}
-		last_m = m;
-		n++;
-	}
-	return (last_m);
-}
-
 static size_t	partition(t_ctx *c, size_t low, size_t high)
 {
 	t_elm	partition;
 
-	//partition = get_elm((low + high) / 2, c);
-	partition = get_partition(c, low, high);
+	partition = (low + high) / 2;
 	ft_debug_printf("[partition(%d, %d): partitoin=%d]\n", low, high, partition);
 	ft_debug_printf("[partition b to a]\n");
 	while (len_b(c) > 0)
