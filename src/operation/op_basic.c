@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:52:07 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 15:02:43 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 21:33:21 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	push(t_stack *s, t_elm e)
 {
-	if (s->cap == 0 || s->arr == NULL)
+	if (s->arr == NULL)
 	{
 		s->cap = 256;
 		s->arr = malloc(sizeof(t_elm) * s->cap);
@@ -24,6 +24,8 @@ void	push(t_stack *s, t_elm e)
 	if (s->len == s->cap)
 	{
 		s->cap *= 2;
+		if (s->cap == 0)
+			s->cap = 256;
 		s->arr = reallocf(s->arr, sizeof(t_elm) * s->cap);
 	}
 	s->arr[s->len] = e;

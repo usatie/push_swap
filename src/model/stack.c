@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:26:30 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 17:04:13 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 21:24:11 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,20 @@ t_stack	*stack_init(size_t cap)
 	s->cap = cap;
 	s->arr = ft_calloc(sizeof(t_elm), cap);
 	if (s->arr == NULL)
+	{
+		stack_deinit(s);
 		return (NULL);
+	}
 	return (s);
 }
 
 void	stack_deinit(t_stack *s)
 {
 	if (s)
+	{
 		free(s->arr);
-	free(s);
+		free(s);
+	}
 }
 
 BOOL	stack_contains(t_elm e, t_stack *s)

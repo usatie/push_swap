@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/09 18:38:33 by susami           ###   ########.fr        #
+#    Updated: 2022/06/09 21:39:05 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,5 +80,5 @@ test: $(TEST_OBJS) $(LIB)
 	./test.sh
 
 norm:
-	norminette src/*.c | grep Error
-	norminette include/*.c | grep Error
+	norminette src | grep Error
+	norminette include | grep Error

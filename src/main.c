@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 18:51:41 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 21:36:01 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,18 +96,21 @@ static t_ctx	*_radixsort(int argc, char **argv)
 /*
 int	main(int argc, char **argv)
 {
-	t_ctx	*c1;
+	t_ctx	*c;
 
 	(void)selectionsort;
 	(void)insertsort;
 	(void)quicksort;
-	c1 = _radixsort(argc, argv);
-	print_ops(c1);
-	ctx_deinit(c1);
+	(void)_radixsort;
+	c = _radixsort(argc, argv);
+	if (c == NULL)
+		return (EXIT_FAILURE);
+	print_ops(c);
+	ctx_deinit(c);
 	return (EXIT_SUCCESS);
 }
-*/
 
+*/
 int	main(int argc, char **argv)
 {
 	t_ctx	*c[NUM_SORT_METHOD];
@@ -127,3 +130,12 @@ int	main(int argc, char **argv)
 	ctx_deinit_all(c, NUM_SORT_METHOD);
 	return (EXIT_SUCCESS);
 }
+
+/*
+static void	destructor(void) __attribute__((destructor));
+
+static void	destructor(void)
+{
+	system("leaks -q push_swap");
+}
+*/
