@@ -6,13 +6,15 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:08:00 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 17:04:35 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 16:34:37 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <errno.h>
 #include "push_swap.h"
+
+int	simplify(t_stack *s);
 
 static int	argparse_push(const char *arg, t_ctx *c)
 {
@@ -46,5 +48,6 @@ t_ctx	*argparse_ctx(int argc, char **argv)
 			return (NULL);
 		}
 	}
+	simplify(c->a);
 	return (c);
 }
