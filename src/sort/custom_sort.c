@@ -6,14 +6,14 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:40:34 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 00:12:33 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 00:29:43 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 
-#define INS_THRESH 25
+#define INS_THRESH 30
 
 static void	filter_a2b(t_ctx *c, size_t low, size_t high, t_elm partition)
 {
@@ -37,7 +37,7 @@ static void	filter_a2b(t_ctx *c, size_t low, size_t high, t_elm partition)
 		}
 	}
 	rrb(c);
-	while (num_gt_partition > 0)
+	while (low != 0 && num_gt_partition > 0)
 	{
 		rra(c);
 		num_gt_partition--;
