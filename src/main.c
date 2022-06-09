@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 21:36:01 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 23:06:48 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,26 @@ static t_ctx	*_radixsort(int argc, char **argv)
 	return (c);
 }
 
-/*
+void	custom_sort(t_ctx *c, size_t low, size_t high);
+
+static t_ctx	*customsort(int argc, char **argv)
+{
+	t_ctx	*c;
+
+	c = argparse_ctx(argc, argv);
+	if (c == NULL)
+		return (NULL);
+	ft_debug_printf("\n=====[CUSTOM SORT]=====\n");
+	debug_print_ctx(c);
+	ft_debug_printf("========================\n\n");
+	if (argc >= 2)
+		custom_sort(c, 0, argc - 2);
+	ft_debug_printf("\n=====[CUSTOM SORT] (result=%d)=====\n\n", n_op(c));
+	debug_print_ctx(c);
+	c = optimize(argc, argv, c);
+	return (c);
+}
+
 int	main(int argc, char **argv)
 {
 	t_ctx	*c;
@@ -102,19 +121,24 @@ int	main(int argc, char **argv)
 	(void)insertsort;
 	(void)quicksort;
 	(void)_radixsort;
-	c = _radixsort(argc, argv);
+	(void)customsort;
+	c = customsort(argc, argv);
+	//c = quicksort(argc, argv);
 	if (c == NULL)
 		return (EXIT_FAILURE);
 	print_ops(c);
 	ctx_deinit(c);
 	return (EXIT_SUCCESS);
 }
-
+/*
 */
+
+/*
 int	main(int argc, char **argv)
 {
 	t_ctx	*c[NUM_SORT_METHOD];
 
+	(void)customsort;
 	c[0] = quicksort(argc, argv);
 	c[1] = selectionsort(argc, argv);
 	c[2] = insertsort(argc, argv);
@@ -131,7 +155,6 @@ int	main(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
-/*
 static void	destructor(void) __attribute__((destructor));
 
 static void	destructor(void)

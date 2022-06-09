@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/09 21:39:05 by susami           ###   ########.fr        #
+#    Updated: 2022/06/09 21:45:38 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS		=	src/main.c				\
 				src/sort/quick_sort.c		\
 				src/sort/insert_sort.c		\
 				src/sort/radix_sort.c		\
+				src/sort/custom_sort.c		\
 
 OBJS		=	$(SRCS:%.c=$(OUTDIR)/%.o)
 

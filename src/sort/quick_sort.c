@@ -6,14 +6,14 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 19:17:24 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 22:34:42 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 
-#define SEL_THRESH 15
+#define SEL_THRESH 0
 // a: [100,99,98,10] [5,9,4,7,8,6] [3,2,1] :b
 // b: [1,2,3] [6,8,7,4,9,4] [10,98,99,100] :a
 
@@ -211,6 +211,7 @@ void	quick_sort(t_ctx *c, size_t low, size_t high)
 	ft_debug_printf("[quick_sort(%d, %d)]\n", low, high);
 	if (low < high)
 	{
+		/*
 		if (high - low == 1)
 			rule_sort(c, low, high);
 		else if (high < 3 || len_p(c) - 3 < low)
@@ -225,6 +226,15 @@ void	quick_sort(t_ctx *c, size_t low, size_t high)
 				quick_sort(c, low, pi - 1);
 			quick_sort(c, pi + 1, high);
 		}
+		*/
+		(void)mini_selection_sort;
+		pi = partition(c, low, high);
+		ft_debug_printf("[pi = %d]\n", pi);
+		if (low + 1 < pi)
+			quick_sort(c, low, pi - 1);
+		quick_sort(c, pi + 1, high);
+		/*
+		*/
 		debug_print_ctx(c);
 	}
 	if (low == 0 && high == len_p(c) - 1)
