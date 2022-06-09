@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 14:48:16 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 18:27:54 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ t_stack			*stack_dup(t_stack *src);
 t_ctx			*ctx_init(size_t cap);
 void			ctx_deinit(t_ctx *c);
 void			ctx_append(t_elm op, t_ctx *c);
+void			ctx_deinit_n(t_ctx **c, size_t n);
+void			ctx_print_best(t_ctx **c, size_t n);
 
 // argparse.c
 t_ctx			*argparse_ctx(int argc, char **argv);
@@ -140,4 +142,5 @@ void			optimize_rrr(t_ctx *c);
 void			selection_sort(t_ctx *c);
 void			quick_sort(t_ctx *c, size_t low, size_t high);
 void			insert_sort(t_ctx *c);
+void			radix_sort(t_ctx *c);
 #endif
