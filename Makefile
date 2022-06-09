@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/09 16:33:29 by susami           ###   ########.fr        #
+#    Updated: 2022/06/09 16:42:39 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS		=	src/main.c				\
 				src/optimize_r.c		\
 				src/optimize_rr.c		\
 				src/simplify.c			\
+				src/radix_sort.c		\
 
 OBJS		=	$(SRCS:%.c=$(OUTDIR)/%.o)
 

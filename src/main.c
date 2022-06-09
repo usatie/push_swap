@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 16:34:13 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 16:48:10 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "ft_printf.h"
 #include "ft_error_functions.h"
 #include "push_swap.h"
+
+void	radix_sort(t_ctx *c);
 
 // returns result context for quick sort
 static t_ctx	*quicksort(int argc, char **argv)
@@ -73,19 +75,38 @@ static t_ctx	*insertsort(int argc, char **argv)
 	return (c);
 }
 
-/*
+// returns result context for radix sort
+static t_ctx	*_radixsort(int argc, char **argv)
+{
+	t_ctx	*c;
+
+	c = argparse_ctx(argc, argv);
+	if (c == NULL)
+		return (NULL);
+	ft_debug_printf("\n=====RADIX SORT=====\n");
+	debug_print_ctx(c);
+	ft_debug_printf("========================\n\n");
+	if (argc >= 2)
+		radix_sort(c);
+	ft_debug_printf("\n=====[RADIX SORT RESULT] (result=%d)=====\n\n", n_op(c));
+	debug_print_ctx(c);
+	c = optimize(argc, argv, c);
+	return (c);
+}
+
 int	main(int argc, char **argv)
 {
 	t_ctx	*c1;
 
 	(void)selectionsort;
 	(void)insertsort;
-	c1 = quicksort(argc, argv);
+	(void)quicksort;
+	c1 = _radixsort(argc, argv);
 	print_ops(c1);
 	ctx_deinit(c1);
 	return (EXIT_SUCCESS);
 }
-*/
+/*
 int	main(int argc, char **argv)
 {
 	t_ctx	*c1;
@@ -114,3 +135,4 @@ int	main(int argc, char **argv)
 	ctx_deinit(c3);
 	return (EXIT_SUCCESS);
 }
+*/
