@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 02:16:49 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 16:10:46 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	filter_a2b(t_ctx *c, size_t high, t_elm partition)
 	}
 }
 
-
 static t_elm	get_partition(t_ctx *c, size_t low, size_t high)
 {
 	size_t	i;
@@ -53,11 +52,12 @@ static t_elm	get_partition(t_ctx *c, size_t low, size_t high)
 	size_t	n;
 	t_elm	m;
 	t_elm	last_m;
+
 	n = 0;
 	i = low;
 	m = get_elm(i, c);
 	last_m = get_elm(i, c);
-	while (n < SEL_THRESH - 1 && i<= high)
+	while (n < SEL_THRESH - 1 && i <= high)
 	{
 		while (i <= high)
 		{
@@ -110,7 +110,7 @@ void	rule_sort(t_ctx *c, size_t low, size_t high)
 			pb(c);
 		while (len_a(c) < 3)
 			pa(c);
-		t_elm l, m, r;
+		t_elm	l, m, r;
 		l = get_elm(len_p(c) - 1, c);
 		m = get_elm(len_p(c) - 2, c);
 		r = get_elm(len_p(c) - 3, c);

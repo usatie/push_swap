@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:52:07 by susami            #+#    #+#             */
-/*   Updated: 2022/06/06 16:09:29 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 15:02:43 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ void	push(t_stack *s, t_elm e)
 	s->len += 1;
 }
 
-// s->len must be checked before call. The len must be >= 2.
 void	swap(t_stack *s)
 {
 	t_elm	e;
 
+	if (s->len < 2)
+		return ;
 	e = s->arr[s->len - 1];
 	s->arr[s->len - 1] = s->arr[s->len - 2];
 	s->arr[s->len - 2] = e;

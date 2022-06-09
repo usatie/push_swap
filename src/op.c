@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:47:05 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 15:57:28 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 14:45:27 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,27 @@ char	*op_name(t_elm op)
 t_op_function	op_func(t_elm op)
 {
 	if (op == OP_PA)
-		return (pa);
+		return (optimize_pa);
 	else if (op == OP_PB)
-		return (pb);
+		return (optimize_pb);
 	else if (op == OP_SA)
-		return (sa);
+		return (optimize_sa);
 	else if (op == OP_SB)
-		return (sb);
+		return (optimize_sb);
 	else if (op == OP_SS)
-		return (ss);
+		return (optimize_ss);
 	else if (op == OP_RA)
-		return (ra);
+		return (optimize_ra);
 	else if (op == OP_RB)
-		return (rb);
+		return (optimize_rb);
 	else if (op == OP_RR)
-		return (rr);
+		return (optimize_rr);
 	else if (op == OP_RRA)
-		return (rra);
+		return (optimize_rra);
 	else if (op == OP_RRB)
-		return (rrb);
+		return (optimize_rrb);
 	else if (op == OP_RRR)
-		return (rrr);
+		return (optimize_rrr);
 	else
 		return (NULL);
 }

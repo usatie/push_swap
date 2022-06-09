@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 23:31:49 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 22:45:54 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 15:58:09 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,10 @@ t_elm	get_elm(size_t i, t_ctx *c)
 	t_elm	*arr;
 
 	if (i < c->b->len)
-	{
-		if (c->sb && i == c->b->len - 1)
-			i = c->b->len - 2;
-		else if (c->sb && i == c->b->len - 2)
-			i = c->b->len - 1;
-		i = (i - c->rb + c->rrb + c->b->len) % c->b->len;
 		arr = c->b->arr;
-	}
 	else
 	{
-		i = (c->a->len - 1) - (i - c->b->len);
-		if (c->sa > 0 && i == c->a->len - 1)
-			i = c->a->len - 2;
-		else if (c->sa > 0 && i == c->a->len - 2)
-			i = c->a->len - 1;
-		i = (i - c->ra + c->rra + c->a->len) % c->a->len;
+		i = len_p(c) - 1 - i;
 		arr = c->a->arr;
 	}
 	return (arr[i]);

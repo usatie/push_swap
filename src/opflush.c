@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:00:43 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 16:47:28 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 16:07:01 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ void	opflush_p(t_ctx *c)
 {
 	while (c->pa > 0)
 	{
-		push(c->a, pop(c->b));
 		c->pa--;
-		ctx_append(OP_PA, c);
+		pa(c);
 	}
 	while (c->pb > 0)
 	{
-		push(c->b, pop(c->a));
 		c->pb--;
-		ctx_append(OP_PB, c);
+		pb(c);
 	}
 }
 
@@ -43,23 +41,19 @@ void	opflush_r(t_ctx *c)
 {
 	while (c->ra > 0 && c->rb > 0)
 	{
-		rotate(c->a);
-		rotate(c->b);
 		c->ra--;
 		c->rb--;
-		ctx_append(OP_RR, c);
+		rr(c);
 	}
 	while (c->ra > 0)
 	{
-		rotate(c->a);
 		c->ra--;
-		ctx_append(OP_RA, c);
+		ra(c);
 	}
 	while (c->rb > 0)
 	{
-		rotate(c->b);
 		c->rb--;
-		ctx_append(OP_RB, c);
+		rb(c);
 	}
 }
 
@@ -68,23 +62,19 @@ void	opflush_rr(t_ctx *c)
 {
 	while (c->rra > 0 && c->rrb > 0)
 	{
-		reverse_rotate(c->a);
-		reverse_rotate(c->b);
 		c->rra--;
 		c->rrb--;
-		ctx_append(OP_RRR, c);
+		rrr(c);
 	}
 	while (c->rra > 0)
 	{
-		reverse_rotate(c->a);
 		c->rra--;
-		ctx_append(OP_RRA, c);
+		rra(c);
 	}
 	while (c->rrb > 0)
 	{
-		reverse_rotate(c->b);
 		c->rrb--;
-		ctx_append(OP_RRB, c);
+		rrb(c);
 	}
 }
 
@@ -93,22 +83,18 @@ void	opflush_s(t_ctx *c)
 {
 	while (c->sa > 0 && c->sb > 0)
 	{
-		swap(c->a);
-		swap(c->b);
 		c->sa--;
 		c->sb--;
-		ctx_append(OP_SS, c);
+		ss(c);
 	}
 	while (c->sa > 0)
 	{
-		swap(c->a);
 		c->sa--;
-		ctx_append(OP_SA, c);
+		sa(c);
 	}
 	while (c->sb > 0)
 	{
-		swap(c->b);
 		c->sb--;
-		ctx_append(OP_SB, c);
+		sb(c);
 	}
 }

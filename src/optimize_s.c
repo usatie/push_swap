@@ -1,32 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_r.c                                             :+:      :+:    :+:   */
+/*   optimize_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/30 23:38:07 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 16:05:53 by susami           ###   ########.fr       */
+/*   Created: 2022/06/09 16:04:21 by susami            #+#    #+#             */
+/*   Updated: 2022/06/09 16:04:29 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_ctx *c)
+void	optimize_sa(t_ctx *c)
 {
-	rotate(c->a);
-	ctx_append(OP_RA, c);
+	if (len_a(c) < 3)
+		optimize_ra(c);
+	else
+	{
+		opflush_r(c);
+		opflush_rr(c);
+		opflush_p(c);
+		c->sa++;
+		c->sa %= 2;
+	}
 }
 
-void	rb(t_ctx *c)
+void	optimize_sb(t_ctx *c)
 {
-	rotate(c->b);
-	ctx_append(OP_RB, c);
+	if (len_b(c) < 3)
+		optimize_rb(c);
+	else
+	{
+		opflush_r(c);
+		opflush_rr(c);
+		opflush_p(c);
+		c->sb++;
+		c->sb %= 2;
+	}
 }
 
-void	rr(t_ctx *c)
+void	optimize_ss(t_ctx *c)
 {
-	rotate(c->a);
-	rotate(c->b);
-	ctx_append(OP_RR, c);
+	optimize_sa(c);
+	optimize_sb(c);
 }

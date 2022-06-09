@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/08 19:09:48 by susami           ###   ########.fr        #
+#    Updated: 2022/06/09 16:08:17 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,10 @@ SRCS		=	src/main.c				\
 				src/utility2.c			\
 				src/argparse.c			\
 				src/print.c				\
+				src/optimize_s.c		\
+				src/optimize_p.c		\
+				src/optimize_r.c		\
+				src/optimize_rr.c		\
 
 OBJS		=	$(SRCS:%.c=$(OUTDIR)/%.o)
 

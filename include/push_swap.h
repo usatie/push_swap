@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 19:07:51 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/09 14:48:16 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,6 @@ void			ctx_append(t_elm op, t_ctx *c);
 // argparse.c
 t_ctx			*argparse_ctx(int argc, char **argv);
 
-// optimize.c
-t_ctx			*optimize(int argc, char **argv, t_ctx *c);
-
 // print.c
 void			debug_print_ctx(t_ctx *m);
 void			print_ops(t_ctx *c);
@@ -102,6 +99,25 @@ void			push(t_stack *s, t_elm e);
 void			rotate(t_stack *s);
 void			reverse_rotate(t_stack *s);
 
+// op_s.c
+// op_p.c
+// op_r.c
+// op_rr.c
+void			sa(t_ctx *c);
+void			sb(t_ctx *c);
+void			ss(t_ctx *c);
+void			pa(t_ctx *c);
+void			pb(t_ctx *c);
+void			ra(t_ctx *c);
+void			rb(t_ctx *c);
+void			rr(t_ctx *c);
+void			rra(t_ctx *c);
+void			rrb(t_ctx *c);
+void			rrr(t_ctx *c);
+
+// optimize.c
+t_ctx			*optimize(int argc, char **argv, t_ctx *c);
+
 // opflush.c
 void			opflush(t_ctx *c);
 void			opflush_r(t_ctx *c);
@@ -109,24 +125,17 @@ void			opflush_rr(t_ctx *c);
 void			opflush_p(t_ctx *c);
 void			opflush_s(t_ctx *c);
 
-// op_s.c
-void			sa(t_ctx *c);
-void			sb(t_ctx *c);
-void			ss(t_ctx *c);
-
-// op_p.c
-void			pa(t_ctx *c);
-void			pb(t_ctx *c);
-
-// op_r.c
-void			ra(t_ctx *c);
-void			rb(t_ctx *c);
-void			rr(t_ctx *c);
-
-// op_rr.c
-void			rra(t_ctx *c);
-void			rrb(t_ctx *c);
-void			rrr(t_ctx *c);
+void			optimize_sa(t_ctx *c);
+void			optimize_sb(t_ctx *c);
+void			optimize_ss(t_ctx *c);
+void			optimize_pa(t_ctx *c);
+void			optimize_pb(t_ctx *c);
+void			optimize_ra(t_ctx *c);
+void			optimize_rb(t_ctx *c);
+void			optimize_rr(t_ctx *c);
+void			optimize_rra(t_ctx *c);
+void			optimize_rrb(t_ctx *c);
+void			optimize_rrr(t_ctx *c);
 
 void			selection_sort(t_ctx *c);
 void			quick_sort(t_ctx *c, size_t low, size_t high);
