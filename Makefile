@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/09 21:45:38 by susami           ###   ########.fr        #
+#    Updated: 2022/06/10 16:13:53 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ CFLAGS		=	-Wall -Wextra -Werror -I include
 OUTDIR		=	objs
 SRCS		=	src/main.c				\
 				src/model/stack.c				\
+				src/model/stack_op.c				\
 				src/model/ctx.c				\
 				src/operation/op.c				\
-				src/operation/op_basic.c			\
 				src/operation/op_s.c				\
 				src/operation/op_p.c				\
 				src/operation/op_r.c				\
