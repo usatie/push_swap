@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 16:58:59 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 17:13:55 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,12 @@ t_elm			top_b(t_ctx *c);
 
 // utility/*.c
 t_ctx			*argparse_ctx(int argc, char **argv);
+t_ctx			*quicksort(int argc, char **argv);
+t_ctx			*selectionsort(int argc, char **argv);
+t_ctx			*insertsort(int argc, char **argv);
+t_ctx			*_radixsort(int argc, char **argv);
+t_ctx			*customsort(int argc, char **argv);
+
 int				simplify(t_stack *s);
 
 // op/*.c
