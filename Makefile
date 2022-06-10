@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/10 16:13:53 by susami           ###   ########.fr        #
+#    Updated: 2022/06/10 16:20:34 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,17 +20,17 @@ SRCS		=	src/main.c				\
 				src/model/stack.c				\
 				src/model/stack_op.c				\
 				src/model/ctx.c				\
-				src/operation/op.c				\
-				src/operation/op_s.c				\
-				src/operation/op_p.c				\
-				src/operation/op_r.c				\
-				src/operation/op_rr.c				\
-				src/operation/opflush.c			\
-				src/operation/optimize.c			\
-				src/operation/optimize_s.c		\
-				src/operation/optimize_p.c		\
-				src/operation/optimize_r.c		\
-				src/operation/optimize_rr.c		\
+				src/op/op.c				\
+				src/op/op_s.c				\
+				src/op/op_p.c				\
+				src/op/op_r.c				\
+				src/op/op_rr.c				\
+				src/optimizer/opflush.c			\
+				src/optimizer/optimize.c			\
+				src/optimizer/optimize_s.c		\
+				src/optimizer/optimize_p.c		\
+				src/optimizer/optimize_r.c		\
+				src/optimizer/optimize_rr.c		\
 				src/utility/utility.c			\
 				src/utility/utility2.c			\
 				src/utility/argparse.c			\
