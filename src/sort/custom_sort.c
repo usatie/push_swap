@@ -6,14 +6,14 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:40:34 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 22:02:41 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 22:29:03 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 
-#define INS_THRESH 30
+#define SEL_THRESHOLD 30
 
 static void	filter_a2b(t_ctx *c, size_t low, size_t high, t_elm partition)
 {
@@ -60,9 +60,9 @@ static size_t	partition(t_ctx *c, size_t low, size_t high)
 	return (partition);
 }
 
-static void	insert(t_ctx *c, size_t low, size_t high)
+static void	selection(t_ctx *c, size_t low, size_t high)
 {
-	ft_debug_printf("[insert(%d, %d)] start\n", low, high);
+	ft_debug_printf("[selection(%d, %d)] start\n", low, high);
 	while (len_b(c) > 0)
 		pa(c);
 	while (top_a(c) < (t_elm)low)
@@ -83,7 +83,7 @@ static void	insert(t_ctx *c, size_t low, size_t high)
 		else
 			pb(c);
 	}
-	ft_debug_printf("[insert] end\n");
+	ft_debug_printf("[selection] end\n");
 }
 
 void	custom_sort(t_ctx *c, size_t low, size_t high)
@@ -92,8 +92,8 @@ void	custom_sort(t_ctx *c, size_t low, size_t high)
 
 	if (len_p(c) <= 6)
 		small_sort(c);
-	else if (high < low + INS_THRESH)
-		insert(c, low, high);
+	else if (high < low + SEL_THRESHOLD)
+		selection(c, low, high);
 	else if (high > low)
 	{
 		pi = partition(c, low, high);
