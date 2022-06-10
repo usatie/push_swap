@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/10 16:20:34 by susami           ###   ########.fr        #
+#    Updated: 2022/06/10 16:57:42 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,10 @@ SRCS		=	src/main.c				\
 				src/model/stack.c				\
 				src/model/stack_op.c				\
 				src/model/ctx.c				\
+				src/model/ctx_len.c				\
+				src/model/ctx_get.c				\
+				src/model/ctx_op.c				\
+				src/model/ctx_print.c				\
 				src/op/op.c				\
 				src/op/op_s.c				\
 				src/op/op_p.c				\
@@ -32,9 +36,7 @@ SRCS		=	src/main.c				\
 				src/optimizer/optimize_r.c		\
 				src/optimizer/optimize_rr.c		\
 				src/utility/utility.c			\
-				src/utility/utility2.c			\
 				src/utility/argparse.c			\
-				src/utility/print.c				\
 				src/utility/simplify.c			\
 				src/sort/selection_sort.c	\
 				src/sort/quick_sort.c		\

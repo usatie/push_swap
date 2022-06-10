@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ctx_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 15:57:44 by susami            #+#    #+#             */
-/*   Updated: 2022/06/08 16:35:36 by susami           ###   ########.fr       */
+/*   Created: 2022/06/10 16:48:33 by susami            #+#    #+#             */
+/*   Updated: 2022/06/10 16:49:20 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "ft_printf.h"
+#include "push_swap.h"
 
 void	debug_print_ctx(t_ctx *c)
 {
@@ -49,4 +49,21 @@ void	print_ops(t_ctx *c)
 		ft_printf("%s\n", op_name(ops->arr[i]));
 		i++;
 	}
+}
+
+void	ctx_print_best(t_ctx **arr, size_t n)
+{
+	size_t	best;
+	size_t	best_i;
+
+	best = -1;
+	while (n-- > 0)
+	{
+		if (best > n_op(arr[n]))
+		{
+			best = n_op(arr[n]);
+			best_i = n;
+		}
+	}
+	print_ops(arr[best_i]);
 }

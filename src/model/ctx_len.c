@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utility.c                                          :+:      :+:    :+:   */
+/*   ctx_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 14:04:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 16:28:21 by susami           ###   ########.fr       */
+/*   Created: 2022/06/10 16:28:13 by susami            #+#    #+#             */
+/*   Updated: 2022/06/10 16:28:29 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	max(size_t a, size_t b)
+size_t	len_p(t_ctx *c)
 {
-	if (a > b)
-		return (a);
-	else
-		return (b);
+	return (c->a->len + c->b->len);
 }
 
-size_t	min(size_t a, size_t b)
+size_t	len_a(t_ctx *c)
 {
-	if (a < b)
-		return (a);
-	else
-		return (b);
+	return (c->a->len);
+}
+
+size_t	len_b(t_ctx *c)
+{
+	return (c->b->len);
 }

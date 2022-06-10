@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utility2.c                                         :+:      :+:    :+:   */
+/*   ctx_get.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 23:31:49 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 15:58:09 by susami           ###   ########.fr       */
+/*   Created: 2022/06/10 16:31:01 by susami            #+#    #+#             */
+/*   Updated: 2022/06/10 16:56:52 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
-
-// pa/pb buffering: doesn't matter
-// sa/sb buffering: swap (len-1) and (len-2)
-// ra/rra/rb/rrb buffering: (i + r - rr) % len
-//
 
 t_elm	top_a(t_ctx *c)
 {

@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 18:49:43 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 16:58:59 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,32 @@ typedef struct s_ctx {
 
 typedef void	(*t_op_function)(t_ctx *);
 
-char			*op_name(t_elm op);
-t_op_function	op_func(t_elm op);
-
 size_t			n_op(t_ctx *c);
 size_t			max(size_t a, size_t b);
 size_t			min(size_t a, size_t b);
+
+// stack/*.c
+t_stack			*stack_init(size_t cap);
+void			stack_deinit(t_stack *s);
+BOOL			stack_contains(t_elm e, t_stack *s);
+t_stack			*stack_dup(t_stack *src);
+
+void			swap(t_stack *s);
+t_elm			pop(t_stack *s);
+void			push(t_stack *s, t_elm e);
+void			rotate(t_stack *s);
+void			reverse_rotate(t_stack *s);
+
+// ctx.c
+t_ctx			*ctx_init(size_t cap);
+void			ctx_deinit(t_ctx *c);
+void			ctx_deinit_all(t_ctx **arr, size_t n);
+
+void			ctx_append(t_elm op, t_ctx *c);
+
+void			debug_print_ctx(t_ctx *m);
+void			print_ops(t_ctx *c);
+void			ctx_print_best(t_ctx **arr, size_t n);
 
 size_t			len_p(t_ctx *c);
 size_t			len_a(t_ctx *c);
@@ -73,38 +93,14 @@ t_elm			get_elm(size_t i, t_ctx *c);
 t_elm			top_a(t_ctx *c);
 t_elm			top_b(t_ctx *c);
 
-// stack.c
-t_stack			*stack_init(size_t cap);
-void			stack_deinit(t_stack *s);
-BOOL			stack_contains(t_elm e, t_stack *s);
-t_stack			*stack_dup(t_stack *src);
-
-// ctx.c
-t_ctx			*ctx_init(size_t cap);
-void			ctx_deinit(t_ctx *c);
-void			ctx_append(t_elm op, t_ctx *c);
-void			ctx_deinit_all(t_ctx **c, size_t n);
-void			ctx_print_best(t_ctx **c, size_t n);
-
-// argparse.c
+// utility/*.c
 t_ctx			*argparse_ctx(int argc, char **argv);
+int				simplify(t_stack *s);
 
-// print.c
-void			debug_print_ctx(t_ctx *m);
-void			print_ops(t_ctx *c);
+// op/*.c
+char			*op_name(t_elm op);
+t_op_function	op_func(t_elm op);
 
-// op_basic.c
-// Returns 0 on success, -1 on error
-void			swap(t_stack *s);
-t_elm			pop(t_stack *s);
-void			push(t_stack *s, t_elm e);
-void			rotate(t_stack *s);
-void			reverse_rotate(t_stack *s);
-
-// op_s.c
-// op_p.c
-// op_r.c
-// op_rr.c
 void			sa(t_ctx *c);
 void			sb(t_ctx *c);
 void			ss(t_ctx *c);
@@ -117,10 +113,9 @@ void			rra(t_ctx *c);
 void			rrb(t_ctx *c);
 void			rrr(t_ctx *c);
 
-// optimize.c
+// optimize/*.c
 t_ctx			*optimize(int argc, char **argv, t_ctx *c);
 
-// opflush.c
 void			opflush(t_ctx *c);
 void			opflush_r(t_ctx *c);
 void			opflush_rr(t_ctx *c);
@@ -139,8 +134,10 @@ void			optimize_rra(t_ctx *c);
 void			optimize_rrb(t_ctx *c);
 void			optimize_rrr(t_ctx *c);
 
+// sort/*.c
 void			selection_sort(t_ctx *c);
 void			quick_sort(t_ctx *c, size_t low, size_t high);
 void			insert_sort(t_ctx *c);
 void			radix_sort(t_ctx *c);
+void			custom_sort(t_ctx *c, size_t low, size_t high);
 #endif

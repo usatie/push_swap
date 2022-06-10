@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 20:27:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 18:49:54 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 16:41:03 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,32 +53,8 @@ void	ctx_deinit(t_ctx *c)
 	}
 }
 
-void	ctx_append(t_elm op, t_ctx *c)
-{
-	ft_debug_printf("%s\n", op_name(op));
-	push(c->ops, op);
-	debug_print_ctx(c);
-}
-
-void	ctx_deinit_all(t_ctx **c, size_t n)
+void	ctx_deinit_all(t_ctx **arr, size_t n)
 {
 	while (n-- > 0)
-		ctx_deinit(c[n]);
-}
-
-void	ctx_print_best(t_ctx **c, size_t n)
-{
-	size_t	best;
-	size_t	best_i;
-
-	best = -1;
-	while (n-- > 0)
-	{
-		if (best > n_op(c[n]))
-		{
-			best = n_op(c[n]);
-			best_i = n;
-		}
-	}
-	print_ops(c[best_i]);
+		ctx_deinit(arr[n]);
 }

@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 23:06:48 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 17:00:45 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ static t_ctx	*_radixsort(int argc, char **argv)
 	c = optimize(argc, argv, c);
 	return (c);
 }
-
-void	custom_sort(t_ctx *c, size_t low, size_t high);
 
 static t_ctx	*customsort(int argc, char **argv)
 {
