@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 21:18:17 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 21:38:05 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ft_error_functions.h"
 #include "push_swap.h"
 
-#define NUM_SORT_METHOD 4
+#define NUM_SORT_METHOD 5
 
 int	main(int argc, char **argv)
 {
@@ -27,13 +27,15 @@ int	main(int argc, char **argv)
 	c[1] = selectionsort(argc, argv);
 	c[2] = insertsort(argc, argv);
 	c[3] = _radixsort(argc, argv);
-	if (c[0] == NULL || c[1] == NULL || c[2] == NULL || c[3] == NULL)
+	c[4] = customsort(argc, argv);
+	if (c[0] == NULL || c[1] == NULL || c[2] == NULL || c[3] == NULL
+		|| c[4] == NULL)
 	{
 		ctx_deinit_all(c, NUM_SORT_METHOD);
 		err_exit("Error\n");
 	}
-	ft_debug_printf("[q: %d, s: %d, i: %d, r: %d]\n",
-		opsize(c[0]), opsize(c[1]), opsize(c[2]), opsize(c[3]));
+	ft_debug_printf("[q: %d, s: %d, i: %d, r: %d, c: %d]\n",
+		opsize(c[0]), opsize(c[1]), opsize(c[2]), opsize(c[3]), opsize(c[4]));
 	ctx_print_best(c, NUM_SORT_METHOD);
 	ctx_deinit_all(c, NUM_SORT_METHOD);
 	return (EXIT_SUCCESS);
