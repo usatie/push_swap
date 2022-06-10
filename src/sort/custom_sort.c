@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:40:34 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 15:32:52 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 22:02:41 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,9 @@ void	custom_sort(t_ctx *c, size_t low, size_t high)
 {
 	size_t	pi;
 
-	if (high < low + INS_THRESH)
+	if (len_p(c) <= 6)
+		small_sort(c);
+	else if (high < low + INS_THRESH)
 		insert(c, low, high);
 	else if (high > low)
 	{
