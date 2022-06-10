@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/10 17:17:13 by susami           ###   ########.fr        #
+#    Updated: 2022/06/10 21:33:09 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS		=	src/main.c				\
 				src/model/ctx.c				\
 				src/model/ctx_len.c				\
 				src/model/ctx_get.c				\
+				src/model/ctx_minmax.c				\
 				src/model/ctx_op.c				\
 				src/model/ctx_print.c				\
 				src/op/op.c				\
@@ -84,5 +85,4 @@ test: $(TEST_OBJS) $(LIB)
 	./test.sh
 
 norm:
-	norminette src | grep Error
-	norminette include | grep Error
+	norminette src include libft | grep Error

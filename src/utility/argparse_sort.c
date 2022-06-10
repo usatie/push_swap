@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:11:08 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 17:13:25 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 21:18:17 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_ctx	*quicksort(int argc, char **argv)
 	ft_debug_printf("========================\n\n");
 	if (argc >= 2)
 		quick_sort(c, 0, argc - 2);
-	ft_debug_printf("\n=====[QUICK SORT] (result=%d)=====\n\n", n_op(c));
+	ft_debug_printf("\n=====[QUICK SORT] (result=%d)=====\n\n", opsize(c));
 	debug_print_ctx(c);
 	c = optimize(argc, argv, c);
 	return (c);
@@ -46,7 +46,7 @@ t_ctx	*selectionsort(int argc, char **argv)
 	ft_debug_printf("========================\n\n");
 	if (argc >= 2)
 		selection_sort(c);
-	ft_debug_printf("\n=====[SELECTION SORT] (result=%d)=====\n\n", n_op(c));
+	ft_debug_printf("\n=====[SELECTION SORT] (result=%d)=====\n\n", opsize(c));
 	debug_print_ctx(c);
 	c = optimize(argc, argv, c);
 	return (c);
@@ -65,7 +65,7 @@ t_ctx	*insertsort(int argc, char **argv)
 	ft_debug_printf("========================\n\n");
 	if (argc >= 2)
 		insert_sort(c);
-	ft_debug_printf("\n=====[INSERT SORT] (result=%d)=====\n\n", n_op(c));
+	ft_debug_printf("\n=====[INSERT SORT] (result=%d)=====\n\n", opsize(c));
 	debug_print_ctx(c);
 	c = optimize(argc, argv, c);
 	return (c);
@@ -84,7 +84,7 @@ t_ctx	*_radixsort(int argc, char **argv)
 	ft_debug_printf("========================\n\n");
 	if (argc >= 2)
 		radix_sort(c);
-	ft_debug_printf("\n=====[RADIX SORT] (result=%d)=====\n\n", n_op(c));
+	ft_debug_printf("\n=====[RADIX SORT] (result=%d)=====\n\n", opsize(c));
 	debug_print_ctx(c);
 	c = optimize(argc, argv, c);
 	return (c);
@@ -102,7 +102,7 @@ t_ctx	*customsort(int argc, char **argv)
 	ft_debug_printf("========================\n\n");
 	if (argc >= 2)
 		custom_sort(c, 0, argc - 2);
-	ft_debug_printf("\n=====[CUSTOM SORT] (result=%d)=====\n\n", n_op(c));
+	ft_debug_printf("\n=====[CUSTOM SORT] (result=%d)=====\n\n", opsize(c));
 	debug_print_ctx(c);
 	c = optimize(argc, argv, c);
 	return (c);

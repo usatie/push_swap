@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:10:06 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 20:46:50 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 21:18:17 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_ctx	*optimize(int argc, char **argv, t_ctx *c)
 	t_ctx	*prev;
 	size_t	i;
 
-	ft_debug_printf("\n=====[OPTIMIZE START] (before = %d)=====\n\n", n_op(c));
+	ft_debug_printf("\n=====[OPTIMIZE START] (before = %d)=====\n\n", opsize(c));
 	while (1)
 	{
 		prev = c;
@@ -32,11 +32,11 @@ t_ctx	*optimize(int argc, char **argv, t_ctx *c)
 		while (i < prev->ops->len)
 			op_func(prev->ops->arr[i++])(c);
 		opflush(c);
-		if (prev->ops->len == n_op(c))
+		if (prev->ops->len == opsize(c))
 			break ;
 		ctx_deinit(prev);
 	}
 	ctx_deinit(prev);
-	ft_debug_printf("\n=====[OPTIMIZE END] (after = %d)=====\n\n", n_op(c));
+	ft_debug_printf("\n=====[OPTIMIZE END] (after = %d)=====\n\n", opsize(c));
 	return (c);
 }

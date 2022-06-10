@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 17:13:55 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 21:18:17 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_ctx {
 
 typedef void	(*t_op_function)(t_ctx *);
 
-size_t			n_op(t_ctx *c);
+size_t			opsize(t_ctx *c);
 size_t			max(size_t a, size_t b);
 size_t			min(size_t a, size_t b);
 
@@ -92,6 +92,11 @@ size_t			len_b(t_ctx *c);
 t_elm			get_elm(size_t i, t_ctx *c);
 t_elm			top_a(t_ctx *c);
 t_elm			top_b(t_ctx *c);
+
+t_elm			min_a(t_ctx *c);
+t_elm			max_a(t_ctx *c);
+t_elm			min_b(t_ctx *c);
+t_elm			max_b(t_ctx *c);
 
 // utility/*.c
 t_ctx			*argparse_ctx(int argc, char **argv);

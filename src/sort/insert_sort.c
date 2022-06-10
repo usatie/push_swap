@@ -6,60 +6,12 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 18:34:34 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 02:22:34 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 21:11:05 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "push_swap.h"
-
-/*
-static int	xor(int a, int b)
-{
-	if (!a && b)
-		return (1);
-	else if (a && !b)
-		return (1);
-	else
-		return (0);
-}
-*/
-
-t_elm	min_b(t_ctx *c)
-{
-	size_t	i;
-	t_elm	m;
-
-	if (len_b(c) == 1)
-		return (get_elm(0, c));
-	m = get_elm(0, c);
-	i = 1;
-	while (i < len_b(c))
-	{
-		if (get_elm(i, c) < m)
-			m = get_elm(i, c);
-		i++;
-	}
-	return (m);
-}
-
-t_elm	max_b(t_ctx *c)
-{
-	size_t	i;
-	t_elm	m;
-
-	if (len_b(c) == 1)
-		return (get_elm(0, c));
-	m = get_elm(0, c);
-	i = 1;
-	while (i < len_b(c))
-	{
-		if (get_elm(i, c) > m)
-			m = get_elm(i, c);
-		i++;
-	}
-	return (m);
-}
 
 // a: 1 9 7 4 6 2 3 5 8 | : b
 // a: 1 9 7 4 6 2 3 | 5 8 : b

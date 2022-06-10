@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 22:34:42 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 21:21:18 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,135 +73,6 @@ void	rule_sort(t_ctx *c, size_t low, size_t high)
 		if (get_elm(low, c) > get_elm(high, c))
 			sa(c);
 	}
-	else if (low >= len_p(c) - 3)
-	{
-		ft_debug_printf("a: [rule_sort: num sor = 2]\n", low, high);
-		while (len_a(c) > 3)
-			pb(c);
-		while (len_a(c) < 3)
-			pa(c);
-		t_elm	l, m, r;
-		l = get_elm(len_p(c) - 1, c);
-		m = get_elm(len_p(c) - 2, c);
-		r = get_elm(len_p(c) - 3, c);
-		// a: 1, 2, 3 -> sa rra
-		// a: 1, 3, 2 -> rra
-		// a: 2, 3, 1 -> sa rb
-		// a: 2, 1, 3 -> ra
-		// a: 3, 1, 2 -> sa
-		// a: 3, 2, 1 -> 
-		if (l < m && m < r)
-		{
-			sa(c);
-			rra(c);
-		}
-		else if (l < r && r < m)
-		{
-			rra(c);
-		}
-		else if (r < l && l < m)
-		{
-			sa(c);
-			ra(c);
-		}
-		else if (m < l && l < r)
-		{
-			ra(c);
-		}
-		else if (m < r && r < l)
-		{
-			sa(c);
-		}
-		else if (r < m && m < l)
-		{
-		}
-	}
-	else if (high < 3)
-	{
-		ft_debug_printf("b: [rule_sort: num sor = 2]\n", low, high);
-		while (len_b(c) > 3)
-			pa(c);
-		while (len_b(c) < 3)
-			pb(c);
-		t_elm l, m, r;
-		l = get_elm(2, c);
-		m = get_elm(1, c);
-		r = get_elm(0, c);
-		// 1, 2, 3: b -> sb rrb
-		// 1, 3, 2: b -> rb
-		// 2, 3, 1: b -> sb
-		// 2, 1, 3: b -> rrb
-		// 3, 1, 2: b -> sb rb
-		// 3, 2, 1: b -> 
-		if (l < m && m < r)
-		{
-			sb(c);
-			rrb(c);
-		}
-		else if (l < r && r < m)
-		{
-			rb(c);
-		}
-		else if (r < l && l < m)
-		{
-			sb(c);
-		}
-		else if (m < l && l < r)
-		{
-			rrb(c);
-		}
-		else if (m < r && r < l)
-		{
-			sb(c);
-			rb(c);
-		}
-		else if (r < m && m < l)
-		{
-		}
-	}
-}
-
-static void	mini_selection_sort(t_ctx *c, size_t low, size_t high)
-{
-	size_t	i;
-	size_t	mi;
-	t_elm	m;
-
-	while (low <= high)
-	{
-		i = low;
-		mi = low;
-		m = get_elm(i, c);
-		while (i <= high)
-		{
-			ft_debug_printf("[mini(%d, %d), i: %d, min: %d, mi: %d]\n", low, high, i, m, mi);
-			if (get_elm(i, c) < m)
-			{
-				m = get_elm(i, c);
-				mi = i;
-			}
-			i++;
-		}
-		ft_debug_printf("[mini(%d, %d), min: %d, mi: %d]\n", low, high, m, mi);
-		while (len_b(c) > low)
-			pa(c);
-		while (len_b(c) < low)
-			pb(c);
-		i = low;
-		while (i < mi)
-		{
-			ra(c);
-			i++;
-		}
-		pb(c);
-		while (i > low)
-		{
-			rra(c);
-			i--;
-		}
-		low++;
-	}
-
 }
 
 void	quick_sort(t_ctx *c, size_t low, size_t high)
@@ -209,32 +80,15 @@ void	quick_sort(t_ctx *c, size_t low, size_t high)
 	size_t	pi;
 
 	ft_debug_printf("[quick_sort(%d, %d)]\n", low, high);
-	if (low < high)
+	if (low < high && low + 1 == high)
+		rule_sort(c, low, high);
+	else if (low < high)
 	{
-		/*
-		if (high - low == 1)
-			rule_sort(c, low, high);
-		else if (high < 3 || len_p(c) - 3 < low)
-			rule_sort(c, low, high);
-		else if (high - low < SEL_THRESH)
-			mini_selection_sort(c, low, high);
-		else
-		{
-			pi = partition(c, low, high);
-			ft_debug_printf("[pi = %d]\n", pi);
-			if (low + 1 < pi)
-				quick_sort(c, low, pi - 1);
-			quick_sort(c, pi + 1, high);
-		}
-		*/
-		(void)mini_selection_sort;
 		pi = partition(c, low, high);
 		ft_debug_printf("[pi = %d]\n", pi);
 		if (low + 1 < pi)
 			quick_sort(c, low, pi - 1);
 		quick_sort(c, pi + 1, high);
-		/*
-		*/
 		debug_print_ctx(c);
 	}
 	if (low == 0 && high == len_p(c) - 1)

@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 17:14:00 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 21:18:17 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 		err_exit("Error\n");
 	}
 	ft_debug_printf("[q: %d, s: %d, i: %d, r: %d]\n",
-		n_op(c[0]), n_op(c[1]), n_op(c[2]), n_op(c[3]));
+		opsize(c[0]), opsize(c[1]), opsize(c[2]), opsize(c[3]));
 	ctx_print_best(c, NUM_SORT_METHOD);
 	ctx_deinit_all(c, NUM_SORT_METHOD);
 	return (EXIT_SUCCESS);

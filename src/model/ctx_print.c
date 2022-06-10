@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:48:33 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 16:49:20 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/10 21:18:17 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	ctx_print_best(t_ctx **arr, size_t n)
 	best = -1;
 	while (n-- > 0)
 	{
-		if (best > n_op(arr[n]))
+		if (best > opsize(arr[n]))
 		{
-			best = n_op(arr[n]);
+			best = opsize(arr[n]);
 			best_i = n;
 		}
 	}
