@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 21:38:05 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/11 15:06:10 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,24 @@
 #include "push_swap.h"
 
 #define NUM_SORT_METHOD 5
+
+int	main(int argc, char **argv)
+{
+	t_ctx	*c;
+
+	(void)selectionsort;
+	(void)insertsort;
+	(void)quicksort;
+	(void)_radixsort;
+	(void)customsort;
+	c = customsort(argc, argv);
+	if (c == NULL)
+		return (EXIT_FAILURE);
+	print_ops(c);
+	ctx_deinit(c);
+	return (EXIT_SUCCESS);
+}
+/*
 
 int	main(int argc, char **argv)
 {
@@ -40,26 +58,6 @@ int	main(int argc, char **argv)
 	ctx_deinit_all(c, NUM_SORT_METHOD);
 	return (EXIT_SUCCESS);
 }
-
-/*
-int	main(int argc, char **argv)
-{
-	t_ctx	*c;
-
-	(void)selectionsort;
-	(void)insertsort;
-	(void)quicksort;
-	(void)_radixsort;
-	(void)customsort;
-	c = customsort(argc, argv);
-	//c = quicksort(argc, argv);
-	if (c == NULL)
-		return (EXIT_FAILURE);
-	print_ops(c);
-	ctx_deinit(c);
-	return (EXIT_SUCCESS);
-}
-
 static void	destructor(void) __attribute__((destructor));
 
 static void	destructor(void)
