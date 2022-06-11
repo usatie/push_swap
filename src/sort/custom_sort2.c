@@ -6,17 +6,17 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:05:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/11 21:06:48 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/11 22:22:33 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
-#define SEL_THRESHOLD 30
+#define SEL_THRESHOLD 50
 
 static size_t	total_chunks(t_ctx *c)
 {
-	return (len_p(c) / SEL_THRESHOLD / 2 * 2 + 1);
+	return (max(5, len_p(c) / SEL_THRESHOLD / 2 * 2 + 1));
 }
 
 static size_t	lower_bound(size_t chunk, t_ctx *c)
