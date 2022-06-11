@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:05:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/11 22:22:33 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/11 22:54:53 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,15 +122,21 @@ static void	selection(t_ctx *c, size_t chunk)
 			ra(c);
 			i++;
 		}
+		else if (len_a(c) > 1 && get_elm(len_b(c) + 1, c) >= (t_elm)i && top_a(c) > get_elm(len_b(c) + 1, c))
+			sa(c);
 		else if (len_b(c) > 0 && chunk_contains(top_b(c), chunk, c) == TRUE)
 		{
 			if (len_b(c) > 0 && top_b(c) == (t_elm)i)
 				pa(c);
-			else if (len_a(c) == 0)
+			else if (len_a(c) < 2)
 				pa(c);
 			else if (chunk_contains(top_a(c), chunk, c) == FALSE)
 				pa(c);
+			else if (chunk_contains(get_elm(len_b(c) + 1, c), chunk, c) == FALSE)
+				pa(c);
 			else if (top_b(c) < top_a(c))
+				pa(c);
+			else if (top_b(c) < get_elm(len_b(c) + 1, c))
 				pa(c);
 			else
 				nearest_b_op(i, c)(c);
