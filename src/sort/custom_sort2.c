@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:05:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/11 17:05:57 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/11 21:02:07 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,24 @@ static size_t	total_chunks(t_ctx *c)
 	return (len_p(c) / SEL_THRESHOLD / 2 * 2 + 1);
 }
 
+static size_t	lower_bound(size_t chunk, t_ctx *c)
+{
+	return (len_p(c) * chunk / total_chunks(c));
+}
+
+static size_t	upper_bound(size_t chunk, t_ctx *c)
+{
+	return (len_p(c) * (chunk + 1) / total_chunks(c) - 1);
+}
+
 static BOOL	chunk_contains(size_t e, size_t chunk, t_ctx *c)
 {
-	size_t	lower_border;
-	size_t	upper_border;
+	size_t	lower_bound;
+	size_t	upper_bound;
 
-	lower_border = len_p(c) * chunk / total_chunks(c);
-	upper_border = len_p(c) * (chunk + 1) / total_chunks(c) - 1;
-	if (lower_border <= e && e <= upper_border)
+	lower_bound = len_p(c) * chunk / total_chunks(c);
+	upper_bound = len_p(c) * (chunk + 1) / total_chunks(c) - 1;
+	if (lower_bound <= e && e <= upper_bound)
 		return (TRUE);
 	else
 		return (FALSE);
@@ -73,37 +83,76 @@ static void	partition(t_ctx *c)
 	ft_debug_printf("[partition] end\n");
 }
 
-static void	selection(t_ctx *c, size_t low, size_t high)
+// b: 0 1 2
+// 3 / 2 = 1
+//
+// b: 0 1 2 3
+// 4 / 2 = 2
+static t_op_function	nearest_b_op(size_t e, t_ctx *c)
 {
-	ft_debug_printf("[selection(%d, %d)] start\n", low, high);
-	while (len_b(c) > 0)
-		pa(c);
-	while (top_a(c) < (t_elm)low)
-		ra(c);
-	while (low <= high)
+	size_t	i;
+
+	i = 0;
+	while (i < len_b(c))
 	{
-		if (top_a(c) == (t_elm)low)
+		if (get_elm(i, c) == (t_elm)e)
+			break ;
+		i++;
+	}
+	if (i < len_b(c) / 2)
+		return (rrb);
+	else
+		return (rb);
+}
+
+static void	selection(t_ctx *c, size_t chunk)
+{
+	size_t	i;
+	size_t	low;
+	size_t	high;
+
+	ft_debug_printf("[selection(%d)] start\n", chunk);
+	low = lower_bound(chunk, c);
+	high = upper_bound(chunk, c);
+	i = low;
+	while (i <= high)
+	{
+		if (len_a(c) > 0 && top_a(c) == (t_elm)i)
 		{
 			ra(c);
-			low++;
+			i++;
 		}
-		else if (stack_contains(low, c->b) && top_b(c) == (t_elm)low)
-			pa(c);
-		else if (stack_contains(low, c->b) && top_b(c) <= (t_elm)low + 2)
-			pa(c);
-		else if (stack_contains(low, c->b))
-			rb(c);
+		else if (len_b(c) > 0 && chunk_contains(top_b(c), chunk, c) == TRUE)
+		{
+			if (len_b(c) > 0 && top_b(c) == (t_elm)i)
+				pa(c);
+			else if (len_a(c) == 0)
+				pa(c);
+			else if (chunk_contains(top_a(c), chunk, c) == FALSE)
+				pa(c);
+			else if (top_b(c) < top_a(c))
+				pa(c);
+			else
+				nearest_b_op(i, c)(c);
+		}
 		else
-			pb(c);
+			rrb(c);
 	}
 	ft_debug_printf("[selection] end\n");
 }
 
 void	custom_sort2(t_ctx *c, size_t low, size_t high)
 {
-	if (high > low)
+	size_t	chunk;
+
+	partition(c);
+	while (len_a(c) > 0)
+		pb(c);
+	chunk = 0;
+	while (chunk < total_chunks(c))
 	{
-		partition(c);
+		selection(c, chunk);
+		chunk++;
 	}
 	if (low == 0 && high + 1 == len_p(c))
 	{
