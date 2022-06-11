@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:05:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/11 21:02:07 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/11 21:06:48 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,11 @@ void	custom_sort2(t_ctx *c, size_t low, size_t high)
 {
 	size_t	chunk;
 
+	if (len_p(c) <= 6)
+	{
+		small_sort(c);
+		return ;
+	}
 	partition(c);
 	while (len_a(c) > 0)
 		pb(c);
