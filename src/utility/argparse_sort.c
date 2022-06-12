@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:11:08 by susami            #+#    #+#             */
-/*   Updated: 2022/06/12 15:28:34 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/12 15:43:38 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ t_ctx	*customsort(int argc, char **argv)
 	debug_print_ctx(c);
 	ft_debug_printf("========================\n\n");
 	if (argc >= 2)
-		custom_sort2(c, 0, argc - 2);
+		custom_sort2(c);
 	ft_debug_printf("\n=====[CUSTOM SORT] (result=%d)=====\n\n", opsize(c));
 	debug_print_ctx(c);
 	c = optimize(argc, argv, c);

@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/11 15:06:51 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/12 16:53:24 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ size_t			len_a(t_ctx *c);
 size_t			len_b(t_ctx *c);
 
 t_elm			get_elm(size_t i, t_ctx *c);
+size_t			get_index(t_elm e, t_ctx *c);
 t_elm			top_a(t_ctx *c);
 t_elm			top_b(t_ctx *c);
 
@@ -151,6 +152,14 @@ void			quick_sort(t_ctx *c, size_t low, size_t high);
 void			insert_sort(t_ctx *c);
 void			radix_sort(t_ctx *c);
 void			custom_sort(t_ctx *c, size_t low, size_t high);
-void			custom_sort2(t_ctx *c, size_t low, size_t high);
+void			custom_sort2(t_ctx *c);
 void			small_sort(t_ctx *c);
+
+size_t			partition_total(t_ctx *c);
+size_t			lower_bound(size_t partition, t_ctx *c);
+size_t			upper_bound(size_t partition, t_ctx *c);
+BOOL			partition_contains(size_t e, size_t partition, t_ctx *c);
+void			create_partition(t_ctx *c,
+					size_t pb_partition, size_t pbrb_partition);
+
 #endif
