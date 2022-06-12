@@ -6,11 +6,10 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:00:43 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 16:07:01 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/12 15:31:16 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "push_swap.h"
 
 void	opflush(t_ctx *c)

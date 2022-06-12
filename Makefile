@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/11 15:05:14 by susami           ###   ########.fr        #
+#    Updated: 2022/06/12 09:50:45 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRCS		=	src/main.c						\
 				src/sort/custom_sort.c			\
 				src/sort/small_sort.c			\
 				src/sort/custom_sort2.c			\
+				src/debug/ft_debug_printf.c		\
 
 OBJS		=	$(SRCS:%.c=$(OUTDIR)/%.o)
 
@@ -65,15 +66,17 @@ clean:
 
 fclean: clean
 	$(MAKE) -C $(LIBFTDIR) fclean
-	$(RM) $(NAME) tests/test_basic_op
+	$(RM) $(NAME)
 
 re: fclean all
 
 $(NAME): $(OBJS) $(LIB)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
 
-debug: fclean
-	$(MAKE) debug -C $(LIBFTDIR)
+debug:
+	$(RM) src/*.o bonus/*.o *.out
+	$(RM) -r $(OUTDIR)
+	$(RM) $(NAME)
 	$(MAKE) CFLAGS="$(CFLAGS) -D DEBUG=1 -D OPTIMIZE=1"
 
 $(OUTDIR)/%.o: %.c

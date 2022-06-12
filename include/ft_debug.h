@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ctx_op.c                                           :+:      :+:    :+:   */
+/*   ft_debug.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 16:39:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/12 09:51:18 by susami           ###   ########.fr       */
+/*   Created: 2022/06/12 09:44:44 by susami            #+#    #+#             */
+/*   Updated: 2022/06/12 09:48:39 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_debug.h"
-#include "push_swap.h"
+#ifndef FT_DEBUG_H
+# define FT_DEBUG_H
 
-void	ctx_append(t_elm op, t_ctx *c)
-{
-	ft_debug_printf("%s\n", op_name(op));
-	push(c->ops, op);
-	debug_print_ctx(c);
-}
+# include <stdarg.h>
+
+int		ft_debug_vdprintf(int fd, const char *format, va_list ap);
+int		ft_debug_vprintf(const char *format, va_list ap);
+int		ft_debug_dprintf(int fd, const char *format, ...);
+int		ft_debug_printf(const char *format, ...);
+
+#endif

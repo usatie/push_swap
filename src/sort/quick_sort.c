@@ -6,12 +6,12 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:54:45 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 21:21:18 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/12 15:28:46 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
+#include "ft_debug.h"
 
 #define SEL_THRESH 0
 // a: [100,99,98,10] [5,9,4,7,8,6] [3,2,1] :b

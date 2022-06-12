@@ -6,12 +6,12 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:05:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/11 22:54:53 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/12 15:28:18 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
+#include "ft_debug.h"
 #define SEL_THRESHOLD 50
 
 static size_t	total_chunks(t_ctx *c)

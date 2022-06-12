@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:52:40 by susami            #+#    #+#             */
-/*   Updated: 2022/06/03 12:27:27 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/12 08:39:39 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_isspace(char c);
 long	ft_strtol(const char *str, char **endptr, int base);
 int		ft_strcmp(const char *s1, const char *s2);
+void	*realloc(void *ptr, size_t size);
+void	*reallocf(void *ptr, size_t size);
 
 #endif

@@ -6,10 +6,11 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:48:33 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 21:18:17 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/12 09:51:54 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_debug.h"
 #include "ft_printf.h"
 #include "push_swap.h"
 

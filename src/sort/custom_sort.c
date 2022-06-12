@@ -6,12 +6,12 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:40:34 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 22:29:03 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/12 15:28:59 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
+#include "ft_debug.h"
 
 #define SEL_THRESHOLD 30
 

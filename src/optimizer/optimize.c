@@ -6,11 +6,11 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:10:06 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 21:18:17 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/12 15:27:27 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_debug.h"
 #include "push_swap.h"
 
 t_ctx	*optimize(int argc, char **argv, t_ctx *c)
