@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:05:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/13 10:46:53 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/13 15:23:38 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ static BOOL	sort_op(size_t i, size_t partition, t_ctx *c)
 		ra(c);
 		return (TRUE);
 	}
-	else if (len_a(c) > 1
-		&& top_a2(c) >= (t_elm)i
-		&& top_a(c) > top_a2(c))
+	else if (len_a(c) > 0 && top_a2(c) >= (t_elm)i && top_a(c) > top_a2(c))
 		sa(c);
 	else if (partition_contains(top_b(c), partition, c) == TRUE)
 	{
@@ -56,8 +54,10 @@ static BOOL	sort_op(size_t i, size_t partition, t_ctx *c)
 		else
 			rb(c);
 	}
-	else
+	else if (get_index(i, c) < len_b(c) / 2)
 		rrb(c);
+	else
+		rb(c);
 	return (FALSE);
 }
 
