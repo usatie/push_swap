@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/13 09:55:22 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/13 17:01:26 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,10 @@ void			custom_sort(t_ctx *c, size_t low, size_t high);
 void			custom_sort2(t_ctx *c);
 void			small_sort(t_ctx *c);
 
-size_t			partition_total(t_ctx *c);
+size_t			part_total(t_ctx *c);
 size_t			lower_bound(size_t partition, t_ctx *c);
 size_t			upper_bound(size_t partition, t_ctx *c);
-BOOL			partition_contains(size_t e, size_t partition, t_ctx *c);
-void			partition_a2b(t_ctx *c,
-					size_t pb_partition, size_t pbrb_partition);
+BOOL			part_contains(size_t e, size_t partition, t_ctx *c);
+void			part_a2b(t_ctx *c, size_t part_pb, size_t part_pbrb);
 
 #endif

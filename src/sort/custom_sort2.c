@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:05:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/13 15:23:38 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/13 17:03:16 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void	partition(t_ctx *c)
 
 	ft_debug_printf("[partitoin] start\n");
 	i = 0;
-	while (i < partition_total(c) / 2)
+	while (i < part_total(c) / 2)
 	{
-		partition_a2b(c, partition_total(c) / 2 - i,
-			partition_total(c) / 2 + 1 + i);
+		part_a2b(c, part_total(c) / 2 - i,
+			part_total(c) / 2 + 1 + i);
 		debug_print_ctx(c);
 		i++;
 	}
@@ -32,20 +32,20 @@ static void	partition(t_ctx *c)
 }
 
 // Returns true if ra(means sorted)
-static BOOL	sort_op(size_t i, size_t partition, t_ctx *c)
+static BOOL	selectionsort_op(size_t i, size_t partition, t_ctx *c)
 {
 	if (len_a(c) > 0 && top_a(c) == (t_elm)i)
 	{
 		ra(c);
 		return (TRUE);
 	}
-	else if (len_a(c) > 0 && top_a2(c) >= (t_elm)i && top_a(c) > top_a2(c))
+	else if (len_a(c) > 1 && top_a2(c) >= (t_elm)i && top_a(c) > top_a2(c))
 		sa(c);
-	else if (partition_contains(top_b(c), partition, c) == TRUE)
+	else if (part_contains(top_b(c), partition, c) == TRUE)
 	{
 		if ((top_b(c) == (t_elm)i) || (len_a(c) < 2)
-			|| (partition_contains(top_a(c), partition, c) == FALSE)
-			|| (partition_contains(top_a2(c), partition, c) == FALSE)
+			|| (part_contains(top_a(c), partition, c) == FALSE)
+			|| (part_contains(top_a2(c), partition, c) == FALSE)
 			|| (top_b(c) < top_a(c))
 			|| (top_b(c) < top_a2(c)))
 			pa(c);
@@ -61,18 +61,18 @@ static BOOL	sort_op(size_t i, size_t partition, t_ctx *c)
 	return (FALSE);
 }
 
-static void	sort_partition(t_ctx *c, size_t partition)
+static void	selectionsort_part(t_ctx *c, size_t partition)
 {
 	size_t	i;
 
-	ft_debug_printf("[sort_partition(%d)] start\n", partition);
+	ft_debug_printf("[selectionsort_part(%d)] start\n", partition);
 	i = lower_bound(partition, c);
 	while (i <= upper_bound(partition, c))
 	{
-		if (sort_op(i, partition, c))
+		if (selectionsort_op(i, partition, c))
 			i++;
 	}
-	ft_debug_printf("[sort_partition] end\n");
+	ft_debug_printf("[selectionsort_part] end\n");
 }
 
 void	custom_sort2(t_ctx *c)
@@ -85,7 +85,7 @@ void	custom_sort2(t_ctx *c)
 	{
 		partition(c);
 		i = 0;
-		while (i < partition_total(c))
-			sort_partition(c, i++);
+		while (i < part_total(c))
+			selectionsort_part(c, i++);
 	}
 }
