@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:05:21 by susami            #+#    #+#             */
-/*   Updated: 2022/06/13 09:41:58 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/13 10:46:53 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,36 @@ static void	partition(t_ctx *c)
 	ft_debug_printf("[partition] end\n");
 }
 
+// Returns true if ra(means sorted)
+static BOOL	sort_op(size_t i, size_t partition, t_ctx *c)
+{
+	if (len_a(c) > 0 && top_a(c) == (t_elm)i)
+	{
+		ra(c);
+		return (TRUE);
+	}
+	else if (len_a(c) > 1
+		&& top_a2(c) >= (t_elm)i
+		&& top_a(c) > top_a2(c))
+		sa(c);
+	else if (partition_contains(top_b(c), partition, c) == TRUE)
+	{
+		if ((top_b(c) == (t_elm)i) || (len_a(c) < 2)
+			|| (partition_contains(top_a(c), partition, c) == FALSE)
+			|| (partition_contains(top_a2(c), partition, c) == FALSE)
+			|| (top_b(c) < top_a(c))
+			|| (top_b(c) < top_a2(c)))
+			pa(c);
+		else if (get_index(i, c) < len_b(c) / 2)
+			rrb(c);
+		else
+			rb(c);
+	}
+	else
+		rrb(c);
+	return (FALSE);
+}
+
 static void	sort_partition(t_ctx *c, size_t partition)
 {
 	size_t	i;
@@ -39,29 +69,8 @@ static void	sort_partition(t_ctx *c, size_t partition)
 	i = lower_bound(partition, c);
 	while (i <= upper_bound(partition, c))
 	{
-		if (len_a(c) > 0 && top_a(c) == (t_elm)i)
-		{
-			ra(c);
+		if (sort_op(i, partition, c))
 			i++;
-		}
-		else if (len_a(c) > 1 && get_elm(len_b(c) + 1, c) >= (t_elm)i && top_a(c) > get_elm(len_b(c) + 1, c))
-			sa(c);
-		else if (partition_contains(top_b(c), partition, c) == TRUE)
-		{
-			if ((top_b(c) == (t_elm)i)
-				|| (len_a(c) < 2)
-				|| (partition_contains(top_a(c), partition, c) == FALSE)
-				|| (partition_contains(get_elm(len_b(c) + 1, c), partition, c) == FALSE)
-				|| (top_b(c) < top_a(c))
-				|| (top_b(c) < get_elm(len_b(c) + 1, c)))
-				pa(c);
-			else if (get_index(i, c) < len_b(c) / 2)
-				rrb(c);
-			else
-				rb(c);
-		}
-		else
-			rrb(c);
 	}
 	ft_debug_printf("[sort_partition] end\n");
 }

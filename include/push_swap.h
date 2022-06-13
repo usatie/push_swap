@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/13 09:41:51 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/13 09:55:22 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ t_elm			get_elm(size_t i, t_ctx *c);
 size_t			get_index(t_elm e, t_ctx *c);
 t_elm			top_a(t_ctx *c);
 t_elm			top_b(t_ctx *c);
+t_elm			top_a2(t_ctx *c);
+t_elm			top_b2(t_ctx *c);
 
 t_elm			min_a(t_ctx *c);
 t_elm			max_a(t_ctx *c);

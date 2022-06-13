@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/12 16:55:09 by susami           ###   ########.fr        #
+#    Updated: 2022/06/13 10:47:22 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS		=	src/main.c						\
 				src/model/ctx.c					\
 				src/model/ctx_len.c				\
 				src/model/ctx_get.c				\
+				src/model/ctx_get2.c			\
 				src/model/ctx_minmax.c			\
 				src/model/ctx_op.c				\
 				src/model/ctx_print.c			\
