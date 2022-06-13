@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 16:04:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/13 17:03:51 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/13 21:15:01 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,13 @@ size_t	lower_bound(size_t partition, t_ctx *c)
 
 size_t	upper_bound(size_t partition, t_ctx *c)
 {
-	return (lower_bound(partition + 1, c) - 1);
+	size_t	l;
+
+	l = lower_bound(partition + 1, c);
+	if (l > 0)
+		return (lower_bound(partition + 1, c) - 1);
+	else
+		return (0);
 }
 
 BOOL	part_contains(size_t e, size_t partition, t_ctx *c)
@@ -72,7 +78,7 @@ void	part_a2b(t_ctx *c, size_t part_pb, size_t part_pbrb)
 	ft_debug_printf("[partition(%d) lower = %d, upper = %d]\n",
 		part_pbrb, lower_bound(part_pbrb, c), upper_bound(part_pbrb, c));
 	i = 0;
-	while (i < len_p(c))
+	while (i < len_p(c) && len_a(c) > 0)
 	{
 		if (part_contains(top_a(c), part_pb, c))
 			pb(c);

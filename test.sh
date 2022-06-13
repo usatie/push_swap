@@ -21,7 +21,7 @@ for i in {0..10}
 do
 	ARG="$(jot 100 -100 100 | sort -uR | head -100 | tr '\n' ' ')"
 	printf "[$i] ./push_swap $ARG\n"
-	./push_swap $ARG | ./checker && printf "\e[32mOK\n\e[m" || printf "\e[31mKO\n\e[m"
+	./push_swap $ARG | ./checker $ARG && printf "\e[32mOK\n\e[m" || printf "\e[31mKO\n\e[m"
 done
 
 echo "[Tests using nafuka11 tester]"
