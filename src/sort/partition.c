@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 16:04:19 by susami            #+#    #+#             */
-/*   Updated: 2022/06/12 16:16:39 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/13 09:41:53 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ BOOL	partition_contains(size_t e, size_t partition, t_ctx *c)
 		return (FALSE);
 }
 
-void	create_partition(t_ctx *c,
+void	partition_a2b(t_ctx *c,
 	size_t pb_partition, size_t pbrb_partition)
 {
 	size_t	i;
