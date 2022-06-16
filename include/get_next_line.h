@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 21:37:47 by susami            #+#    #+#             */
-/*   Updated: 2022/06/14 15:50:18 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 11:02:54 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_buf
 	ssize_t	rcs[FOPEN_MAX];
 }	t_buf;
 
-// get_next_line.c
 char	*get_next_line(int fd);
 
 #endif
