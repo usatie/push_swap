@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:47:05 by susami            #+#    #+#             */
-/*   Updated: 2022/06/13 19:27:10 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 14:47:57 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,27 +70,27 @@ t_op_function	op_func(t_elm op)
 
 t_op_function	op_func_from_name(const char *op)
 {
-	if (ft_strcmp(op, "pa") == 0)
+	if (ft_strcmp(op, "pa\n") == 0)
 		return (optimize_pa);
-	else if (ft_strcmp(op, "pb") == 0)
+	else if (ft_strcmp(op, "pb\n") == 0)
 		return (optimize_pb);
-	else if (ft_strcmp(op, "sa") == 0)
+	else if (ft_strcmp(op, "sa\n") == 0)
 		return (optimize_sa);
-	else if (ft_strcmp(op, "sb") == 0)
+	else if (ft_strcmp(op, "sb\n") == 0)
 		return (optimize_sb);
-	else if (ft_strcmp(op, "ss") == 0)
+	else if (ft_strcmp(op, "ss\n") == 0)
 		return (optimize_ss);
-	else if (ft_strcmp(op, "ra") == 0)
+	else if (ft_strcmp(op, "ra\n") == 0)
 		return (optimize_ra);
-	else if (ft_strcmp(op, "rb") == 0)
+	else if (ft_strcmp(op, "rb\n") == 0)
 		return (optimize_rb);
-	else if (ft_strcmp(op, "rr") == 0)
+	else if (ft_strcmp(op, "rr\n") == 0)
 		return (optimize_rr);
-	else if (ft_strcmp(op, "rra") == 0)
+	else if (ft_strcmp(op, "rra\n") == 0)
 		return (optimize_rra);
-	else if (ft_strcmp(op, "rrb") == 0)
+	else if (ft_strcmp(op, "rrb\n") == 0)
 		return (optimize_rrb);
-	else if (ft_strcmp(op, "rrr") == 0)
+	else if (ft_strcmp(op, "rrr\n") == 0)
 		return (optimize_rrr);
 	else
 		return (NULL);

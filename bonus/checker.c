@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:03:30 by susami            #+#    #+#             */
-/*   Updated: 2022/06/16 09:03:35 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 14:47:25 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,25 @@ int	main(int argc, char **argv)
 	char			*line;
 	t_op_function	op;
 
-	usleep(10);
+	if (argc == 1)
+		return (0);
 	c = argparse_ctx(argc, argv);
 	if (c == NULL)
-		err_exit("Error1\n");
+		err_exit("Error\n");
 	debug_print_ctx(c);
 	errno = 0;
 	line = get_next_line(STDIN_FILENO);
 	while (line)
 	{
-		line = ft_strtrim(line, "\n");
 		if (*line)
 		{
 			op = op_func_from_name(line);
 			if (op == NULL)
-				err_exit("Error2\n", line);
+				err_exit("Error\n", line);
 			op(c);
 		}
+		else
+			err_exit("Error\n", line);
 		line = get_next_line(STDIN_FILENO);
 	}
 	opflush(c);
