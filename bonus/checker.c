@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:03:30 by susami            #+#    #+#             */
-/*   Updated: 2022/06/16 15:16:36 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 15:32:44 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,11 @@ static BOOL	is_sorted(t_ctx *c)
 	return (TRUE);
 }
 
-int	main(int argc, char **argv)
+static BOOL	is_ok(t_ctx *c)
 {
-	t_ctx			*c;
 	char			*line;
 	t_op_function	op;
 
-	if (argc == 1)
-		return (0);
-	c = argparse_ctx(argc, argv);
-	if (c == NULL)
-		err_exit("Error\n");
 	errno = 0;
 	line = get_next_line(STDIN_FILENO);
 	while (line)
@@ -65,11 +59,23 @@ int	main(int argc, char **argv)
 		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
-	if (is_sorted(c))
+	free(line);
+	return (is_sorted(c));
+}
+
+int	main(int argc, char **argv)
+{
+	t_ctx			*c;
+
+	if (argc == 1)
+		return (0);
+	c = argparse_ctx(argc, argv);
+	if (c == NULL)
+		err_exit("Error\n");
+	if (is_ok(c) == TRUE)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-	free(line);
 	ctx_deinit(c);
 }
 /*

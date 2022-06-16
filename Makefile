@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/16 14:52:46 by susami           ###   ########.fr        #
+#    Updated: 2022/06/16 15:17:06 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,4 +103,4 @@ test: $(TEST_OBJS) $(LIB)
 	./test_bonus.sh
 
 norm:
-	norminette src include libft | grep Error
+	norminette src include libft bonus | grep Error
