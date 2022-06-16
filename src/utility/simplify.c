@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 16:23:48 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 21:03:30 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 18:46:22 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,35 @@ int	simplify(t_stack *s)
 			if (d->arr[j] == s->arr[i])
 			{
 				s->arr[i] = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+	stack_deinit(d);
+	return (0);
+}
+
+int	simplify_reverse(t_stack *s)
+{
+	size_t	i;
+	size_t	j;
+	t_stack	*d;
+
+	d = stack_dup(s);
+	if (d == NULL)
+		return (-1);
+	sort(d);
+	i = 0;
+	while (i < s->len)
+	{
+		j = 0;
+		while (j < d->len)
+		{
+			if (d->arr[j] == s->arr[i])
+			{
+				s->arr[i] = d->len - j - 1;
 				break ;
 			}
 			j++;

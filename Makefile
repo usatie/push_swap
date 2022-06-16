@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/16 15:58:22 by susami           ###   ########.fr        #
+#    Updated: 2022/06/16 19:48:32 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ B_SRCS		=	bonus/checker.c					\
 				src/optimizer/optimize_p.c		\
 				src/optimizer/optimize_r.c		\
 				src/optimizer/optimize_rr.c		\
+				src/utility/utility.c			\
 				src/utility/argparse.c			\
 				src/utility/simplify.c			\
 				src/debug/ft_debug_printf.c		\

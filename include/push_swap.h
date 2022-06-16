@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/13 18:21:10 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:46:08 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ t_ctx			*_radixsort(int argc, char **argv);
 t_ctx			*customsort(int argc, char **argv);
 
 int				simplify(t_stack *s);
+int				simplify_reverse(t_stack *s);
 
 // op/*.c
 char			*op_name(t_elm op);
@@ -154,6 +155,8 @@ void			selection_sort(t_ctx *c);
 void			quick_sort(t_ctx *c, size_t low, size_t high);
 void			insert_sort(t_ctx *c);
 void			radix_sort(t_ctx *c);
+void			radix3_sort(t_ctx *c);
+void			radix3_sort_rev(t_ctx *c);
 void			custom_sort(t_ctx *c, size_t low, size_t high);
 void			custom_sort2(t_ctx *c);
 void			small_sort(t_ctx *c);

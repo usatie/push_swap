@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:11:08 by susami            #+#    #+#             */
-/*   Updated: 2022/06/12 15:43:38 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:46:11 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,13 @@ t_ctx	*_radixsort(int argc, char **argv)
 	ft_debug_printf("\n=====[RADIX SORT]=====\n");
 	debug_print_ctx(c);
 	ft_debug_printf("========================\n\n");
+	if (simplify_reverse(c->a) < 0)
+	{
+		ctx_deinit(c);
+		return (NULL);
+	}
 	if (argc >= 2)
-		radix_sort(c);
+		radix3_sort_rev(c);
 	ft_debug_printf("\n=====[RADIX SORT] (result=%d)=====\n\n", opsize(c));
 	debug_print_ctx(c);
 	c = optimize(argc, argv, c);
