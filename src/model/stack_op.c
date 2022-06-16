@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:52:07 by susami            #+#    #+#             */
-/*   Updated: 2022/06/10 16:13:38 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 20:47:24 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,17 @@ void	push(t_stack *s, t_elm e)
 	}
 	if (s->len == s->cap)
 	{
-		s->cap *= 2;
 		if (s->cap == 0)
+		{
+			s->arr = ft_reallocf(s->arr, sizeof(t_elm) * 256, 0);
 			s->cap = 256;
-		s->arr = reallocf(s->arr, sizeof(t_elm) * s->cap);
+		}
+		else
+		{
+			s->arr = ft_reallocf(s->arr, sizeof(t_elm) * s->cap * 2,
+					sizeof(t_elm) * s->cap);
+			s->cap *= 2;
+		}
 	}
 	s->arr[s->len] = e;
 	s->len += 1;
