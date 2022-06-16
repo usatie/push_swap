@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/16 15:17:06 by susami           ###   ########.fr        #
+#    Updated: 2022/06/16 15:36:40 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,8 +92,10 @@ $(OUTDIR)/%.o: %.c
 	@mkdir -p $$(dirname $@)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
-bonus: $(B_OBJS) $(filter-out objs/src/main.o,$(OBJS)) $(LIB)
+$(B_NAME): $(B_OBJS) $(filter-out objs/src/main.o,$(OBJS)) $(LIB)
 	$(CC) $(CFLAGS) $(B_OBJS) $(filter-out objs/src/main.o,$(OBJS)) $(LIB) -o $(B_NAME)
+
+bonus: $(B_NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)

@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:03:30 by susami            #+#    #+#             */
-/*   Updated: 2022/06/16 15:32:44 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 15:37:18 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static BOOL	is_ok(t_ctx *c)
 		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
+	opflush(c);
 	free(line);
 	return (is_sorted(c));
 }
@@ -70,12 +71,14 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	c = argparse_ctx(argc, argv);
+	debug_print_ctx(c);
 	if (c == NULL)
 		err_exit("Error\n");
 	if (is_ok(c) == TRUE)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+	debug_print_ctx(c);
 	ctx_deinit(c);
 }
 /*
