@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/16 15:36:40 by susami           ###   ########.fr        #
+#    Updated: 2022/06/16 15:58:22 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,28 @@ SRCS		=	src/main.c						\
 				src/debug/ft_debug_printf.c		\
 
 B_SRCS		=	bonus/checker.c					\
+				src/model/stack.c				\
+				src/model/stack_op.c			\
+				src/model/ctx.c					\
+				src/model/ctx_len.c				\
+				src/model/ctx_get.c				\
+				src/model/ctx_get2.c			\
+				src/model/ctx_op.c				\
+				src/model/ctx_print.c			\
+				src/op/op.c						\
+				src/op/op_s.c					\
+				src/op/op_p.c					\
+				src/op/op_r.c					\
+				src/op/op_rr.c					\
+				src/optimizer/opflush.c			\
+				src/optimizer/optimize.c		\
+				src/optimizer/optimize_s.c		\
+				src/optimizer/optimize_p.c		\
+				src/optimizer/optimize_r.c		\
+				src/optimizer/optimize_rr.c		\
+				src/utility/argparse.c			\
+				src/utility/simplify.c			\
+				src/debug/ft_debug_printf.c		\
 
 OBJS		=	$(SRCS:%.c=$(OUTDIR)/%.o)
 B_OBJS		=	$(B_SRCS:%.c=$(OUTDIR)/%.o)
@@ -77,7 +99,7 @@ fclean: clean
 
 re: fclean all
 
-$(NAME): $(OBJS) $(LIB)
+$(NAME): $(LIB) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
 
 debug:
@@ -92,8 +114,8 @@ $(OUTDIR)/%.o: %.c
 	@mkdir -p $$(dirname $@)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
-$(B_NAME): $(B_OBJS) $(filter-out objs/src/main.o,$(OBJS)) $(LIB)
-	$(CC) $(CFLAGS) $(B_OBJS) $(filter-out objs/src/main.o,$(OBJS)) $(LIB) -o $(B_NAME)
+$(B_NAME): $(LIB) $(B_OBJS)
+	$(CC) $(CFLAGS) $(B_OBJS) $(LIB) -o $(B_NAME)
 
 bonus: $(B_NAME)
 
