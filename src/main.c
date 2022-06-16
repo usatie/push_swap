@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:43:10 by susami            #+#    #+#             */
-/*   Updated: 2022/06/12 15:30:22 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 21:04:53 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	main(int argc, char **argv)
 	(void)customsort;
 	c = customsort(argc, argv);
 	if (c == NULL)
+	{
+		err_exit("Error\n");
 		return (EXIT_FAILURE);
+	}
 	print_ops(c);
 	ctx_deinit(c);
 	return (EXIT_SUCCESS);
