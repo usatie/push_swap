@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:03:30 by susami            #+#    #+#             */
-/*   Updated: 2022/06/16 14:47:25 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 15:01:43 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ int	main(int argc, char **argv)
 	if (is_sorted(c))
 		ft_printf("OK\n");
 	else
-		err_exit("KO\n");
+		ft_printf("KO\n");
 }
