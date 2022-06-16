@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:47:05 by susami            #+#    #+#             */
-/*   Updated: 2022/06/09 14:45:27 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/13 19:27:10 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,34 @@ t_op_function	op_func(t_elm op)
 	else if (op == OP_RRB)
 		return (optimize_rrb);
 	else if (op == OP_RRR)
+		return (optimize_rrr);
+	else
+		return (NULL);
+}
+
+t_op_function	op_func_from_name(const char *op)
+{
+	if (ft_strcmp(op, "pa") == 0)
+		return (optimize_pa);
+	else if (ft_strcmp(op, "pb") == 0)
+		return (optimize_pb);
+	else if (ft_strcmp(op, "sa") == 0)
+		return (optimize_sa);
+	else if (ft_strcmp(op, "sb") == 0)
+		return (optimize_sb);
+	else if (ft_strcmp(op, "ss") == 0)
+		return (optimize_ss);
+	else if (ft_strcmp(op, "ra") == 0)
+		return (optimize_ra);
+	else if (ft_strcmp(op, "rb") == 0)
+		return (optimize_rb);
+	else if (ft_strcmp(op, "rr") == 0)
+		return (optimize_rr);
+	else if (ft_strcmp(op, "rra") == 0)
+		return (optimize_rra);
+	else if (ft_strcmp(op, "rrb") == 0)
+		return (optimize_rrb);
+	else if (ft_strcmp(op, "rrr") == 0)
 		return (optimize_rrr);
 	else
 		return (NULL);

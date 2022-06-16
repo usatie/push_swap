@@ -6,11 +6,12 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/27 17:39:14 by susami            #+#    #+#              #
-#    Updated: 2022/06/13 10:47:22 by susami           ###   ########.fr        #
+#    Updated: 2022/06/16 08:59:12 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	push_swap
+B_NAME		=	checker
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -I include
@@ -51,7 +52,10 @@ SRCS		=	src/main.c						\
 				src/sort/partition.c			\
 				src/debug/ft_debug_printf.c		\
 
+B_SRCS		=	bonus/checker.c					\
+
 OBJS		=	$(SRCS:%.c=$(OUTDIR)/%.o)
+B_OBJS		=	$(B_SRCS:%.c=$(OUTDIR)/%.o)
 
 LIBFTDIR	=	libft
 LIBFT		=	$(LIBFTDIR)/libft.a
@@ -69,6 +73,7 @@ clean:
 fclean: clean
 	$(MAKE) -C $(LIBFTDIR) fclean
 	$(RM) $(NAME)
+	$(RM) $(B_NAME)
 
 re: fclean all
 
@@ -79,11 +84,16 @@ debug:
 	$(RM) src/*.o bonus/*.o *.out
 	$(RM) -r $(OUTDIR)
 	$(RM) $(NAME)
-	$(MAKE) CFLAGS="$(CFLAGS) -D DEBUG=1 -D OPTIMIZE=1"
+	$(RM) $(B_NAME)
+	$(MAKE) $(NAME) CFLAGS="$(CFLAGS) -D DEBUG=1 -D OPTIMIZE=1"
+	$(MAKE) $(B_NAME) CFLAGS="$(CFLAGS) -D DEBUG=1 -D OPTIMIZE=1"
 
 $(OUTDIR)/%.o: %.c
 	@mkdir -p $$(dirname $@)
 	$(CC) -c $< -o $@ $(CFLAGS)
+
+bonus: $(B_OBJS) $(filter-out objs/src/main.o,$(OBJS)) $(LIB)
+	$(CC) $(CFLAGS) $(B_OBJS) $(filter-out objs/src/main.o,$(OBJS)) $(LIB) -o $(B_NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)

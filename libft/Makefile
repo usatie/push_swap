@@ -6,7 +6,7 @@
 #    By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 07:33:20 by susami            #+#    #+#              #
-#    Updated: 2022/06/12 09:25:09 by susami           ###   ########.fr        #
+#    Updated: 2022/06/14 15:50:53 by susami           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,12 +77,14 @@ PRINTF_SRCS	=	ft_printf/ft_printf.c			\
 				ft_printf/ft_printf_percent.c	\
 				ft_printf/ft_printf_px.c		\
 
+GNL_SRCS	=	get_next_line/get_next_line.c	\
+
 ARGPARSE_SRCS	=	ft_argparse/ft_argparse_num.c	\
 
 ERROR_FUNCTIONS_SRCS	=	ft_error_functions/ft_error_functions.c	\
 
 OBJDIR		=	objs
-SRCS		=	$(M_SRCS) $(B_SRCS) $(EXTRA_SRCS) $(PRINTF_SRCS) $(ARGPARSE_SRCS) $(ERROR_FUNCTIONS_SRCS)
+SRCS		=	$(M_SRCS) $(B_SRCS) $(EXTRA_SRCS) $(PRINTF_SRCS) $(GNL_SRCS) $(ARGPARSE_SRCS) $(ERROR_FUNCTIONS_SRCS)
 OBJS		=	$(SRCS:%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)

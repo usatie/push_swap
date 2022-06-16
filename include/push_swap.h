@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 17:51:01 by susami            #+#    #+#             */
-/*   Updated: 2022/06/13 17:01:26 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/13 18:21:10 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int				simplify(t_stack *s);
 // op/*.c
 char			*op_name(t_elm op);
 t_op_function	op_func(t_elm op);
+t_op_function	op_func_from_name(const char *op);
 
 void			sa(t_ctx *c);
 void			sb(t_ctx *c);
