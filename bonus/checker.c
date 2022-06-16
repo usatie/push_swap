@@ -6,7 +6,7 @@
 /*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:03:30 by susami            #+#    #+#             */
-/*   Updated: 2022/06/16 15:01:43 by susami           ###   ########.fr       */
+/*   Updated: 2022/06/16 15:16:36 by susami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	main(int argc, char **argv)
 	c = argparse_ctx(argc, argv);
 	if (c == NULL)
 		err_exit("Error\n");
-	debug_print_ctx(c);
 	errno = 0;
 	line = get_next_line(STDIN_FILENO);
 	while (line)
@@ -58,16 +57,25 @@ int	main(int argc, char **argv)
 		{
 			op = op_func_from_name(line);
 			if (op == NULL)
-				err_exit("Error\n", line);
+				err_exit("Error\n");
 			op(c);
 		}
 		else
-			err_exit("Error\n", line);
+			err_exit("Error\n");
+		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
-	opflush(c);
 	if (is_sorted(c))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+	free(line);
+	ctx_deinit(c);
 }
+/*
+static void	destructor(void) __attribute__((destructor));
+static void	destructor(void)
+{
+	system("leaks -q checker");
+}
+*/
